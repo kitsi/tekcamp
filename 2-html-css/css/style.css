@@ -28,6 +28,7 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   margin: 100px 25px;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 section {
@@ -39,7 +40,6 @@ section img {
 }
 
 section p {
-  font-family: "Lexend Deca", sans-serif;
   margin-bottom: 25px;
   line-height: 1.5rem;
 }
