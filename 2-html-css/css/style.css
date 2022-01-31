@@ -18,13 +18,13 @@
   --primary-dark: hsl(179, 100%, 13%);
 }
 
+/* General */
 body {
   background: var(--main-bg-color);
   color: var(--neutral-text);
   font-size: 15px;
 }
 
-/* General */
 main {
   display: flex;
   align-items: center;
@@ -64,6 +64,7 @@ section h2 {
 
 #luxury {
   background: var(--primary-dark);
+  border-radius: 0 0 5px 5px;
 }
 
 /* General Buttons */
