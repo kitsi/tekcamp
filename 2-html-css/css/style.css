@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap");
 
+/* Reset */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+/* Color variables */
 :root {
   --main-bg-color: hsl(0, 0%, 95%);
   --neutral-headings: hsl(0, 0%, 95%);
@@ -22,6 +24,7 @@ body {
   font-size: 15px;
 }
 
+/* General */
 main {
   display: flex;
   align-items: center;
@@ -49,6 +52,7 @@ section h2 {
   margin-bottom: 25px;
 }
 
+/* Section specifics */
 #sedans {
   background: var(--primary-light);
   border-radius: 5px 5px 0 0;
@@ -62,8 +66,7 @@ section h2 {
   background: var(--primary-dark);
 }
 
-/* Buttons */
-
+/* General Buttons */
 section .btn {
   text-decoration: none;
   background: var(--neutral-buttons);
@@ -71,6 +74,7 @@ section .btn {
   border-radius: 20px;
 }
 
+/* Section specific buttons */
 .btn-light {
   color: var(--primary-light);
 }
