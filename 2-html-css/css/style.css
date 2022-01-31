@@ -8,11 +8,12 @@
 
 :root {
   --main-bg-color: hsl(0, 0%, 95%);
+  --neutral-headings: hsl(0, 0%, 95%);
+  --neutral-buttons: hsl(0, 0%, 95%);
+  --neutral-text: hsla(0, 0%, 100%, 0.75);
   --primary-light: hsl(31, 77%, 52%);
   --primary-medium: hsl(184, 100%, 22%);
   --primary-dark: hsl(179, 100%, 13%);
-  --neutral-text: hsla(0, 0%, 100%, 0.75);
-  --neutral-headings: hsl(0, 0%, 95%);
 }
 
 body {
@@ -27,7 +28,6 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   margin: 100px 25px;
-  /* margin: 100px; */
 }
 
 section {
@@ -52,4 +52,17 @@ section h2 {
 #sedans {
   background: var(--primary-light);
   border-radius: 5px 5px 0 0;
+}
+
+/* Buttons */
+
+section .btn {
+  text-decoration: none;
+  background: var(--neutral-buttons);
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+.btn-light {
+  color: var(--primary-light);
 }
