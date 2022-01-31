@@ -58,6 +58,10 @@ section h2 {
   background: var(--primary-medium);
 }
 
+#luxury {
+  background: var(--primary-dark);
+}
+
 /* Buttons */
 
 section .btn {
@@ -73,4 +77,8 @@ section .btn {
 
 .btn-medium {
   color: var(--primary-medium);
+}
+
+.btn-dark {
+  color: var(--primary-dark);
 }
