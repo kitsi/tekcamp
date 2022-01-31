@@ -121,4 +121,12 @@ section .btn {
   .btn-dark:hover {
     background: var(--primary-dark);
   }
+
+  #sedans {
+    border-radius: 5px 0 0 5px;
+  }
+
+  #luxury {
+    border-radius: 0 5px 5px 0;
+  }
 }
