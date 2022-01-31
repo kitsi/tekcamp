@@ -29,7 +29,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   margin: 100px 25px;
   font-family: "Lexend Deca", sans-serif;
@@ -103,5 +102,22 @@ section .btn {
 
   section p {
     margin-bottom: 75px;
+  }
+
+  .btn:hover {
+    color: var(--neutral-buttons);
+    border: 2px solid; var(--neutral-buttons);
+  }
+
+  .btn-light:hover {
+    background: var(--primary-light);
+  }
+
+  .btn-medium:hover {
+    background: var(--primary-medium);
+  }
+
+  .btn-dark:hover {
+    background: var(--primary-dark);
   }
 }
