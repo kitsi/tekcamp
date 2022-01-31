@@ -54,6 +54,10 @@ section h2 {
   border-radius: 5px 5px 0 0;
 }
 
+#suvs {
+  background: var(--primary-medium);
+}
+
 /* Buttons */
 
 section .btn {
@@ -65,4 +69,8 @@ section .btn {
 
 .btn-light {
   color: var(--primary-light);
+}
+
+.btn-medium {
+  color: var(--primary-medium);
 }
