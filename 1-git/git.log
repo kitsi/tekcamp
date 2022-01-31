@@ -1,0 +1,36 @@
+commit 8f9767ccafe67823f095aba74193194d6e104ad9
+Author: KS <kitsidhu@gmail.com>
+Date:   Mon Jan 24 21:16:23 2022 -0500
+
+    step 30 - change h1 tag to h2
+
+commit 7b879348bc88183844046f9a1f35b252f5c31938
+Merge: fa77d3a 90ea3c5
+Author: KS <kitsidhu@gmail.com>
+Date:   Mon Jan 24 21:06:50 2022 -0500
+
+    Merge branch 'updated-title' into develop
+
+commit 90ea3c5e360f32097b4335f33efd8fc76ef67990
+Author: KS <kitsidhu@gmail.com>
+Date:   Mon Jan 24 21:05:30 2022 -0500
+
+    change title (step 19)
+
+commit fa77d3ac004de2c85d23e1c5d81c9c65c9f87420
+Author: KS <kitsidhu@gmail.com>
+Date:   Mon Jan 24 21:03:04 2022 -0500
+
+    add body & h1 tags
+
+commit ddf098724014f1993696f7647ce4eab3405f5251
+Author: KS <kitsidhu@gmail.com>
+Date:   Mon Jan 24 21:00:34 2022 -0500
+
+    add index.html file with html skeleton and title
+
+commit e110fe592ceb00fde0e086af77171b75b5251398
+Author: kitsi <46537629+kitsi@users.noreply.github.com>
+Date:   Mon Jan 24 18:53:30 2022 -0500
+
+    Initial commit
