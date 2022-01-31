@@ -20,3 +20,36 @@ body {
   color: var(--neutral-text);
   font-size: 15px;
 }
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 100px 25px;
+  /* margin: 100px; */
+}
+
+section {
+  padding: 50px;
+}
+
+section img {
+  margin-bottom: 25px;
+}
+
+section p {
+  font-family: "Lexend Deca", sans-serif;
+  margin-bottom: 25px;
+  line-height: 1.5rem;
+}
+
+section h2 {
+  font-family: "Big Shoulders Display", cursive;
+  margin-bottom: 25px;
+}
+
+#sedans {
+  background: var(--primary-light);
+  border-radius: 5px 5px 0 0;
+}
