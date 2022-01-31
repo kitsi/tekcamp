@@ -52,6 +52,7 @@ section h2 {
   font-family: "Big Shoulders Display", cursive;
   margin-bottom: 25px;
   font-size: 2.5rem;
+  color: var(--neutral-headings);
 }
 
 /* Section specifics */
