@@ -1,12 +1,15 @@
+const inputFields = document.querySelectorAll('form input'),
+      emailField = document.querySelector('form input#email'),
+      submitButton = document.querySelector('#form-submit');
+
 buildPage();
 
 function buildPage() {
   emptyInputFieldError();
+  validateEmail();
 }
 
 function emptyInputFieldError() {
-  const inputFields = document.querySelectorAll('form input');
-  const submitButton = document.querySelector('#form-submit');
   inputFields.forEach(function(field){
     submitButton.addEventListener('click', function(){
       if(field.value ===''){
@@ -16,5 +19,12 @@ function emptyInputFieldError() {
         errorMessage.style.visibility = 'visible';
       }
     });
+  });
+}
+
+function validateEmail() {
+  submitButton.addEventListener('click', function(){
+    let emailInput = emailField.value;
+    console.log(emailInput);
   });
 }
