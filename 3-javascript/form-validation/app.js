@@ -29,7 +29,7 @@ function validateEmail() {
     let emailInput = emailField.value;
     let expression = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let isValid = expression.test(String(emailInput).toLowerCase());
-    if(!isValid){
+    if(emailField.value != '' && !isValid){
       let errorIcon = emailField.previousElementSibling;
       errorIcon.style.visibility = 'visible';
       let errorMessage = emailField.nextElementSibling;
