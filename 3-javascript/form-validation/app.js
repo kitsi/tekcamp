@@ -1,6 +1,3 @@
-const app = document.querySelector('#secondary-flex');
-// console.log(app);
-
 buildPage();
 
 function buildPage() {
@@ -9,15 +6,16 @@ function buildPage() {
 
 function emptyFormFieldError() {
   const inputFields = document.querySelectorAll('form input');
+  console.log(inputFields);
   const submitButton = document.querySelector('#form-submit');
-  // console.log(inputFields);
   console.log(submitButton);
   inputFields.forEach(function(field){
-    // console.log(field);
-    // console.log(field.name);
     submitButton.addEventListener('click', function(){
       if(field.value ===''){
-        console.log(field.name);
+        let errorIcon = field.previousElementSibling;
+        errorIcon.style.visibility = 'visible';
+        let errorMessage = field.nextElementSibling;
+        errorMessage.style.visibility = 'visible';
       }
     });
   });
