@@ -17,6 +17,8 @@ function emptyInputFieldError() {
         errorIcon.style.visibility = 'visible';
         let errorMessage = field.nextElementSibling;
         errorMessage.style.visibility = 'visible';
+        field.classList.add('error');
+        field.placeholder = '';
       }
     });
   });
@@ -25,13 +27,15 @@ function emptyInputFieldError() {
 function validateEmail() {
   submitButton.addEventListener('click', function(){
     let emailInput = emailField.value;
-    console.log(emailInput);
     let expression = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let isValid = expression.test(String(emailInput).toLowerCase());
     if(!isValid){
-      console.log('email not valid');
-    } else {
-      console.log('good');
+      let errorIcon = emailField.previousElementSibling;
+      errorIcon.style.visibility = 'visible';
+      let errorMessage = emailField.nextElementSibling;
+      errorMessage.style.visibility = 'visible';
+      errorMessage.innerText = 'Please enter a valid email address';
+      emailField.className = 'invalid-email';
     }
   });
 }
