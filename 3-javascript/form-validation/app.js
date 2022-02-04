@@ -17,7 +17,7 @@ function emptyInputFieldError() {
         errorIcon.style.visibility = 'visible';
         let errorMessage = field.nextElementSibling;
         errorMessage.style.visibility = 'visible';
-        field.classList.add('error');
+        field.classList.add('error'); //changes border to red
         field.placeholder = '';
       }
     });
@@ -35,7 +35,7 @@ function validateEmail() {
       let errorMessage = emailField.nextElementSibling;
       errorMessage.style.visibility = 'visible';
       errorMessage.innerText = 'Please enter a valid email address';
-      emailField.className = 'invalid-email';
+      emailField.className = 'invalid-email'; //changes border & text to red
     }
   });
 }
