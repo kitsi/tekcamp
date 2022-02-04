@@ -1,14 +1,12 @@
 buildPage();
 
 function buildPage() {
-  emptyFormFieldError();
+  emptyInputFieldError();
 }
 
-function emptyFormFieldError() {
+function emptyInputFieldError() {
   const inputFields = document.querySelectorAll('form input');
-  console.log(inputFields);
   const submitButton = document.querySelector('#form-submit');
-  console.log(submitButton);
   inputFields.forEach(function(field){
     submitButton.addEventListener('click', function(){
       if(field.value ===''){
