@@ -5,14 +5,16 @@ toggleAnswer();
 function toggleAnswer() {
   faqList.forEach((question) => {
     question.addEventListener('click', (event) => {
+      let answer;
       if(event.target.classList.contains('question')) {
-        let answer = event.target.parentNode.querySelector('.answer');
-        console.log(answer.style.display);
-        if(answer.style.display === '') {
-          answer.style.display = 'block';
-        } else {
-          answer.style.display = '';
-        }
+        answer = event.target.parentNode.querySelector('.answer');
+      } else if(event.target.classList.contains('arrow-icon')) {
+        answer = event.target.parentNode.parentNode.querySelector('.answer');
+      }
+      if(answer.style.display === '') {
+        answer.style.display = 'block';
+      } else {
+        answer.style.display = '';
       }
     })
   });
