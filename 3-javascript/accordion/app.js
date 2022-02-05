@@ -12,7 +12,6 @@ function toggleAnswer() {
         answer = event.target.parentNode.querySelector('.answer');
       } else if(event.target.classList.contains('arrow-icon')) {
         question = event.target.parentNode;
-        console.log(question);
         answer = event.target.parentNode.parentNode.querySelector('.answer');
       }
       if(answer.style.display === '') {
