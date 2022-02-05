@@ -5,11 +5,11 @@ const inputFields = document.querySelectorAll('form input'),
 buildPage();
 
 function buildPage() {
-  emptyInputFieldError();
+  displayEmptyInputFieldError();
   validateEmail();
 }
 
-function emptyInputFieldError() {
+function displayEmptyInputFieldError() {
   inputFields.forEach(function(field){
     submitButton.addEventListener('click', function(){
       if(field.value ===''){
