@@ -1,9 +1,9 @@
 const inputFields = document.querySelectorAll('form input'),
       submitButton = document.querySelector('#form-submit');
 
-displayEmptyInputFieldError();
+checkFormErrors();
 
-function displayEmptyInputFieldError() {
+function checkFormErrors() {
   inputFields.forEach(function(field){
     let errorIcon = field.previousElementSibling;
     let errorMessage = field.nextElementSibling;
