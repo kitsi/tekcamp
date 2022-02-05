@@ -1,4 +1,4 @@
-##RESOURCES
+## RESOURCES
 
 The following resources were used for email validation:
 
