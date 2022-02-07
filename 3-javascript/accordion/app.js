@@ -8,7 +8,7 @@ function toggleAnswer() {
       let question;
       let answer;
       if(event.target.classList.contains('question')) {
-        question = event.target.parentNode.querySelector('.question');
+        question = event.target;
         answer = event.target.parentNode.querySelector('.answer');
       } else if(event.target.classList.contains('arrow-icon')) {
         question = event.target.parentNode;
