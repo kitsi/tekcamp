@@ -3,8 +3,8 @@ const faqList = document.querySelectorAll('.question');
 toggleAnswer();
 
 function toggleAnswer() {
-  faqList.forEach((listItem) => {
-    listItem.addEventListener('click', (event) => {
+  faqList.forEach((question) => {
+    question.addEventListener('click', (event) => {
       let question;
       let answer;
       if(event.target.classList.contains('question')) {
