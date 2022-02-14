@@ -1,12 +1,9 @@
-import Button from "@mui/material/Button";
-import Menu from "./Menu";
-import Profile from "./Profile";
+import AppBar from "./AppBar";
 
 const Header = () => {
   return (
-    <div className="Footer">
-      <Menu />
-      <Button href="<Profile />">Edit profile</Button>
+    <div className="header">
+      <AppBar />
     </div>
   );
 };
