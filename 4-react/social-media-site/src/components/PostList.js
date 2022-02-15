@@ -20,29 +20,22 @@ export default function PostList() {
   }, []);
 
   let postList = posts.map((post) => {
-    return <Post post={post} />;
+    return (
+      <div key={post.id}>
+        <Grid item xs={10} style={{ width: "100%", marginBottom: "1em" }}>
+          <Paper elevation={3} style={{ padding: "1rem" }}>
+            <Post post={post} />
+          </Paper>
+        </Grid>
+      </div>
+    );
   });
 
   return (
     <div>
-      <Grid item xs={12}>
-        <Paper elevation={3}>{postList}</Paper>
-      </Grid>
+      {/* <Grid container spacing={3} justifyContent="center"> */}
+      {postList}
+      {/* </Grid> */}
     </div>
   );
 }
-
-// const PostCards = () => {
-//   return (
-//     <div>
-// <Grid item xs={4}>
-// <Paper elevation={3}>
-//   <PostCard />
-// </Paper>
-// </Grid>
-//     </div>
-//   );
-// };
-
-// export default PostCards;
-// export default PostList;
