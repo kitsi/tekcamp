@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// import Grid from "@mui/material/Grid";
-// import Paper from "@mui/material/Paper";
 import Comment from "./Comment";
 
 const API_KEY = process.env.REACT_APP_API_KEY;

@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import CommentList from "./CommentList";
 import EnterComment from "./EnterComment";
 import React from "react";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
