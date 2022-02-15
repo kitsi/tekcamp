@@ -6,8 +6,8 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function CommentList(props) {
   const [comments, setComments] = useState([]);
-  const updatedPost = props.updatedPost;
   const postid = props.postid;
+  const updatedPost = props.updatedPost;
 
   useEffect(() => {
     let isMounted = true;

@@ -9,6 +9,9 @@ export default function Post({ post }) {
     <div className="post">
       <h5>{post.owner.firstName + " " + post.owner.lastName}</h5>
       <p>{post.text}</p>
+      {/* <div> */}
+      <img class="img" src={post.image} alt="" />
+      {/* </div> */}
       <p>{post.publishDate}</p>
       <Box
         sx={{
