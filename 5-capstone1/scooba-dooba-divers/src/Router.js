@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
+import Admin from "./components/Admin";
 import Cart from "./components/Cart";
 import LandingPage from "./components/LandingPage";
 import Product from "./components/Product";
@@ -13,6 +14,7 @@ function Router() {
       <Route path="/products" element={<Products />} />
       <Route path="/product" element={<Product />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }
