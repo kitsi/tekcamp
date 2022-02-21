@@ -10,14 +10,15 @@ import { Link } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 
-const pages = ["Equipment", "Trips", "Cart"];
+const pages = ["Equipment", "Trips", "Weddings"];
 const settings = ["Dashboard", "Admin"];
 
-const ResponsiveAppBar = () => {
+const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -104,11 +105,16 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
+          <Typography marginRight={2} marginTop={1}>
+            <Link to="Cart">
+              <ShoppingCartIcon />
+            </Link>
+          </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Scuba Dog">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Scuba Dog" src="https://i.imgur.com/V7lije9.png" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -145,4 +151,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Navbar;

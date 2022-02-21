@@ -31,11 +31,5 @@ export default function PostList() {
     );
   });
 
-  return (
-    <div>
-      {/* <Grid container spacing={3} justifyContent="center"> */}
-      {postList}
-      {/* </Grid> */}
-    </div>
-  );
+  return <div>{postList}</div>;
 }
