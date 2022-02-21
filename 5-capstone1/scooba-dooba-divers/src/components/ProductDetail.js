@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import { Button } from "@mui/material";
-import categories from "../data/products2.json";
+import categories from "../data/products.json";
 import { useParams } from "react-router-dom";
 
-function ProductDetail() {
+function ProductDetail(props) {
   const { serialNumber } = useParams();
   const { catName } = useParams();
   const [product, setProduct] = useState({});
   const [description, setDescription] = useState({});
+  const { onAdd } = props;
 
   useEffect(() => {
     getProduct();
@@ -36,8 +37,7 @@ function ProductDetail() {
       {description.detailLong}
       {product.price}
 
-      <Button>Add to Cart</Button>
-      {/* <ProductDetailView product={product} /> */}
+      <Button onClick={() => onAdd(product)}>Add to Cart</Button>
     </div>
   );
 }

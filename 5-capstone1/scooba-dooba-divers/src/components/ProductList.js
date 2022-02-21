@@ -3,13 +3,13 @@ import Grid from "@mui/material/Grid";
 import ProductCard from "./ProductCard";
 import React from "react";
 import Typography from "@mui/material/Typography";
-import categories from "../data/products2.json";
+import categories from "../data/products.json";
 
 function ProductList() {
   return (
     <div className="products">
       <Container sx={{ marginY: 5 }}>
-        {categories.map((category, idx) => (
+        {categories.map((category) => (
           <>
             <Typography
               variant="h4"
@@ -17,9 +17,9 @@ function ProductList() {
               marginTop={5}
               marginBottom={3}
             >
-              <div key={idx}>All {category.name}</div>
+              All {category.name}
             </Typography>
-            <Grid container spacing={5} key={idx}>
+            <Grid container spacing={5} key={category.id}>
               {category.products.map((product, index) => (
                 <ProductCard
                   category={category.name}
