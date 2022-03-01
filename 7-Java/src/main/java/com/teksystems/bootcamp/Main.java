@@ -4,6 +4,7 @@ import com.teksystems.bootcamp.additionalnputs.NumberAggregator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -19,14 +20,10 @@ public class Main {
 
         do {
             displayMenu();
-            try {
             userChoice = input.nextLine();
-                if(userChoice.equals("1")) {
-                    runNumberAggregator();
-                } else {
-                    isQuit = quit();
-                }
-            } catch (InputMismatchException e) {
+            if(userChoice.equals("1")) {
+                runNumberAggregator();
+            } else {
                 isQuit = quit();
             }
         } while(!isQuit);
@@ -65,6 +62,11 @@ public class Main {
             }
         } while(!isQuitAggregator);
         System.out.println("Your total is: " + total + "\n");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 
