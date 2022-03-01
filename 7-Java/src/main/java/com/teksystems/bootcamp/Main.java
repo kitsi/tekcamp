@@ -20,8 +20,8 @@ public class Main {
 
         do {
             displayMenu();
-            userChoice = input.nextLine();
-            if(userChoice.equals("1")) {
+            userChoice = input.nextLine().toLowerCase();
+            if((userChoice.equals("1")) || (userChoice.contains("number")) || (userChoice.contains("aggregator"))) {
                 runNumberAggregator();
             } else {
                 isQuit = quit();
@@ -36,8 +36,7 @@ public class Main {
         System.out.println("3. Factor by Two");
         System.out.println("4. Grid Hopper");
         System.out.println("5. Expression Solver");
-        System.out.println("6. Quit");
-        System.out.println("Please enter your choice: ");
+        System.out.println("Please enter your choice ('q' to quit): ");
     }
 
     private static boolean quit() {
@@ -46,6 +45,7 @@ public class Main {
     }
 
     private static void runNumberAggregator() {
+        System.out.println();
         Scanner input = new Scanner(System.in);
         int numberToAdd;
 
@@ -53,7 +53,7 @@ public class Main {
         int total = 0;
 
         do {
-            System.out.println("Please enter a number");
+            System.out.println("Enter a number ('q' to quit)");
             try {
                 numberToAdd = input.nextInt();
                 total = NumberAggregator.addNumber(numberToAdd, total);
@@ -63,7 +63,7 @@ public class Main {
         } while(!isQuitAggregator);
         System.out.println("Your total is: " + total + "\n");
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.MILLISECONDS.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
