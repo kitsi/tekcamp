@@ -45,7 +45,7 @@ public class Main {
     }
 
     private static boolean quit() {
-        System.out.println("Thank you for playing. Come again soon!");
+        System.out.println("\nThank you for playing. Come again soon!");
         return true;
     }
 
@@ -125,6 +125,11 @@ public class Main {
         System.out.println("          STOMP     STOMP          STOMP     STOMP");
         System.out.println("");
         System.out.println("");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 
