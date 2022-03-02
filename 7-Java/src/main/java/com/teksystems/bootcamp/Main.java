@@ -80,6 +80,7 @@ public class Main {
         String charactersToFind;
         String stringToSearch;
         Map<Character, List<Integer>> charPositions = new HashMap<>();
+        String userChoice;
 
         do {
             System.out.println("Enter characters to find");
@@ -87,10 +88,15 @@ public class Main {
             System.out.println("Enter string to search");
             stringToSearch = input.nextLine();
             charPositions = CharFinder.findMatchPositions(charactersToFind, stringToSearch);
-            System.out.printf("%-12s | %-10s\n", "Character", "Positions");
-//            System.out.printf("-12s | %-10", "__________", "__________");
-//            for(HashMap<> posi)
-            System.out.println(charPositions);
+            System.out.printf("\n%-10s | %-10s\n", "Character", "Positions");
+            System.out.printf("%-10s | %-10s\n", "_________", "__________");
+            for(Map.Entry<Character, List<Integer>> entry : charPositions.entrySet()) {
+                System.out.printf("%-10s | %-10s\n", entry.getKey(), entry.getValue());
+            }
+            System.out.println("\nWould you like to search again? (y/n)");
+            userChoice = input.nextLine().toLowerCase();
+            isQuitFinder = userChoice.equals("n");
+            System.out.println();
         } while(!isQuitFinder);
     }
 }
