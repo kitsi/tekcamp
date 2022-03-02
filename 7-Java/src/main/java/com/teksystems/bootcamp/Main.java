@@ -101,32 +101,6 @@ public class Main {
             System.out.println();
         } while(!isQuitFinder);
     }
-<<<<<<< Updated upstream
-||||||| constructed merge base
-
-    private static void printDog() {
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("            /~~~~~~~~\\                           _");
-        System.out.println("    ##\\__/ @)      ~~~~~~~~\\                     \\ \\ ) )");
-        System.out.println("    |              /~~\\~~~~~                ((    |  \\");
-        System.out.println("     \\    /           |                          /   |");
-        System.out.println("      (~~~   /         \\____________/~~~~~~~~~~~~   /");
-        System.out.println("       ~~~~|~                                     /");
-        System.out.println("           :                                      |");
-        System.out.println("            \\                                     |");
-        System.out.println("            |                               /      \\");
-        System.out.println("             \\  \\_         :         \\     /~~~\\    |");
-        System.out.println("             /   :~~~~~|   :~~~~~~~~~~|   :     :   :");
-        System.out.println("            /    :    /    :         /    :    /    :");
-        System.out.println("        (~~~     )(~~~     )     (~~~     )(~~~     )");
-        System.out.println("         ~~~~~~~~  ~~~~~~~~       ~~~~~~~~  ~~~~~~~~");
-        System.out.println("          STOMP     STOMP          STOMP     STOMP");
-        System.out.println("");
-        System.out.println("");
-    }
-=======
 
     private static void printDog() {
         System.out.println("");
@@ -155,6 +129,5 @@ public class Main {
             e.printStackTrace();
         }
     }
->>>>>>> Stashed changes
 }
 

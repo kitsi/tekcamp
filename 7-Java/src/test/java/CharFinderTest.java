@@ -18,15 +18,15 @@ public class CharFinderTest {
         String searchString = "Banana";
         HashMap<Character, List<Integer>> expectedCharPositions = new HashMap<>();
         HashMap<Character, List<Integer>> actualCharPositions;
-        List<Integer> index1 = new ArrayList<>();
-        index1.add(1);
-        List<Integer> index2 = new ArrayList<>();
-        index2.add(2);
-        index2.add(4);
-        index2.add(6);
+        List<Integer> indexes1 = new ArrayList<>();
+        indexes1.add(1);
+        List<Integer> indexes2 = new ArrayList<>();
+        indexes2.add(2);
+        indexes2.add(4);
+        indexes2.add(6);
 
-        expectedCharPositions.put('b', index1);
-        expectedCharPositions.put('a', index2);
+        expectedCharPositions.put('b', indexes1);
+        expectedCharPositions.put('a', indexes2);
         actualCharPositions = CharFinder.findMatchPositions(chars, searchString);
 
         System.out.println(expectedCharPositions);
