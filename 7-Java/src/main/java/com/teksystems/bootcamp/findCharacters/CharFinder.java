@@ -12,17 +12,17 @@ public class CharFinder {
 
         char[] arrOfChars = charsToFind.toLowerCase().toCharArray();
         for(char letter : arrOfChars) {
-            List<Integer> indexes = new ArrayList<Integer>();
+            List<Integer> indexes = new ArrayList<>();
             int index = 0;
 
             while(index != -1) {
                 index = stringToSearch.toLowerCase().indexOf(letter, index);
                 if(index != -1) {
-                    indexes.add(index);
+                    indexes.add(index+1);
                     index++;
                 }
             }
-            charPositions.put((Character) letter, indexes);
+            charPositions.put(letter, indexes);
         }
         return charPositions;
     }

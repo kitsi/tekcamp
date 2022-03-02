@@ -55,7 +55,7 @@ public class Main {
         int total = 0;
 
         do {
-            System.out.println("Enter a number ('q' to quit)");
+            System.out.println("Enter a number ('d' for done)");
             try {
                 numberToAdd = input.nextInt();
                 total = NumberAggregator.addNumber(numberToAdd, total);
@@ -79,7 +79,7 @@ public class Main {
         boolean isQuitFinder = false;
         String charactersToFind;
         String stringToSearch;
-        Map<Character, List<Integer>> charPositions = new HashMap<>();
+        Map<Character, List<Integer>> charPositions;
         String userChoice;
 
         do {
@@ -88,11 +88,13 @@ public class Main {
             System.out.println("Enter string to search");
             stringToSearch = input.nextLine();
             charPositions = CharFinder.findMatchPositions(charactersToFind, stringToSearch);
+
             System.out.printf("\n%-10s | %-10s\n", "Character", "Positions");
             System.out.printf("%-10s | %-10s\n", "_________", "__________");
             for(Map.Entry<Character, List<Integer>> entry : charPositions.entrySet()) {
-                System.out.printf("%-10s | %-10s\n", entry.getKey(), entry.getValue());
+                System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), entry.getValue());
             }
+
             System.out.println("\nWould you like to search again? (y/n)");
             userChoice = input.nextLine().toLowerCase();
             isQuitFinder = userChoice.equals("n");
