@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) {
+        printDog();
         runApp();
     }
 
@@ -32,12 +33,14 @@ public class Main {
     }
 
     private static void displayMenu() {
-        System.out.println("MENU");
+        System.out.println("\n===================");
+        System.out.println("     MAIN MENU");
+        System.out.println("===================");
         System.out.println("1. Number Aggregator");
         System.out.println("2. Find Characters");
         System.out.println("3. Factor by Two");
         System.out.println("4. Grid Hopper");
-        System.out.println("5. Expression Solver");
+        System.out.println("5. Expression Solver\n");
         System.out.println("Please enter your choice ('q' to quit): ");
     }
 
@@ -98,8 +101,30 @@ public class Main {
             System.out.println("\nWould you like to search again? (y/n)");
             userChoice = input.nextLine().toLowerCase();
             isQuitFinder = userChoice.equals("n");
-            System.out.println();
         } while(!isQuitFinder);
+    }
+
+    private static void printDog() {
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("            /~~~~~~~~\\                           _");
+        System.out.println("    ##\\__/ @)      ~~~~~~~~\\                     \\ \\ ) )");
+        System.out.println("    |              /~~\\~~~~~                ((    |  \\");
+        System.out.println("     \\    /           |                          /   |");
+        System.out.println("      (~~~   /         \\____________/~~~~~~~~~~~~   /");
+        System.out.println("       ~~~~|~                                     /");
+        System.out.println("           :                                      |");
+        System.out.println("            \\                                     |");
+        System.out.println("            |                               /      \\");
+        System.out.println("             \\  \\_         :         \\     /~~~\\    |");
+        System.out.println("             /   :~~~~~|   :~~~~~~~~~~|   :     :   :");
+        System.out.println("            /    :    /    :         /    :    /    :");
+        System.out.println("        (~~~     )(~~~     )     (~~~     )(~~~     )");
+        System.out.println("         ~~~~~~~~  ~~~~~~~~       ~~~~~~~~  ~~~~~~~~");
+        System.out.println("          STOMP     STOMP          STOMP     STOMP");
+        System.out.println("");
+        System.out.println("");
     }
 }
 
