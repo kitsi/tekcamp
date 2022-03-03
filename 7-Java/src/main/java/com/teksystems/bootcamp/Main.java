@@ -32,6 +32,8 @@ public class Main {
                 runFindCharacters();
             } else if((userChoice.equals("3")) || (userChoice.contains("factor")) || (userChoice.contains("two"))) {
                 runFactorByTwo();
+            } else if((userChoice.equals("4")) || (userChoice.contains("grid")) || (userChoice.contains("hopper"))) {
+//                runGridHopper();
             } else {
                 isQuit = quit();
             }
@@ -132,7 +134,6 @@ public class Main {
                 isQuitFactoring = true;
             }
         } while(!isQuitFactoring);
-
     }
 
     private static void printDog() {
