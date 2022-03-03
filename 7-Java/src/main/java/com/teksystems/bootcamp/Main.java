@@ -1,6 +1,10 @@
 package com.teksystems.bootcamp;
 
 import com.teksystems.bootcamp.additionalnputs.NumberAggregator;
+import com.teksystems.bootcamp.factorByTwo.Node;
+import com.teksystems.bootcamp.factorByTwo.NodeCreator;
+import com.teksystems.bootcamp.factorByTwo.PointerNode;
+import com.teksystems.bootcamp.factorByTwo.ValueNode;
 import com.teksystems.bootcamp.findCharacters.CharFinder;
 
 import java.util.*;
@@ -26,6 +30,8 @@ public class Main {
                 runNumberAggregator();
             } else if((userChoice.equals("2")) || (userChoice.contains("find")) || (userChoice.contains("characters"))) {
                 runFindCharacters();
+            } else if((userChoice.equals("3")) || (userChoice.contains("factor")) || (userChoice.contains("two"))) {
+                runFactorByTwo();
             } else {
                 isQuit = quit();
             }
@@ -58,7 +64,7 @@ public class Main {
         int total = 0;
 
         do {
-            System.out.println("Enter a number ('d' for done)");
+            System.out.println("Enter a number ('q' to quit adding & get total)");
             try {
                 numberToAdd = input.nextInt();
                 total = NumberAggregator.addNumber(numberToAdd, total);
@@ -102,6 +108,36 @@ public class Main {
             userChoice = input.nextLine().toLowerCase();
             isQuitFinder = userChoice.equals("n");
         } while(!isQuitFinder);
+    }
+
+    private static void runFactorByTwo() {
+        System.out.println();
+        Scanner input = new Scanner(System.in);
+
+        boolean isQuitFactoring = false;
+        int numberToFactor;
+        Node myNode;
+
+        do {
+            int numberOfTwos = 0;
+            System.out.println("Enter a number ('q' to quit)");
+            try {
+                numberToFactor = input.nextInt();
+                myNode = NodeCreator.createNode(numberToFactor);
+                if((myNode instanceof ValueNode) || (myNode instanceof PointerNode)) {
+                    numberOfTwos += myNode.getCountOfTwos();
+                }
+                System.out.println("The number of twos in " + numberToFactor + " is " + numberOfTwos);
+            } catch (InputMismatchException e) {
+                isQuitFactoring = true;
+//            } catch (NullPointerException e) {
+//                numberToFactor = input.nextInt();
+//                myNode = NodeCreator.createNode(numberToFactor/2);
+//                numberOfTwos += myNode.getCountOfTwos();
+//                System.out.println("The number of twos in " + numberToFactor + " is " + numberOfTwos);
+            }
+        } while(!isQuitFactoring);
+
     }
 
     private static void printDog() {
