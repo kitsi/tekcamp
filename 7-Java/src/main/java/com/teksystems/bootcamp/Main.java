@@ -6,6 +6,8 @@ import com.teksystems.bootcamp.factorByTwo.NodeCreator;
 import com.teksystems.bootcamp.factorByTwo.PointerNode;
 import com.teksystems.bootcamp.factorByTwo.ValueNode;
 import com.teksystems.bootcamp.findCharacters.CharFinder;
+import com.teksystems.bootcamp.gridHopper.BoardGenerator;
+import com.teksystems.bootcamp.gridHopper.LocationPointer;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +35,7 @@ public class Main {
             } else if((userChoice.equals("3")) || (userChoice.contains("factor")) || (userChoice.contains("two"))) {
                 runFactorByTwo();
             } else if((userChoice.equals("4")) || (userChoice.contains("grid")) || (userChoice.contains("hopper"))) {
-//                runGridHopper();
+                runGridHopper();
             } else {
                 isQuit = quit();
             }
@@ -134,6 +136,25 @@ public class Main {
                 isQuitFactoring = true;
             }
         } while(!isQuitFactoring);
+    }
+
+    private static void runGridHopper() {
+        System.out.println();
+        Scanner input = new Scanner(System.in);
+
+        boolean isQuitHopping = false;
+        int gridSize;
+
+        do {
+            System.out.println("Enter integer to define grid square ('q' to quit)");
+            try {
+                gridSize = input.nextInt();
+                int seed = (int) (Math.random() * (gridSize - 1));
+                LocationPointer[][] pointer = BoardGenerator.createBoard(gridSize, seed);
+            } catch (InputMismatchException e) {
+                isQuitHopping = true;
+            }
+        } while(!isQuitHopping);
     }
 
     private static void printDog() {
