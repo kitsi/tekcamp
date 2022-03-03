@@ -127,14 +127,9 @@ public class Main {
                 if((myNode instanceof ValueNode) || (myNode instanceof PointerNode)) {
                     numberOfTwos += myNode.getCountOfTwos();
                 }
-                System.out.println("The number of twos in " + numberToFactor + " is " + numberOfTwos);
+                System.out.println("The number of twos in " + numberToFactor + " is " + numberOfTwos + "\n");
             } catch (InputMismatchException e) {
                 isQuitFactoring = true;
-//            } catch (NullPointerException e) {
-//                numberToFactor = input.nextInt();
-//                myNode = NodeCreator.createNode(numberToFactor/2);
-//                numberOfTwos += myNode.getCountOfTwos();
-//                System.out.println("The number of twos in " + numberToFactor + " is " + numberOfTwos);
             }
         } while(!isQuitFactoring);
 
