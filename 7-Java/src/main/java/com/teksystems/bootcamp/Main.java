@@ -32,8 +32,10 @@ public class Main {
                 runFindCharacters();
             } else if((userChoice.equals("3")) || (userChoice.contains("factor")) || (userChoice.contains("two"))) {
                 runFactorByTwo();
-            } else if((userChoice.equals("4")) || (userChoice.contains("grid")) || (userChoice.contains("hopper"))) {
+//            } else if((userChoice.equals("4")) || (userChoice.contains("grid")) || (userChoice.contains("hopper"))) {
 //                runGridHopper();
+            } else if((userChoice.equals("5")) || (userChoice.contains("expression")) || (userChoice.contains("solver"))) {
+                runExpressionSolver();
             } else {
                 isQuit = quit();
             }
@@ -134,6 +136,10 @@ public class Main {
                 isQuitFactoring = true;
             }
         } while(!isQuitFactoring);
+    }
+
+    private static void runExpressionSolver() {
+
     }
 
     private static void printDog() {
