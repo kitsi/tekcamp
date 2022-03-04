@@ -149,7 +149,7 @@ public class Main {
             System.out.println("Enter integer to define grid square ('q' to quit)");
             try {
                 gridSize = input.nextInt();
-                int seed = (int) (Math.random() * (gridSize - 1));
+                Random seed = new Random();
                 LocationPointer[][] pointer = BoardGenerator.createBoard(gridSize, seed);
             } catch (InputMismatchException e) {
                 isQuitHopping = true;
