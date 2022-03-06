@@ -1,6 +1,8 @@
 package com.teksystems.bootcamp;
 
 import com.teksystems.bootcamp.additionalnputs.NumberAggregator;
+import com.teksystems.bootcamp.expressionSolver.ExpressionParser;
+import com.teksystems.bootcamp.expressionSolver.Term;
 import com.teksystems.bootcamp.factorByTwo.Node;
 import com.teksystems.bootcamp.factorByTwo.NodeCreator;
 import com.teksystems.bootcamp.factorByTwo.PointerNode;
@@ -139,7 +141,23 @@ public class Main {
     }
 
     private static void runExpressionSolver() {
+        System.out.println();
+        Scanner input = new Scanner(System.in);
 
+        boolean isQuitSolver = false;
+        String expression;
+
+        do {
+            System.out.println("Enter a mathematical expression to solve ('q' to quit):");
+//            try {
+            expression = input.nextLine();
+            Term result = ExpressionParser.parseExpression(expression);
+            System.out.println("The result of your calculation is: " + result.getValue());
+//            } catch {
+
+//            }
+
+        } while(!isQuitSolver);
     }
 
     private static void printDog() {
