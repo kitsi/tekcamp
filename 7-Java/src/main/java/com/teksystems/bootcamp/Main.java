@@ -1,6 +1,8 @@
 package com.teksystems.bootcamp;
 
 import com.teksystems.bootcamp.additionalnputs.NumberAggregator;
+import com.teksystems.bootcamp.expressionSolver.ExpressionParser;
+import com.teksystems.bootcamp.expressionSolver.Term;
 import com.teksystems.bootcamp.factorByTwo.Node;
 import com.teksystems.bootcamp.factorByTwo.NodeCreator;
 import com.teksystems.bootcamp.factorByTwo.PointerNode;
@@ -36,6 +38,8 @@ public class Main {
                 runFactorByTwo();
             } else if((userChoice.equals("4")) || (userChoice.contains("grid")) || (userChoice.contains("hopper"))) {
                 runGridHopper();
+            } else if((userChoice.equals("5")) || (userChoice.contains("expression")) || (userChoice.contains("solver"))) {
+                runExpressionSolver();
             } else {
                 isQuit = quit();
             }
@@ -155,6 +159,25 @@ public class Main {
                 isQuitHopping = true;
             }
         } while(!isQuitHopping);
+    }
+
+    private static void runExpressionSolver() {
+        System.out.println();
+        Scanner input = new Scanner(System.in);
+
+        boolean isQuitSolver = false;
+        String expression;
+        String userChoice;
+
+        do {
+            System.out.println("Enter a mathematical expression to solve ('q' to quit):");
+            expression = input.nextLine();
+            Term result = ExpressionParser.parseExpression(expression);
+            System.out.println("The result of your calculation is: " + result.getValue());
+            System.out.println("\nWould you like to evaluate another expression? (y/n)");
+            userChoice = input.nextLine().toLowerCase();
+            isQuitSolver = userChoice.equals("n");
+        } while(!isQuitSolver);
     }
 
     private static void printDog() {
