@@ -153,8 +153,13 @@ public class Main {
             System.out.println("Enter integer to define grid square ('q' to quit)");
             try {
                 gridSize = input.nextInt();
-                Random seed = new Random();
-                LocationPointer[][] pointer = BoardGenerator.createBoard(gridSize, seed);
+//                Random seed = new Random();
+                int seed = 5;
+                System.out.println("TARGET MAP");
+//                System.out.println();
+                LocationPointer[][] targetBoard = BoardGenerator.createBoard(gridSize, seed);
+//
+
             } catch (InputMismatchException e) {
                 isQuitHopping = true;
             }
