@@ -9,6 +9,7 @@ import com.teksystems.bootcamp.factorByTwo.PointerNode;
 import com.teksystems.bootcamp.factorByTwo.ValueNode;
 import com.teksystems.bootcamp.findCharacters.CharFinder;
 import com.teksystems.bootcamp.gridHopper.BoardGenerator;
+import com.teksystems.bootcamp.gridHopper.BoardHopper;
 import com.teksystems.bootcamp.gridHopper.LocationPointer;
 
 import java.util.*;
@@ -155,11 +156,20 @@ public class Main {
                 gridSize = input.nextInt();
 //                Random seed = new Random();
                 int seed = 5;
-                System.out.println("TARGET MAP");
-//                System.out.println();
+                System.out.println("\nTARGET BOARD MAP");
                 LocationPointer[][] targetBoard = BoardGenerator.createBoard(gridSize, seed);
-//
+                System.out.println("from Main");
+                for(int row = 0; row < targetBoard.length; row++) {
+                    for(int col = 0; col < targetBoard[row].length; col++) {
+                        System.out.print("(" + targetBoard[row][col].getTargetX()+ ", " + targetBoard[row][col].getTargetY() + ") ");
+                    }
+                    System.out.println();
+                }
+                System.out.println();
 
+//                System.out.println("BOARD AFTER HOPPING UP TO 100");
+                System.out.println("BOARD AFTER ONE HOP");
+                BoardHopper.hop(targetBoard);
             } catch (InputMismatchException e) {
                 isQuitHopping = true;
             }
@@ -176,6 +186,8 @@ public class Main {
 
         do {
             System.out.println("Enter a mathematical expression to solve ('q' to quit):");
+            userChoice = input.nextLine().toLowerCase();
+            isQuitSolver = (userChoice.equals("q") || userChoice.equals("quit"));
             expression = input.nextLine();
             Term result = ExpressionParser.parseExpression(expression);
             System.out.println("The result of your calculation is: " + result.getValue());
@@ -206,11 +218,11 @@ public class Main {
         System.out.println("          STOMP     STOMP          STOMP     STOMP");
         System.out.println("");
         System.out.println("");
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TimeUnit.SECONDS.sleep(2);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }
 
