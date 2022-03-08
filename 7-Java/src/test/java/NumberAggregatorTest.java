@@ -12,4 +12,14 @@ public class NumberAggregatorTest {
         int actual = NumberAggregator.addNumber(numberToAdd, existingTotal);
         Assert.assertEquals(actual, expected);
     }
+
+    @Test
+    public void _ShouldGive_() {
+        // TODO
+    }
+
+    @Test
+    public void __ShouldGive__() {
+        // TODO
+    }
 }

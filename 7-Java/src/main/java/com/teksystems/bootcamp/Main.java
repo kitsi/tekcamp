@@ -183,13 +183,18 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         boolean isQuitSolver = false;
-        String expression;
+        String expression = "";
         String userChoice;
 
         do {
-            System.out.println("Enter a mathematical expression to solve ('q' to quit):");
+            System.out.println("Enter a math" +
+                    "ematical expression to solve ('q' to quit):");
             userChoice = input.nextLine().toLowerCase();
-            isQuitSolver = (userChoice.equals("q") || userChoice.equals("quit"));
+//            if(userChoice.equals("q") || userChoice.equals("quit")) {
+//                isQuitSolver = false;
+//            } else {
+//                expression = input.nextLine();
+//            }
             expression = input.nextLine();
             Term result = ExpressionParser.parseExpression(expression);
             System.out.println("The result of your calculation is: " + result.getValue());

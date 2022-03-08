@@ -34,4 +34,14 @@ public class CharFinderTest {
 
         Assert.assertEquals(actualCharPositions, expectedCharPositions);
     }
+
+    @Test
+    public void search_For_Indexes() {
+        // TODO
+    }
+
+    @Test
+    public void search__For__Indexes() {
+        // TODO
+    }
 }
