@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 public class FactorByTwoTest {
 
+    //test a prime number - only uses ValueNode, with result 0
     @Test
     public void oddNumber283FactorByTwoShouldGive0() {
         int numberToFactor = 283;
@@ -12,6 +13,7 @@ public class FactorByTwoTest {
         Assert.assertEquals(actualCountOfTwos, expectedCountOfTwos);
     }
 
+    // test number that uses only ValueNode but has a result > 0
     @Test
     public void number2FactorByTwoShouldGive1() {
         int numberToFactor = 2;
@@ -20,6 +22,7 @@ public class FactorByTwoTest {
         Assert.assertEquals(actualCountOfTwos, expectedCountOfTwos);
     }
 
+    // test number using PointerNode, with result > 1, remainder = 0 after factoring
     @Test
     public void number32FactorByTwoShouldGive5() {
         int numberToFactor = 32;
@@ -28,6 +31,7 @@ public class FactorByTwoTest {
         Assert.assertEquals(actualCountOfTwos, expectedCountOfTwos);
     }
 
+    // test negative number
     @Test
     public void negativeNumber32FactorByTwoShouldGive5() {
         int numberToFactor = -32;
@@ -36,14 +40,16 @@ public class FactorByTwoTest {
         Assert.assertEquals(actualCountOfTwos, expectedCountOfTwos);
     }
 
+    // test number using PointerNode, with result > 1, remainder > 0 after factoring
     @Test
-    public void number256FactorByTwoShouldGive8() {
-        int numberToFactor = 256;
+    public void number768FactorByTwoShouldGive8() {
+        int numberToFactor = 768;
         int expectedCountOfTwos = 8;
         int actualCountOfTwos = NodeCreator.createNode(numberToFactor).getCountOfTwos();
         Assert.assertEquals(actualCountOfTwos, expectedCountOfTwos);
     }
 
+    // test 0
     @Test
     public void number0FactorByTwoShouldGive0() {
         int numberToFactor = 0;

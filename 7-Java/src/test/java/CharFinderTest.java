@@ -29,9 +29,6 @@ public class CharFinderTest {
         expectedCharPositions.put('a', indexes2);
         actualCharPositions = CharFinder.findMatchPositions(chars, searchString);
 
-        System.out.println(expectedCharPositions);
-        System.out.println(actualCharPositions);
-
         Assert.assertEquals(actualCharPositions, expectedCharPositions);
     }
 
