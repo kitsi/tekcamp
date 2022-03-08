@@ -106,7 +106,6 @@ public class Main {
             System.out.println("Enter string to search");
             stringToSearch = input.nextLine();
             charPositions = CharFinder.findMatchPositions(charactersToFind, stringToSearch);
-
             System.out.printf("\n%-10s | %-10s\n", "Character", "Positions");
             System.out.printf("%-10s | %-10s\n", "_________", "__________");
             for(Map.Entry<Character, List<Integer>> entry : charPositions.entrySet()) {
@@ -120,10 +119,9 @@ public class Main {
                 }
                 System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), positions);
             }
-
             System.out.println("\nWould you like to search again? (y/n)");
             userChoice = input.nextLine().toLowerCase();
-            isQuitFinder = userChoice.equals("n");
+            isQuitFinder = (userChoice.equals("n") || userChoice.equals("no"));
         } while(!isQuitFinder);
     }
 
@@ -188,19 +186,13 @@ public class Main {
 
         do {
             System.out.println("Enter a math" +
-                    "ematical expression to solve ('q' to quit):");
-            userChoice = input.nextLine().toLowerCase();
-//            if(userChoice.equals("q") || userChoice.equals("quit")) {
-//                isQuitSolver = false;
-//            } else {
-//                expression = input.nextLine();
-//            }
+                    "ematical expression to solve:");
             expression = input.nextLine();
             Term result = ExpressionParser.parseExpression(expression);
             System.out.println("The result of your calculation is: " + result.getValue());
             System.out.println("\nWould you like to evaluate another expression? (y/n)");
             userChoice = input.nextLine().toLowerCase();
-            isQuitSolver = userChoice.equals("n");
+            isQuitSolver = (!(userChoice.equals("y") || userChoice.equals("yes")));
         } while(!isQuitSolver);
     }
 

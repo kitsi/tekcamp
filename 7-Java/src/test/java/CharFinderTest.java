@@ -16,18 +16,17 @@ public class CharFinderTest {
     public void searchBananaForBaIndexes() {
         String chars = "ba";
         String searchString = "Banana";
+        HashMap<Character, List<Integer>> actualCharPositions = CharFinder.findMatchPositions(chars, searchString);
+
         HashMap<Character, List<Integer>> expectedCharPositions = new HashMap<>();
-        HashMap<Character, List<Integer>> actualCharPositions;
         List<Integer> indexes1 = new ArrayList<>();
         indexes1.add(1);
         List<Integer> indexes2 = new ArrayList<>();
         indexes2.add(2);
         indexes2.add(4);
         indexes2.add(6);
-
         expectedCharPositions.put('b', indexes1);
         expectedCharPositions.put('a', indexes2);
-        actualCharPositions = CharFinder.findMatchPositions(chars, searchString);
 
         Assert.assertEquals(actualCharPositions, expectedCharPositions);
     }

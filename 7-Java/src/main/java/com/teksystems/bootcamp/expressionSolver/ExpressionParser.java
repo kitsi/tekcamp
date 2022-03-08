@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExpressionParser {
-    static Map<Character, Operation> operations = new HashMap<>() {{
+    private static final Map<Character, Operation> operations = new HashMap<>() {{
         put('^', new ExponentOperation());
         put('%', new ModuloOperation());
         put('*', new MultiplicationOperation());
@@ -13,7 +13,7 @@ public class ExpressionParser {
         put('-', new SubtractionOperation());
     }};
 
-    static Map<Character, Integer> precedence = new HashMap<>() {{
+    private static final Map<Character, Integer> precedence = new HashMap<>() {{
         put('^', 3);
         put('%', 2);
         put('*', 2);
@@ -25,9 +25,9 @@ public class ExpressionParser {
     public static Term parseExpression(String input) {
         input = input.replaceAll(" ", "");
         try {
-            Double number = Double.parseDouble(input);
+            double number = Double.parseDouble(input);
             return new Constant(number);
-        } catch (Exception e) {;}
+        } catch (Exception ignored) {}
         char[] chars = input.toCharArray();
         int operatorPosition = 0;
         char operator = ' ';
