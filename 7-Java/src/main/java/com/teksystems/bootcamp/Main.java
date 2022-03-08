@@ -129,7 +129,7 @@ public class Main {
 
         do {
             int numberOfTwos = 0;
-            System.out.println("Enter a number ('q' to quit)");
+            System.out.println("Enter a number to factor by 2 ('q' to quit)");
             try {
                 numberToFactor = input.nextInt();
                 myNode = NodeCreator.createNode(numberToFactor);

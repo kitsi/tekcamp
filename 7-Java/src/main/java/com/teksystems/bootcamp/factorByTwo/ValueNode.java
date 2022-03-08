@@ -9,6 +9,6 @@ public class ValueNode extends Node{
 
     @Override
     public int getCountOfTwos() {
-        return (integerToEvaluate % 2 == 0) ? 1 : 0;
+        return ((integerToEvaluate % 2 != 0) || (integerToEvaluate == 0)) ? 0 : 1;
     }
 }
