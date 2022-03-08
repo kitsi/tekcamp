@@ -154,22 +154,16 @@ public class Main {
             System.out.println("Enter integer to define grid square ('q' to quit)");
             try {
                 gridSize = input.nextInt();
-//                Random seed = new Random();
-                int seed = 5;
-                System.out.println("\nTARGET BOARD MAP");
+                int seed = 4;
                 LocationPointer[][] targetBoard = BoardGenerator.createBoard(gridSize, seed);
-                System.out.println("from Main");
-                for(int row = 0; row < targetBoard.length; row++) {
-                    for(int col = 0; col < targetBoard[row].length; col++) {
-                        System.out.print("(" + targetBoard[row][col].getTargetX()+ ", " + targetBoard[row][col].getTargetY() + ") ");
-                    }
-                    System.out.println();
+                LocationPointer finalPosition = BoardHopper.hop(targetBoard);
+                System.out.println("Hopping...");
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                System.out.println();
-
-//                System.out.println("BOARD AFTER HOPPING UP TO 100");
-                System.out.println("BOARD AFTER ONE HOP");
-                BoardHopper.hop(targetBoard);
+                System.out.println("Final square position: (" + finalPosition.getTargetX() + ", " + finalPosition.getTargetY() + ")\n");
             } catch (InputMismatchException e) {
                 isQuitHopping = true;
             }
