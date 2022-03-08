@@ -110,7 +110,15 @@ public class Main {
             System.out.printf("\n%-10s | %-10s\n", "Character", "Positions");
             System.out.printf("%-10s | %-10s\n", "_________", "__________");
             for(Map.Entry<Character, List<Integer>> entry : charPositions.entrySet()) {
-                System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), entry.getValue());
+                String positions = "";
+                if (entry.getValue().size() == 0) {
+                    positions = "none";
+                } else {
+                    for (int num : entry.getValue()) {
+                        positions += String.valueOf(num) + " ";
+                    }
+                }
+                System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), positions);
             }
 
             System.out.println("\nWould you like to search again? (y/n)");
