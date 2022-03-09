@@ -19,14 +19,4 @@ public class ExpressionSolverTest {
         double actualResult = ExpressionParser.parseExpression(expression).getValue();
         Assert.assertEquals(actualResult, expectedResult);
     }
-
-    @Test
-    public void expression_negNums_ShouldEqual_() {
-        // TODO
-    }
-
-    @Test
-    public void expression_divBy0_ShouldEqual__() {
-        // TODO
-    }
 }

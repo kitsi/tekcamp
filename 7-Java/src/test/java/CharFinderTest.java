@@ -13,7 +13,7 @@ import java.util.List;
 public class CharFinderTest {
 
     @Test
-    public void searchBananaForBaIndexes() {
+    public void searchingBananaForBaShouldGiveHashmapWithTwoEntries() {
         String chars = "ba";
         String searchString = "Banana";
         HashMap<Character, List<Integer>> actualCharPositions = CharFinder.findMatchPositions(chars, searchString);
@@ -32,12 +32,15 @@ public class CharFinderTest {
     }
 
     @Test
-    public void search_For_Indexes() {
-        // TODO
-    }
+    public void searchingZinBananaShouldGiveEmptyList() {
+        String chars = "z";
+        String searchString = "Banana";
+        HashMap<Character, List<Integer>> actualCharPositions = CharFinder.findMatchPositions(chars, searchString);
 
-    @Test
-    public void search__For__Indexes() {
-        // TODO
+        HashMap<Character, List<Integer>> expectedCharPositions = new HashMap<>();
+        List<Integer> indexes = new ArrayList<>();
+        expectedCharPositions.put('z', indexes);
+
+        Assert.assertEquals(actualCharPositions, expectedCharPositions);
     }
 }
