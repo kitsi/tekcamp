@@ -1,8 +1,13 @@
 package com.teksystems.bootcamp.additionalnputs;
 
 public class NumberAggregator {
+    private int total;
 
-    public static int addNumber(int numberToAdd, int total) {
-        return total + numberToAdd;
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void addNumber(int numberToAdd) {
+        this.total += numberToAdd;
     }
 }

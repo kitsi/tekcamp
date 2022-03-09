@@ -70,18 +70,18 @@ public class Main {
 
         boolean isQuitAggregator = false;
         int numberToAdd;
-        int total = 0;
+        NumberAggregator aggregator = new NumberAggregator();
 
         do {
             System.out.println("Enter a number ('q' to quit adding & get total)");
             try {
                 numberToAdd = input.nextInt();
-                total = NumberAggregator.addNumber(numberToAdd, total);
+                aggregator.addNumber(numberToAdd);
             } catch (InputMismatchException e) {
                 isQuitAggregator = true;
             }
         } while(!isQuitAggregator);
-        System.out.println("Your total is: " + total + "\n");
+        System.out.println("Your total is: " + aggregator.getTotal() + "\n");
 
         try {
             TimeUnit.MILLISECONDS.sleep(1500);
