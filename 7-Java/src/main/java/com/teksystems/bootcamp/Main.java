@@ -73,15 +73,16 @@ public class Main {
         NumberAggregator aggregator = new NumberAggregator();
 
         do {
-            System.out.println("Enter a number ('q' to quit adding & get total)");
+            System.out.println("Enter an integer to aggregate ('q' to quit & get total)");
             try {
                 numberToAdd = input.nextInt();
                 aggregator.addNumber(numberToAdd);
             } catch (InputMismatchException e) {
+                System.out.println("Invalid number\n");
                 isQuitAggregator = true;
             }
         } while(!isQuitAggregator);
-        System.out.println("Your total is: " + aggregator.getTotal() + "\n");
+        System.out.println("Your TOTAL is: " + aggregator.getTotal() + "\n");
 
         try {
             TimeUnit.MILLISECONDS.sleep(1500);
