@@ -93,7 +93,7 @@ public class Main {
         System.out.println();
         Scanner input = new Scanner(System.in);
 
-        boolean isQuitFinder = false;
+        boolean isQuitFinder;
         String charactersToFind;
         String stringToSearch;
         Map<Character, List<Integer>> charPositions;
@@ -224,9 +224,7 @@ public class Main {
         System.out.println("");
         try {
             TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        } catch (InterruptedException ignored) {}
     }
 }
 
