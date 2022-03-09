@@ -78,17 +78,15 @@ public class Main {
                 numberToAdd = input.nextInt();
                 aggregator.addNumber(numberToAdd);
             } catch (InputMismatchException e) {
-                System.out.println("Invalid number\n");
+                System.out.println("Invalid number - must be an integer\n");
                 isQuitAggregator = true;
             }
         } while(!isQuitAggregator);
         System.out.println("Your TOTAL is: " + aggregator.getTotal() + "\n");
 
         try {
-            TimeUnit.MILLISECONDS.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException ignored) {}
     }
 
     private static void runFindCharacters() {
@@ -166,11 +164,9 @@ public class Main {
                 LocationPointer finalPosition = BoardHopper.hop(targetBoard);
                 System.out.println("Hopping...");
                 try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Final square position: (" + finalPosition.getTargetX() + ", " + finalPosition.getTargetY() + ")\n");
+                    TimeUnit.MILLISECONDS.sleep(500);
+                } catch (InterruptedException ignored) {}
+                System.out.println("Final square position: (" + finalPosition.getTargetX() + "," + finalPosition.getTargetY() + ")\n");
             } catch (InputMismatchException e) {
                 isQuitHopping = true;
             }
@@ -188,12 +184,20 @@ public class Main {
         do {
             System.out.println("Enter a math" +
                     "ematical expression to solve:");
-            expression = input.nextLine();
-            Term result = ExpressionParser.parseExpression(expression);
-            System.out.println("The result of your calculation is: " + result.getValue());
-            System.out.println("\nWould you like to evaluate another expression? (y/n)");
-            userChoice = input.nextLine().toLowerCase();
-            isQuitSolver = (!(userChoice.equals("y") || userChoice.equals("yes")));
+            try {
+                expression = input.nextLine();
+                Term result = ExpressionParser.parseExpression(expression);
+                System.out.println("The result of your calculation is: " + result.getValue());
+                System.out.println("\nWould you like to evaluate another expression? (y/n)");
+                userChoice = input.nextLine().toLowerCase();
+                isQuitSolver = (!(userChoice.equals("y") || userChoice.equals("yes")));
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("Invalid expression");
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException ignored) {}
+                isQuitSolver = true;
+            }
         } while(!isQuitSolver);
     }
 
@@ -218,11 +222,11 @@ public class Main {
         System.out.println("          STOMP     STOMP          STOMP     STOMP");
         System.out.println("");
         System.out.println("");
-//        try {
-//            TimeUnit.SECONDS.sleep(2);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 
