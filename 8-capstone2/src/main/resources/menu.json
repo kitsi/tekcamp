@@ -1,0 +1,169 @@
+[
+  {
+    "id": 1,
+    "name": "entrees",
+    "products": [
+      {
+        "id": 101,
+        "displayName": "Plain Dosa",
+        "name": "dosa",
+        "standardToppings": [],
+        "standardSides": ["sambar", "chutney"],
+        "price": 1.50,
+        "description": ""
+      },
+      {
+        "id": 201,
+        "displayName": "Butter Dosa",
+        "name": "dosa",
+        "standardToppings": ["ghee"],
+        "standardSides": ["sambar", "chutney"],
+        "price": 1.50,
+        "description": ""
+      },
+      {
+        "id": 201,
+        "name": "Gunpowder Dosa",
+        "price": 1.50,
+        "description": ""
+      },
+      {
+        "id": 201,
+        "name": "Hyderabad Masala Dosa",
+        "price": 1.50,
+        "description": ""
+      },
+      {
+        "id": 201,
+        "name": "Mysore Masala Dosa",
+        "price": 1.50,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "sides",
+    "sides": [
+      {
+        "id": 202,
+        "name": "Sambar",
+        "price": 3.00,
+        "description": ""
+      },
+      {
+        "id": 203,
+        "name": "Raita",
+        "price": 3.00,
+        "description": ""
+      },
+      {
+        "id": 201,
+        "name": "Chutney",
+        "price": 1.50,
+        "description": "choose from a selection of white (coconut), green (mint & cilantro), red (tamarind) "
+      },
+      {
+        "id": 203,
+        "name": "Idli",
+        "price": 3.00,
+        "description": ""
+      },
+      {
+        "id": 203,
+        "name": "Wada",
+        "price": 3.00,
+        "description": ""
+      },
+      {
+        "id": 203,
+        "name": "Pickle",
+        "price": 3.00,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "drinks",
+    "drinks": [
+      {
+        "id": 301,
+        "name": "Mango Lassi",
+        "price": 3.99
+      },
+      {
+        "id": 302,
+        "name": "Chai",
+        "price": 2.99
+      },
+      {
+        "id": 303,
+        "name": "Lavender Coconut Lemonade",
+        "price": 2.99
+      },
+      {
+        "id": 304,
+        "name": "Rose Mint Spritzer",
+        "price": 2.99
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "desserts",
+    "products": [
+      {
+        "id": 401,
+        "name": "Chakka Ela Ada",
+        "price": 4.00,
+        "description": "sweet rice parcels steamed in a banana leaf loaded with bits of jackfruit & spiced with cardamom"
+      },
+      {
+        "id": 402,
+        "name": "Chakka Ice Cream",
+        "price": 4.00,
+        "description": "chunks of jackfruit pods swirled in creamy cashew ice cream, sweetened with jaggery"
+      },
+      {
+        "id": 403,
+        "name": "Beetroot Halwa",
+        "price": 4.50
+      },
+      {
+        "id": 404,
+        "name": "Gulab Jamun (2 pieces)",
+        "price": 5.00,
+        "description": "fried powdered milk donuts, soaked in rose flavored simple syrup, spiced with cardamom & saffron"
+      },
+      {
+        "id": 405,
+        "name": "Dates Apple Pradhaman",
+        "price": 5.00,
+        "description": "creamy coconut milk pudding with dates, apples, cardamom & cashews"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "thalis",
+    "products": [
+      {
+        "id": 501,
+        "name": "Double Entree Thali",
+        "items": ["entree1", "topping1", "side1","entree2", "topping2", "side2"]
+        },
+      {
+        "id": 502,
+        "name": "Thali Meal",
+        "items": [
+          "entree",
+          "topping",
+          "side",
+          "drink",
+          "dessert"
+        ]
+      }
+    ]
+  }
+]

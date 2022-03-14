@@ -108,6 +108,7 @@ public class Main {
             System.out.printf("\n%-10s | %-10s\n", "Character", "Positions");
             System.out.printf("%-10s | %-10s\n", "_________", "__________");
             for(Map.Entry<Character, List<Integer>> entry : charPositions.entrySet()) {
+<<<<<<< Updated upstream
                 String positions = "";
                 if (entry.getValue().size() == 0) {
                     positions = "none";
@@ -117,6 +118,12 @@ public class Main {
                     }
                 }
                 System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), positions);
+||||||| constructed merge base
+                System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), entry.getValue());
+=======
+                ArrayList[] positionsArray = (ArrayList[]) entry.getValue().toArray();
+                System.out.printf("%-10s | %-10s\n", "    " + entry.getKey(), entry.getValue());
+>>>>>>> Stashed changes
             }
             System.out.println("\nWould you like to search again? (y/n)");
             userChoice = input.nextLine().toLowerCase();
