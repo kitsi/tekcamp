@@ -8,9 +8,9 @@ public enum DosaType {
     MYSORE(BigDecimal.valueOf(1)),
     HYDERABAD(BigDecimal.valueOf(1));
 
-    public final BigDecimal price;
+    public BigDecimal price;
 
-    private DosaType(BigDecimal price) {
+    DosaType(BigDecimal price) {
         this.price = price;
     }
 }

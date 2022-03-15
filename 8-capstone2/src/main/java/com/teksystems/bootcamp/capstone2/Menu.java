@@ -10,42 +10,52 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MenuBuilder {
+public class Menu {
 
-    public static void fileProcessor() throws IOException {
-        String[] categoryFiles = {"drinks", "sides", "desserts", "entrees", "thalis"};
+    public Map<MenuCategory, List<MenuItem>> createMenu() throws IOException {
+        Map<MenuCategory, List<MenuItem>> allMenus = new HashMap<>();
+        for(MenuCategory category : MenuCategory.values()) {
+//            System.out.println(category);
+            allMenus.put(category, fileProcessor(category.fileName));
+        }
+        return allMenus;
+    }
+
+    public List<MenuItem> fileProcessor(String fileName) {
+        List<MenuItem> menuItems = new ArrayList<>();
         try {
-            for (String file : categoryFiles) {
-                File input = new File(String.valueOf(Path.of("src/main/resources/" + file + ".json")));
-                JsonElement fileElement = JsonParser.parseReader(new FileReader(input));
-                JsonObject fileObject = fileElement.getAsJsonObject();
-                String category = fileObject.get("categoryName").getAsString();
-                if(category.equals("desserts")) {
-                    processDesserts(fileObject);
-                } else if(category.equals("drinks")) {
-                    processDrinks(fileObject);
-                } else if(category.equals("sides")) {
-                    processSides(fileObject);
-                } else if(category.equals("entrees")) {
-                    processEntrees(fileObject);
-                } else if(category.equals("thalis")) {
-                    processThalis(fileObject);
-                } else {
-                    System.out.println("No items found for " + category);
-                }
+            File input = new File(String.valueOf(Path.of("src/main/resources/" + fileName + ".json")));
+            JsonElement fileElement = JsonParser.parseReader(new FileReader(input));
+            JsonObject fileObject = fileElement.getAsJsonObject();
+            String category = fileObject.get("categoryName").getAsString();
+            if(category.equals("desserts")) {
+                menuItems = processDesserts(fileObject);
+            } else if(category.equals("drinks")) {
+                menuItems = processDrinks(fileObject);
+            } else if(category.equals("sides")) {
+                menuItems = processSides(fileObject);
+            } else if(category.equals("entrees")) {
+                menuItems = processEntrees(fileObject);
+            } else if(category.equals("thalis")) {
+                menuItems = processThalis(fileObject);
+            } else {
+                menuItems = null;
             }
         } catch (Exception e) {
             System.out.println("Problem processing file!");
             e.printStackTrace();
         }
 
+        return menuItems;
     }
 
-    private static void processDesserts(JsonObject fileObject) {
+    private List<MenuItem> processDesserts(JsonObject fileObject) {
         JsonArray jsonArrayOfDesserts = fileObject.get("desserts").getAsJsonArray();
-        List<Dessert> desserts = new ArrayList<>();
+        List<MenuItem> desserts = new ArrayList<>();
         for (JsonElement dessertElement : jsonArrayOfDesserts) {
             JsonObject dessertJsonObject = dessertElement.getAsJsonObject();
             String name = dessertJsonObject.get("name").getAsString();
@@ -54,12 +64,12 @@ public class MenuBuilder {
             Dessert dessert = new Dessert(name, price);
             desserts.add(dessert);
         }
-        System.out.println("All desserts: " + desserts);
+        return desserts;
     }
 
-    private static void processDrinks(JsonObject fileObject) {
+    private List<MenuItem> processDrinks(JsonObject fileObject) {
         JsonArray jsonArrayOfDrinks = fileObject.get("drinks").getAsJsonArray();
-        List<Drink> drinks = new ArrayList<>();
+        List<MenuItem> drinks = new ArrayList<>();
         for (JsonElement drinkElement : jsonArrayOfDrinks) {
             JsonObject drinkJsonObject = drinkElement.getAsJsonObject();
             String name = drinkJsonObject.get("name").getAsString();
@@ -68,12 +78,12 @@ public class MenuBuilder {
             Drink drink = new Drink(name, price);
             drinks.add(drink);
         }
-        System.out.println("All drinks: " + drinks);
+        return drinks;
     }
 
-    private static void processSides(JsonObject fileObject) {
+    private List<MenuItem> processSides(JsonObject fileObject) {
         JsonArray jsonArrayOfSides = fileObject.get("sides").getAsJsonArray();
-        List<Side> sides = new ArrayList<>();
+        List<MenuItem> sides = new ArrayList<>();
         for (JsonElement sideElement : jsonArrayOfSides) {
             JsonObject sideJsonObject = sideElement.getAsJsonObject();
             String name = sideJsonObject.get("name").getAsString();
@@ -82,12 +92,12 @@ public class MenuBuilder {
             Side side = new Side(name, price);
             sides.add(side);
         }
-        System.out.println("All sides: " + sides);
+        return sides;
     }
 
-    private static void processEntrees(JsonObject fileObject) {
+    private List<MenuItem> processEntrees(JsonObject fileObject) {
         JsonArray jsonArrayOfEntrees = fileObject.get("entrees").getAsJsonArray();
-        List<Entree> entrees = new ArrayList<>();
+        List<MenuItem> entrees = new ArrayList<>();
         for (JsonElement entreeElement : jsonArrayOfEntrees) {
             JsonObject entreeJsonObject = entreeElement.getAsJsonObject();
             String name = entreeJsonObject.get("name").getAsString();
@@ -96,24 +106,24 @@ public class MenuBuilder {
             Entree entree = new Entree(name, price);
             entrees.add(entree);
         }
-        System.out.println("All entrees: " + entrees);
+        return entrees;
     }
 
-    private static void processThalis(JsonObject fileObject) {
+    private List<MenuItem> processThalis(JsonObject fileObject) {
         JsonArray jsonArrayOfThalis = fileObject.get("thalis").getAsJsonArray();
-        List<IThali> thalis = new ArrayList<>();
+        List<MenuItem> thalis = new ArrayList<>();
         for (JsonElement thaliElement : jsonArrayOfThalis) {
             JsonObject thaliJsonObject = thaliElement.getAsJsonObject();
             String name = thaliJsonObject.get("name").getAsString();
             if(name.equals("Thali Meal")) {
-                IThali thali = new ThaliMeal();
+                ThaliMeal thali = new ThaliMeal(BigDecimal.ZERO);
                 thalis.add(thali);
             } else if(name.equals("Double Thali")) {
-                IThali thali = new DoubleThali();
+                DoubleThali thali = new DoubleThali(BigDecimal.ZERO);
                 thalis.add(thali);
             }
         }
-        System.out.println("All thalis: " + thalis);
+        return thalis;
     }
 
 }

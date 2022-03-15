@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoubleThali implements IThali{
+public class DoubleThali extends MenuItem implements IThali{
 
     private List<MenuItem> thaliItems = new ArrayList<>();
-    private BigDecimal price;
 
-    public DoubleThali() {
+    public DoubleThali(BigDecimal price) {
+        super(MenuCategory.THALI, "Double Thali", price);
         this.thaliItems = thaliItems;
         this.price = calculateThaliPrice();
     }

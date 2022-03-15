@@ -1,8 +1,6 @@
 package com.teksystems.bootcamp.capstone2.menuitems;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Entree extends MenuItem{
 

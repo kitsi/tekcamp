@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThaliMeal implements IThali{
+public class ThaliMeal extends MenuItem implements IThali{
     private List<MenuItem> thaliItems = new ArrayList<>();
-    private BigDecimal price;
 
-    public ThaliMeal() {
+    public ThaliMeal(BigDecimal price) {
+        super(MenuCategory.THALI, "Thali Meal", price);
         this.thaliItems = thaliItems;
         this.price = calculateThaliPrice();
     }
