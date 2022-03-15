@@ -1,0 +1,43 @@
+{
+  "id": 1,
+  "categoryName": "entrees",
+  "products": [
+    {
+      "id": 101,
+      "displayName": "Plain Dosa",
+      "name": "dosa",
+      "standardToppings": [],
+      "standardSides": ["sambar", "chutney"],
+      "price": 1.50,
+      "description": "",
+      "meenuCategory": "entreee"
+    },
+    {
+      "id": 201,
+      "displayName": "Butter Dosa",
+      "name": "dosa",
+      "standardToppings": ["ghee"],
+      "standardSides": ["sambar", "chutney"],
+      "price": 1.50,
+      "description": ""
+    },
+    {
+      "id": 201,
+      "name": "Gunpowder Dosa",
+      "price": 1.50,
+      "description": ""
+    },
+    {
+      "id": 201,
+      "name": "Hyderabad Masala Dosa",
+      "price": 1.50,
+      "description": ""
+    },
+    {
+      "id": 201,
+      "name": "Mysore Masala Dosa",
+      "price": 1.50,
+      "description": ""
+    }
+  ]
+}

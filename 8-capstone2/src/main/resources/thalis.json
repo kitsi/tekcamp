@@ -1,0 +1,22 @@
+{
+  "id": 5,
+  "categoryName": "thalis",
+  "products": [
+    {
+      "id": 501,
+      "name": "Double Entree Thali",
+      "items": ["entree1", "topping1", "side1","entree2", "topping2", "side2"]
+    },
+    {
+      "id": 502,
+      "name": "Thali Meal",
+      "items": [
+        "entree",
+        "topping",
+        "side",
+        "drink",
+        "dessert"
+      ]
+    }
+  ]
+}

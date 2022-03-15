@@ -1,0 +1,42 @@
+{
+  "id": 2,
+  "categoryName": "sides",
+  "sides": [
+    {
+      "id": 202,
+      "name": "Sambar",
+      "price": 3.00,
+      "description": ""
+    },
+    {
+      "id": 203,
+      "name": "Raita",
+      "price": 3.00,
+      "description": ""
+    },
+    {
+      "id": 201,
+      "name": "Chutney",
+      "price": 1.50,
+      "description": "choose from a selection of white (coconut), green (mint & cilantro), red (tamarind) "
+    },
+    {
+      "id": 203,
+      "name": "Idli",
+      "price": 3.00,
+      "description": ""
+    },
+    {
+      "id": 203,
+      "name": "Wada",
+      "price": 3.00,
+      "description": ""
+    },
+    {
+      "id": 203,
+      "name": "Pickle",
+      "price": 3.00,
+      "description": ""
+    }
+  ]
+}
