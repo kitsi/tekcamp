@@ -1,0 +1,35 @@
+{
+  "categoryName": "desserts",
+  "products": [
+    {
+      "id": 401,
+      "name": "Chakka Ela Ada",
+      "price": "4.00",
+      "description": "sweet rice parcels steamed in a banana leaf loaded with bits of jackfruit & spiced with cardamom"
+    },
+    {
+      "id": 402,
+      "name": "Chakka Ice Cream",
+      "price": "4.00",
+      "description": "chunks of jackfruit pods swirled in creamy cashew ice cream, sweetened with jaggery"
+    },
+    {
+      "id": 403,
+      "name": "Beetroot Halwa",
+      "price": "4.50",
+      "description": "ground beets, cashews, ghee, honey, resewater, cardamom"
+    },
+    {
+      "id": 404,
+      "name": "Gulab Jamun (2 pieces)",
+      "price": "5.00",
+      "description": "fried powdered milk donuts, soaked in rose flavored simple syrup, spiced with cardamom & saffron"
+    },
+    {
+      "id": 405,
+      "name": "Dates Apple Pradhaman",
+      "price": "5.00",
+      "description": "creamy coconut milk pudding with dates, apples, cardamom & cashews"
+    }
+  ]
+}

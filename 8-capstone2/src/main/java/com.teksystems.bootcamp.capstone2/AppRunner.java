@@ -1,7 +1,9 @@
 package com.teksystems.bootcamp.capstone2;
 
-public class AppRunner {
-    public static void main(String[] args) {
+import java.io.IOException;
 
+public class AppRunner {
+    public static void main(String[] args) throws IOException {
+        MenuBuilder.menuReader();
     }
 }
