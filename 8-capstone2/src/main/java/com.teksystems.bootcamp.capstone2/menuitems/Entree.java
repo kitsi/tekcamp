@@ -11,4 +11,14 @@ public class Entree extends MenuItem{
     public Entree(String name, BigDecimal price) {
         super(MenuCategory.ENTREE, name, price);
     }
+
+    @Override
+    public String toString() {
+        return "Entree{" +
+                "sides=" + sides +
+                ", category=" + category +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -23,5 +23,14 @@ public class Dosa extends Entree implements IDosa{
         return dosaType;
     }
 
-
+    @Override
+    public String toString() {
+        return "Dosa{" +
+                "dosaType=" + dosaType +
+                ", defaultSides=" + defaultSides +
+                ", category=" + category +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

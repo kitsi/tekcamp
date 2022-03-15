@@ -5,18 +5,17 @@
     "products": [
       {
         "id": 101,
-        "displayName": "Plain Dosa",
-        "name": "dosa",
+        "name": "Plain Dosa",
+        "entreetype": "dosa",
         "standardToppings": [],
         "standardSides": ["sambar", "chutney"],
         "price": 1.50,
         "description": "",
-        "meenuCategory": "entreee"
       },
       {
         "id": 201,
-        "displayName": "Butter Dosa",
-        "name": "dosa",
+        "name": "Butter Dosa",
+        "entreeType": "dosa",
         "standardToppings": ["ghee"],
         "standardSides": ["sambar", "chutney"],
         "price": 1.50,

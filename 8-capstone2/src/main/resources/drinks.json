@@ -5,22 +5,22 @@
     {
       "id": 301,
       "name": "Mango Lassi",
-      "price": 3.99
+      "price": "3.99"
     },
     {
       "id": 302,
       "name": "Chai",
-      "price": 2.99
+      "price": "2.99"
     },
     {
       "id": 303,
       "name": "Lavender Coconut Lemonade",
-      "price": 2.99
+      "price": "2.99"
     },
     {
       "id": 304,
       "name": "Rose Mint Spritzer",
-      "price": 2.99
+      "price": "2.99"
     }
   ]
 }

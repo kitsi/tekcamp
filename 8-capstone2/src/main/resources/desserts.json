@@ -1,7 +1,7 @@
 {
   "id": 4,
   "categoryName": "desserts",
-  "products": [
+  "desserts": [
     {
       "id": 401,
       "name": "Chakka Ela Ada",

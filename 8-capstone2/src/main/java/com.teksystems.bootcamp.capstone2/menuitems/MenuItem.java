@@ -25,15 +25,4 @@ public class MenuItem {
         return price;
     }
 
-//    public void setCategory(MenuCategory category) {
-//        this.category = category;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public void setPrice(BigDecimal price) {
-//        this.price = price;
-//    }
 }
