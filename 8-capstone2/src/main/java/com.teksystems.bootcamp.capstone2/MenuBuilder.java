@@ -16,26 +16,31 @@ public class MenuBuilder {
 
     public static void fileProcessor() throws IOException {
         String[] categoryFiles = {"drinks", "sides", "desserts", "entrees", "thalis"};
-
-        for (String file : categoryFiles) {
-            File input = new File(String.valueOf(Path.of("src/main/resources/" + file + ".json")));
-            JsonElement fileElement = JsonParser.parseReader(new FileReader(input));
-            JsonObject fileObject = fileElement.getAsJsonObject();
-            String category = fileObject.get("categoryName").getAsString();
-            if(category.equals("desserts")) {
-                processDesserts(fileObject);
-            } else if(category.equals("drinks")) {
-                processDrinks(fileObject);
-            } else if(category.equals("sides")) {
-                processSides(fileObject);
-            } else if(category.equals("entrees")) {
-                processEntrees(fileObject);
-            } else if(category.equals("thalis")) {
-                processThalis(fileObject);
-            } else {
-                System.out.println("nothing yet for " + category);
+        try {
+            for (String file : categoryFiles) {
+                File input = new File(String.valueOf(Path.of("src/main/resources/" + file + ".json")));
+                JsonElement fileElement = JsonParser.parseReader(new FileReader(input));
+                JsonObject fileObject = fileElement.getAsJsonObject();
+                String category = fileObject.get("categoryName").getAsString();
+                if(category.equals("desserts")) {
+                    processDesserts(fileObject);
+                } else if(category.equals("drinks")) {
+                    processDrinks(fileObject);
+                } else if(category.equals("sides")) {
+                    processSides(fileObject);
+                } else if(category.equals("entrees")) {
+                    processEntrees(fileObject);
+                } else if(category.equals("thalis")) {
+                    processThalis(fileObject);
+                } else {
+                    System.out.println("No items found for " + category);
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Problem processing file!");
+            e.printStackTrace();
         }
+
     }
 
     private static void processDesserts(JsonObject fileObject) {
