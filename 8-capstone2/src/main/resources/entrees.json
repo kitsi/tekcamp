@@ -1,7 +1,7 @@
 {
   "id": 1,
   "categoryName": "entrees",
-  "products": [
+  "entrees": [
     {
       "id": 101,
       "displayName": "Plain Dosa",

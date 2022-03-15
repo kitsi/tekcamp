@@ -1,10 +1,10 @@
 package com.teksystems.bootcamp.capstone2;
 
-import com.google.gson.*;
-import com.teksystems.bootcamp.capstone2.menuitems.Dessert;
-import com.teksystems.bootcamp.capstone2.menuitems.Drink;
-import com.teksystems.bootcamp.capstone2.menuitems.Entree;
-import com.teksystems.bootcamp.capstone2.menuitems.Side;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.teksystems.bootcamp.capstone2.menuitems.*;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MenuBuilder {
 
-    public static void menuReader() throws IOException {
+    public static void fileProcessor() throws IOException {
         String[] categoryFiles = {"drinks", "sides", "desserts", "entrees", "thalis"};
 
         for (String file : categoryFiles) {
@@ -28,6 +28,10 @@ public class MenuBuilder {
                 processDrinks(fileObject);
             } else if(category.equals("sides")) {
                 processSides(fileObject);
+            } else if(category.equals("entrees")) {
+                processEntrees(fileObject);
+            } else if(category.equals("thalis")) {
+                processThalis(fileObject);
             } else {
                 System.out.println("nothing yet for " + category);
             }
@@ -45,7 +49,7 @@ public class MenuBuilder {
             Dessert dessert = new Dessert(name, price);
             desserts.add(dessert);
         }
-        System.out.println("All desserts: " + desserts);
+//        System.out.println("All desserts: " + desserts);
     }
 
     private static void processDrinks(JsonObject fileObject) {
@@ -59,7 +63,7 @@ public class MenuBuilder {
             Drink drink = new Drink(name, price);
             drinks.add(drink);
         }
-        System.out.println("All drinks: " + drinks);
+//        System.out.println("All drinks: " + drinks);
     }
 
     private static void processSides(JsonObject fileObject) {
@@ -73,25 +77,38 @@ public class MenuBuilder {
             Side side = new Side(name, price);
             sides.add(side);
         }
-        System.out.println("All sides: " + sides);
-    }
-
-    private static void processEntrees(JsonObject fileObject) {
-//        JsonArray jsonArrayOfEntrees = fileObject.get("sides").getAsJsonArray();
-//        List<Entree> entrees = new ArrayList<>();
-//        for (JsonElement entreeElement : jsonArrayOfEntrees) {
-//            JsonObject entreeJsonObject = entreeElement.getAsJsonObject();
-//            String name = entreeJsonObject.get("name").getAsString();
-//            String priceString = entreeJsonObject.get("price").getAsString();
-//            BigDecimal price = new BigDecimal(priceString);
-//            Entree entree = new Entree(name, price);
-//            sides.add(side);
-//        }
 //        System.out.println("All sides: " + sides);
     }
 
-    private static void processThalis() {
-        //
+    private static void processEntrees(JsonObject fileObject) {
+        JsonArray jsonArrayOfEntrees = fileObject.get("entrees").getAsJsonArray();
+        List<Entree> entrees = new ArrayList<>();
+        for (JsonElement entreeElement : jsonArrayOfEntrees) {
+            JsonObject entreeJsonObject = entreeElement.getAsJsonObject();
+            String name = entreeJsonObject.get("name").getAsString();
+            String priceString = entreeJsonObject.get("price").getAsString();
+            BigDecimal price = new BigDecimal(priceString);
+            Entree entree = new Entree(name, price);
+            entrees.add(entree);
+        }
+//        System.out.println("All entrees: " + entrees);
+    }
+
+    private static void processThalis(JsonObject fileObject) {
+        JsonArray jsonArrayOfThalis = fileObject.get("thalis").getAsJsonArray();
+        List<IThali> thalis = new ArrayList<>();
+        for (JsonElement thaliElement : jsonArrayOfThalis) {
+            JsonObject thaliJsonObject = thaliElement.getAsJsonObject();
+            String name = thaliJsonObject.get("name").getAsString();
+            if(name.equals("Thali Meal")) {
+                IThali thali = new ThaliMeal();
+                thalis.add(thali);
+            } else if(name.equals("Double Thali")) {
+                IThali thali = new DoubleThali();
+                thalis.add(thali);
+            }
+        }
+//        System.out.println("All thalis: " + thalis);
     }
 
 }

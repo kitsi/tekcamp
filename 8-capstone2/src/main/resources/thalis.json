@@ -1,10 +1,10 @@
 {
   "id": 5,
   "categoryName": "thalis",
-  "products": [
+  "thalis": [
     {
       "id": 501,
-      "name": "Double Entree Thali",
+      "name": "Double Thali",
       "items": ["entree1", "topping1", "side1","entree2", "topping2", "side2"]
     },
     {
