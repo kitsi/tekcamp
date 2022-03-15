@@ -5,7 +5,8 @@
     {
       "id": 501,
       "name": "Double Thali",
-      "items": ["entree1", "topping1", "side1","entree2", "topping2", "side2"]
+      "items": ["entree1", "topping1", "side1","entree2", "topping2", "side2"],
+      "description": "pick any two entrees (customize sides & toppings, if you wish) for a 20% discount"
     },
     {
       "id": 502,
@@ -16,7 +17,8 @@
         "side",
         "drink",
         "dessert"
-      ]
+      ],
+      "description": "pick one drink, one entree (customize sides & toppings, if you wish), and one dessert for a 20% discount"
     }
   ]
 }

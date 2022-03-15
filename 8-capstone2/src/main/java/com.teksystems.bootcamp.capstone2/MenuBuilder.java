@@ -54,7 +54,7 @@ public class MenuBuilder {
             Dessert dessert = new Dessert(name, price);
             desserts.add(dessert);
         }
-//        System.out.println("All desserts: " + desserts);
+        System.out.println("All desserts: " + desserts);
     }
 
     private static void processDrinks(JsonObject fileObject) {
@@ -68,7 +68,7 @@ public class MenuBuilder {
             Drink drink = new Drink(name, price);
             drinks.add(drink);
         }
-//        System.out.println("All drinks: " + drinks);
+        System.out.println("All drinks: " + drinks);
     }
 
     private static void processSides(JsonObject fileObject) {
@@ -82,7 +82,7 @@ public class MenuBuilder {
             Side side = new Side(name, price);
             sides.add(side);
         }
-//        System.out.println("All sides: " + sides);
+        System.out.println("All sides: " + sides);
     }
 
     private static void processEntrees(JsonObject fileObject) {
@@ -96,7 +96,7 @@ public class MenuBuilder {
             Entree entree = new Entree(name, price);
             entrees.add(entree);
         }
-//        System.out.println("All entrees: " + entrees);
+        System.out.println("All entrees: " + entrees);
     }
 
     private static void processThalis(JsonObject fileObject) {
@@ -113,7 +113,7 @@ public class MenuBuilder {
                 thalis.add(thali);
             }
         }
-//        System.out.println("All thalis: " + thalis);
+        System.out.println("All thalis: " + thalis);
     }
 
 }
