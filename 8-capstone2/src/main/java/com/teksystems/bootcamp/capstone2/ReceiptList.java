@@ -8,7 +8,7 @@ import java.util.List;
 public class ReceiptList {
     private List<Order> receipts;
 
-    public List<Order> getReceipts() {
+    public List<Order> getOrders() {
         return receipts;
     }
 
@@ -21,6 +21,10 @@ public class ReceiptList {
         return receipts;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "ReceiptList{" +
+                "receipts=" + receipts +
+                '}';
+    }
 }

@@ -1,10 +1,8 @@
 package com.teksystems.bootcamp.capstone2;
 
-import com.teksystems.bootcamp.capstone2.menuitems.Drink;
 import com.teksystems.bootcamp.capstone2.menuitems.MenuCategory;
 import com.teksystems.bootcamp.capstone2.menuitems.MenuItem;
 
-import java.awt.*;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.List;
@@ -16,6 +14,11 @@ public class RestaurantApp {
     }
 
     private static void runApp() {
+        ReceiptList receipts = createReceiptList();
+        startOrder(receipts);
+    }
+
+    private static void startOrder(ReceiptList receipts) {
         Menu restaurant = new Menu();
         Map<MenuCategory, List<MenuItem>> allMenus;
         allMenus = restaurant.createMenu();
@@ -24,49 +27,121 @@ public class RestaurantApp {
         String userChoice;
         boolean isQuit = false;
 
-        ReceiptList receipts = createReceiptList();
         Order currentOrder = createOrder(receipts);
 
         do {
-            System.out.println("Which menu would you like to order from? ('q' to Quit");
+            System.out.println("Which menu would you like to order from? ('q' to Quit)");
             System.out.println("1) Drinks\n2) Main\n3) Desserts\n");
             userChoice = input.nextLine().toLowerCase();
             if(userChoice.equals("1") || (userChoice.equals("drinks"))) {
                 takeDrinkOrder(allMenus.get(MenuCategory.DRINK), currentOrder);
-            } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
-                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
+//            } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
+//                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
                 takeDessertOrder(allMenus.get(MenuCategory.DESSERT), currentOrder);
             } else {
-//                isQuit = displayReceipt();
-                isQuit = true;
+                isQuit = closeOrder(currentOrder, receipts);
+//                currentOrder = createOrder(receipts);
             }
         } while(!isQuit);
+        boolean isNextOrder = nextOrder(receipts);
+        if(isNextOrder) {
+            startOrder(receipts);
+        } else {
+            endVisit(receipts);
+        }
+//        input.close();
+
+//        isNextOrder ? startOrder(receipts) : endVisit(receipts);
+//        System.out.println(currentOrder);
+//        receipts.addOrderToReceiptList(currentOrder);
+//        System.out.println(receipts);
+    }
+
+    private static void endVisit(ReceiptList receipts) {
+        if(receipts.getOrders().size() > 1) {
+            Scanner input = new Scanner(System.in);
+            String userChoice;
+            System.out.println("Would you like to view previous receipts?");
+            userChoice = input.nextLine();
+            if(userChoice.equals("y")) {
+                displayPreviousReceipts(receipts);
+            }
+//            input.close();
+        }
+        System.out.println("Thank you for visiting! Come again soon!!");
+    }
+
+    private static void displayPreviousReceipts(ReceiptList receiptList) {
+        for(Order order : receiptList.getOrders()) {
+            displayReceipt(order);
+        }
+    }
+
+    private static boolean nextOrder(ReceiptList receipts) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to place another order?");
+        String userChoice2 = scanner.nextLine();
+        if(userChoice2.equals("y")) {
+            return true;
+//            startOrder(receipts);
+        } else {
+            return false;
+//            System.out.println("Here is the receipt for your current order");
+//            displayReceipt(currentOrder, receipts);
+//            endVisit(currentOrder, receipts);
+        }
+//        scanner.close();
+    }
+
+    private static boolean closeOrder(Order currentOrder, ReceiptList receipts) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Would you like to close out this order? [y/n]");
+        String userChoice = input.nextLine();
+        input.close();
+        if(userChoice.equals("y")) {
+            displayReceipt(currentOrder);
+            receipts.addOrderToReceiptList(currentOrder);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static void displayReceipt(Order order) {
+        System.out.println(order);
+//        System.out.println(receipts);
+        System.out.println("Order number: " + order.getOrderNumber());
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        for(MenuItem item : order.getOrderItems()) {
+            System.out.println(item.getName() + " (" + formatter.format(item.getPrice()) + ")");
+        }
+//        System.out.println(order);
+        System.out.println("Subtotal: " + formatter.format(order.calculateSubtotal()));
+        System.out.println("Tax: " + formatter.format(order.calculateTax()));
+        System.out.println("Total: " + formatter.format(order.calculateTotal()));
     }
 
     private static ReceiptList createReceiptList() {
         ReceiptList receiptList = new ReceiptList();
         List<Order> receipts = new ArrayList<>();
         receiptList.setReceipts(receipts);
+        System.out.println(receiptList);
         return receiptList;
     }
 
     private static Order createOrder(ReceiptList receipts) {
         Order newOrder;
-        if(receipts.getReceipts().equals(null)) {
+        if(receipts.getOrders().equals(null)) {
             newOrder = new Order(1000);
         } else {
-            newOrder = new Order(receipts.getReceipts().size() + 1000);
+            newOrder = new Order(receipts.getOrders().size() + 1000);
         }
         List<MenuItem> orderItems = new ArrayList<>();
         newOrder.setOrderItems(orderItems);
+        System.out.println(newOrder);
         return newOrder;
     }
-
-
-//    private static void closeOrder(Order order, ReceiptList receipts) {
-//        receipts.addOrderToReceiptList(order);
-//    }
 
 //    private static void displayMenu(List menus) {
 //
@@ -78,8 +153,8 @@ public class RestaurantApp {
 
             System.out.println("Which drink would you like to order?");
             int i = 1;
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
             for(MenuItem drink : drinkMenuitems) {
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
                 System.out.println(i + ") " + drink.getName() + " (" + formatter.format(drink.getPrice()) + ")");
                 i++;
             }
@@ -100,54 +175,57 @@ public class RestaurantApp {
                     break;
                 }
             }
+            System.out.println("drink choice in takeDrinkOrder: " + drinkChoice);
             currentOrder.addItemToOrder(drinkChoice);
+            System.out.println("End of takeDrinkOrder: " + currentOrder);
+//            input.close();
         }
 
-        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
-            Scanner input = new Scanner(System.in);
-            String userChoice;
-
-            System.out.println("Which main menu items would you like to order?");
-            System.out.println("ENTREES");
-            int i = 1;
-            for(MenuItem entree : entrees) {
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ")");
-                i++;
-            }
-
-            System.out.println("SIDES");
-            for(MenuItem side : sides) {
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
-                i++;
-            }
-
-            System.out.println("THALIS");
-            for(MenuItem thali : thalis) {
-                System.out.println(i + ") " + thali.getName());
-                i++;
-            }
-
-            System.out.println("\nPlease make your selection:");
-            userChoice = input.nextLine().toLowerCase();
-        }
+//        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
+//            Scanner input = new Scanner(System.in);
+//            String userChoice;
+//
+//            System.out.println("Which main menu items would you like to order?");
+//            System.out.println("ENTREES");
+//            int i = 1;
+//            for(MenuItem entree : entrees) {
+//                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+//                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ")");
+//                i++;
+//            }
+//
+//            System.out.println("SIDES");
+//            for(MenuItem side : sides) {
+//                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+//                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
+//                i++;
+//            }
+//
+//            System.out.println("THALIS");
+//            for(MenuItem thali : thalis) {
+//                System.out.println(i + ") " + thali.getName());
+//                i++;
+//            }
+//
+//            System.out.println("\nPlease make your selection:");
+//            userChoice = input.nextLine().toLowerCase();
+//        }
 
         private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
-            Scanner input = new Scanner(System.in);
-            String userChoice;
-
             System.out.println("Which dessert would you like to order?");
             int i = 1;
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
             for(MenuItem dessert : dessertMenuitems) {
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
                 System.out.println(i + ") " + dessert.getName() + " (" + formatter.format(dessert.getPrice()) + ")");
                 i++;
             }
 
+            Scanner input = new Scanner(System.in);
+            String userChoice;
             MenuItem dessertChoice = null;
             System.out.println("\nPlease make your selection:");
             userChoice = input.nextLine().toLowerCase();
+//            input.close();
             for(MenuItem dessert : dessertMenuitems) {
                 if(userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada") && dessert.getName().equals("Chakka Ela Ada")) {
                     dessertChoice = dessert;
@@ -162,6 +240,7 @@ public class RestaurantApp {
                 }
             }
             currentOrder.addItemToOrder(dessertChoice);
+//            System.out.println(currentOrder);
         }
 
         private static void welcome() {
