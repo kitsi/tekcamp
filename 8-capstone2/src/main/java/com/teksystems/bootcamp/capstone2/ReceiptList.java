@@ -12,8 +12,15 @@ public class ReceiptList {
         return receipts;
     }
 
+    public void setReceipts(List<Order> receipts) {
+        this.receipts = receipts;
+    }
+
     public List<Order> addOrderToReceiptList(Order orderToAdd) {
         receipts.add(orderToAdd);
         return receipts;
     }
+
+
+
 }
