@@ -1,11 +1,13 @@
 package com.teksystems.bootcamp.capstone2;
 
+import com.teksystems.bootcamp.capstone2.menuitems.Drink;
 import com.teksystems.bootcamp.capstone2.menuitems.MenuCategory;
 import com.teksystems.bootcamp.capstone2.menuitems.MenuItem;
 
-import java.io.IOException;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.List;
 
 public class AppRunner {
     public static void main(String[] args) {
@@ -22,16 +24,19 @@ public class AppRunner {
         String userChoice;
         boolean isQuit = false;
 
+        ReceiptList receipts = new ReceiptList();
+        Order currentOrder = createOrder(receipts);
+
         do {
             System.out.println("Which menu would you like to order from? ('q' to Quit");
             System.out.println("1) Drinks\n2) Main\n3) Desserts\n");
             userChoice = input.nextLine().toLowerCase();
             if(userChoice.equals("1") || (userChoice.equals("drinks"))) {
-                takeDrinkOrder(allMenus.get(MenuCategory.DRINK));
+                takeDrinkOrder(allMenus.get(MenuCategory.DRINK), currentOrder);
             } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
-                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI));
+                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
-                takeDessertOrder(allMenus.get(MenuCategory.DESSERT));
+                takeDessertOrder(allMenus.get(MenuCategory.DESSERT), currentOrder);
             } else {
 //                isQuit = displayReceipt();
                 isQuit = true;
@@ -39,11 +44,24 @@ public class AppRunner {
         } while(!isQuit);
     }
 
+
+
+    private static Order createOrder(ReceiptList receipts) {
+        Order newOrder = new Order(receipts.getReceipts().size() + 1000);
+        receipts.addOrderToReceiptList(newOrder);
+        return newOrder;
+    }
+
+
+    private static ReceiptList closeOrder() {
+
+    }
+
 //    private static void displayMenu(List menus) {
 //
 //    }
 
-    private static void takeDrinkOrder(List<MenuItem> drinkMenuitems) {
+    private static void takeDrinkOrder(List<MenuItem> drinkMenuitems, Order currentOrder) {
         Scanner input = new Scanner(System.in);
         String userChoice;
 
@@ -54,11 +72,27 @@ public class AppRunner {
             System.out.println(i + ") " + drink.getName() + " (" + formatter.format(drink.getPrice()) + ")");
             i++;
         }
+
+        MenuItem drinkChoice = null;
         System.out.println("\nPlease make your selection:");
         userChoice = input.nextLine().toLowerCase();
+        for(MenuItem drink : drinkMenuitems) {
+            if(userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi") && drink.getName().equals("Mango Lassi")) {
+                drinkChoice = drink;
+            } else if(userChoice.equals("2") || userChoice.contains("chai") && drink.getName().equals("Chai")) {
+                drinkChoice = drink;
+            } else if(userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade") && drink.getName().equals("Lavender Coconut Lemonade")) {
+                drinkChoice = drink;
+            } else if(userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer") && drink.getName().equals("Rose Mint Spritzer")) {
+                drinkChoice = drink;
+            } else {
+                break;
+            }
+        }
+        currentOrder.addItemToOrder(drinkChoice);
     }
 
-    private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis) {
+    private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
         Scanner input = new Scanner(System.in);
         String userChoice;
 
@@ -88,7 +122,7 @@ public class AppRunner {
         userChoice = input.nextLine().toLowerCase();
     }
 
-    private static void takeDessertOrder(List<MenuItem> dessertMenuitems) {
+    private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
         Scanner input = new Scanner(System.in);
         String userChoice;
 
@@ -99,8 +133,24 @@ public class AppRunner {
             System.out.println(i + ") " + dessert.getName() + " (" + formatter.format(dessert.getPrice()) + ")");
             i++;
         }
+
+        MenuItem dessertChoice = null;
         System.out.println("\nPlease make your selection:");
         userChoice = input.nextLine().toLowerCase();
+        for(MenuItem dessert : dessertMenuitems) {
+            if(userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada") && dessert.getName().equals("Chakka Ela Ada")) {
+                dessertChoice = dessert;
+            } else if(userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream") && dessert.getName().equals("Jackfruit Ice Cream")) {
+                dessertChoice = dessert;
+            } else if(userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva") && dessert.getName().equals("Beet Halwa")) {
+                dessertChoice = dessert;
+            } else if(userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun") && dessert.getName().equals("Gulab Jamun")) {
+                dessertChoice = dessert;
+            } else {
+                break;
+            }
+        }
+        currentOrder.addItemToOrder(dessertChoice);
     }
 
     private static void welcome() {
