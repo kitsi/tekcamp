@@ -215,6 +215,9 @@ public class RestaurantApp {
 //        }
 
         private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
+            Scanner input = new Scanner(System.in);
+            String userChoice;
+            MenuItem dessertChoice = null;
             System.out.println("Which dessert would you like to order?");
             int i = 1;
             NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
@@ -223,24 +226,26 @@ public class RestaurantApp {
                 i++;
             }
 
-            Scanner input = new Scanner(System.in);
-            String userChoice;
-            MenuItem dessertChoice = null;
             System.out.println("\nPlease make your selection:");
             userChoice = input.nextLine().toLowerCase();
             for(MenuItem dessert : dessertMenuitems) {
                 if((userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada")) && dessert.getName().equals("Chakka Ela Ada")) {
+                    System.out.println("option1 in takeDessertOrder printing");
                     dessertChoice = dessert;
                 } else if((userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream")) && dessert.getName().equals("Jackfruit Ice Cream")) {
+                    System.out.println("option2 in takeDessertOrder printing");
                     dessertChoice = dessert;
                 } else if((userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva")) && dessert.getName().equals("Beet Halwa")) {
+                    System.out.println("option3 in takeDessertOrder printing");
                     dessertChoice = dessert;
-                } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun")) {
+                } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun (2 pieces)")) {
+                    System.out.println("option4 in takeDessertOrder printing");
                     dessertChoice = dessert;
                 }
             }
+            System.out.println("dessert choice in takeDessertOrder: " + dessertChoice);
             currentOrder.addItemToOrder(dessertChoice);
-//            System.out.println(currentOrder);
+            System.out.println("End of takeDessertOrder: " + currentOrder);
         }
 
         private static void welcome() {
