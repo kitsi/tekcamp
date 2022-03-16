@@ -44,12 +44,15 @@ public class RestaurantApp {
 //                currentOrder = createOrder(receipts);
             }
         } while(!isQuit);
-        boolean isNextOrder = nextOrder(receipts);
-        if(isNextOrder) {
-            startOrder(receipts);
-        } else {
-            endVisit(receipts);
-        }
+//        System.out.println("Would you like to place another order?");
+//        userChoice = input.nextLine();
+//        System.out.println(userChoice);
+//        boolean isNextOrder = nextOrder(receipts);
+//        if(isNextOrder) {
+//            startOrder(receipts);
+//        } else {
+//            endVisit(receipts);
+//        }
 //        input.close();
 
 //        isNextOrder ? startOrder(receipts) : endVisit(receipts);
@@ -78,27 +81,30 @@ public class RestaurantApp {
         }
     }
 
-    private static boolean nextOrder(ReceiptList receipts) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Would you like to place another order?");
-        String userChoice2 = scanner.nextLine();
-        if(userChoice2.equals("y")) {
-            return true;
-//            startOrder(receipts);
-        } else {
-            return false;
-//            System.out.println("Here is the receipt for your current order");
-//            displayReceipt(currentOrder, receipts);
-//            endVisit(currentOrder, receipts);
-        }
-//        scanner.close();
-    }
+//    private static boolean nextOrder(ReceiptList receipts) {
+//        Scanner input = new Scanner(System.in);
+//        String userChoice;
+//        System.out.println("Would you like to place another order?");
+//        userChoice = input.nextLine().toLowerCase();
+//        System.out.println(userChoice);
+////        if(userChoice.equals("y")) {
+////            return true;
+//////            startOrder(receipts);
+////        } else {
+////            return false;
+//////            System.out.println("Here is the receipt for your current order");
+//////            displayReceipt(currentOrder, receipts);
+//////            endVisit(currentOrder, receipts);
+////        }
+////        scanner.close();
+//        return false;
+//    }
 
     private static boolean closeOrder(Order currentOrder, ReceiptList receipts) {
         Scanner input = new Scanner(System.in);
         System.out.println("Would you like to close out this order? [y/n]");
         String userChoice = input.nextLine();
-        input.close();
+//        input.close();
         if(userChoice.equals("y")) {
             displayReceipt(currentOrder);
             receipts.addOrderToReceiptList(currentOrder);
@@ -163,13 +169,13 @@ public class RestaurantApp {
             System.out.println("\nPlease make your selection:");
             userChoice = input.nextLine().toLowerCase();
             for(MenuItem drink : drinkMenuitems) {
-                if(userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi") && drink.getName().equals("Mango Lassi")) {
+                if((userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi")) && drink.getName().equals("Mango Lassi")) {
                     drinkChoice = drink;
-                } else if(userChoice.equals("2") || userChoice.contains("chai") && drink.getName().equals("Chai")) {
+                } else if((userChoice.equals("2") || userChoice.contains("chai")) && drink.getName().equals("Chai")) {
                     drinkChoice = drink;
-                } else if(userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade") && drink.getName().equals("Lavender Coconut Lemonade")) {
+                } else if((userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade")) && drink.getName().equals("Lavender Coconut Lemonade")) {
                     drinkChoice = drink;
-                } else if(userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer") && drink.getName().equals("Rose Mint Spritzer")) {
+                } else if((userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer")) && drink.getName().equals("Rose Mint Spritzer")) {
                     drinkChoice = drink;
                 } else {
                     break;
@@ -227,13 +233,13 @@ public class RestaurantApp {
             userChoice = input.nextLine().toLowerCase();
 //            input.close();
             for(MenuItem dessert : dessertMenuitems) {
-                if(userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada") && dessert.getName().equals("Chakka Ela Ada")) {
+                if((userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada")) && dessert.getName().equals("Chakka Ela Ada")) {
                     dessertChoice = dessert;
-                } else if(userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream") && dessert.getName().equals("Jackfruit Ice Cream")) {
+                } else if((userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream")) && dessert.getName().equals("Jackfruit Ice Cream")) {
                     dessertChoice = dessert;
-                } else if(userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva") && dessert.getName().equals("Beet Halwa")) {
+                } else if((userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva")) && dessert.getName().equals("Beet Halwa")) {
                     dessertChoice = dessert;
-                } else if(userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun") && dessert.getName().equals("Gulab Jamun")) {
+                } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun")) {
                     dessertChoice = dessert;
                 } else {
                     break;
