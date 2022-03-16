@@ -47,13 +47,13 @@ public class RestaurantApp {
 //        System.out.println("Would you like to place another order?");
 //        userChoice = input.nextLine();
 //        System.out.println(userChoice);
-//        boolean isNextOrder = nextOrder(receipts);
-//        if(isNextOrder) {
-//            startOrder(receipts);
-//        } else {
-//            endVisit(receipts);
-//        }
-//        input.close();
+        boolean isNextOrder = nextOrder(receipts);
+//        System.out.println(isNextOrder);
+        if(isNextOrder) {
+            startOrder(receipts);
+        } else {
+            endVisit(receipts);
+        }
 
 //        isNextOrder ? startOrder(receipts) : endVisit(receipts);
 //        System.out.println(currentOrder);
@@ -70,7 +70,6 @@ public class RestaurantApp {
             if(userChoice.equals("y")) {
                 displayPreviousReceipts(receipts);
             }
-//            input.close();
         }
         System.out.println("Thank you for visiting! Come again soon!!");
     }
@@ -81,30 +80,28 @@ public class RestaurantApp {
         }
     }
 
-//    private static boolean nextOrder(ReceiptList receipts) {
-//        Scanner input = new Scanner(System.in);
-//        String userChoice;
-//        System.out.println("Would you like to place another order?");
-//        userChoice = input.nextLine().toLowerCase();
-//        System.out.println(userChoice);
-////        if(userChoice.equals("y")) {
-////            return true;
-//////            startOrder(receipts);
-////        } else {
-////            return false;
-//////            System.out.println("Here is the receipt for your current order");
-//////            displayReceipt(currentOrder, receipts);
-//////            endVisit(currentOrder, receipts);
-////        }
-////        scanner.close();
+    private static boolean nextOrder(ReceiptList receipts) {
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        System.out.println("Would you like to place another order?");
+        userChoice = input.nextLine().toLowerCase();
+        System.out.println(userChoice);
+        if(userChoice.equals("y")) {
+            return true;
+//            startOrder(receipts);
+        } else {
+            return false;
+//            System.out.println("Here is the receipt for your current order");
+//            displayReceipt(currentOrder, receipts);
+//            endVisit(currentOrder, receipts);
+        }
 //        return false;
-//    }
+    }
 
     private static boolean closeOrder(Order currentOrder, ReceiptList receipts) {
         Scanner input = new Scanner(System.in);
         System.out.println("Would you like to close out this order? [y/n]");
         String userChoice = input.nextLine();
-//        input.close();
         if(userChoice.equals("y")) {
             displayReceipt(currentOrder);
             receipts.addOrderToReceiptList(currentOrder);
@@ -153,38 +150,38 @@ public class RestaurantApp {
 //
 //    }
 
-        private static void takeDrinkOrder(List<MenuItem> drinkMenuitems, Order currentOrder) {
+        private static void takeDrinkOrder(List<MenuItem> drinkMenuItems, Order currentOrder) {
             Scanner input = new Scanner(System.in);
             String userChoice;
-
+            MenuItem drinkChoice = null;
             System.out.println("Which drink would you like to order?");
             int i = 1;
             NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-            for(MenuItem drink : drinkMenuitems) {
+            for(MenuItem drink : drinkMenuItems) {
                 System.out.println(i + ") " + drink.getName() + " (" + formatter.format(drink.getPrice()) + ")");
                 i++;
             }
 
-            MenuItem drinkChoice = null;
             System.out.println("\nPlease make your selection:");
             userChoice = input.nextLine().toLowerCase();
-            for(MenuItem drink : drinkMenuitems) {
+            for(MenuItem drink : drinkMenuItems) {
                 if((userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi")) && drink.getName().equals("Mango Lassi")) {
+                    System.out.println("option1 in takeDrinkOrder printing");
                     drinkChoice = drink;
-                } else if((userChoice.equals("2") || userChoice.contains("chai")) && drink.getName().equals("Chai")) {
+                } else if((userChoice.equals("2") || userChoice.contains("chai")) && (drink.getName().equals("Chai"))) {
+                    System.out.println("option2 in takeDrinkOrder printing");
                     drinkChoice = drink;
-                } else if((userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade")) && drink.getName().equals("Lavender Coconut Lemonade")) {
+                } else if((userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade")) && (drink.getName().equals("Lavender Coconut Lemonade"))) {
+                    System.out.println("option3 in takeDrinkOrder printing");
                     drinkChoice = drink;
-                } else if((userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer")) && drink.getName().equals("Rose Mint Spritzer")) {
+                } else if((userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer")) && (drink.getName().equals("Rose Mint Spritzer"))) {
+                    System.out.println("option4 in takeDrinkOrder printing");
                     drinkChoice = drink;
-                } else {
-                    break;
                 }
             }
             System.out.println("drink choice in takeDrinkOrder: " + drinkChoice);
             currentOrder.addItemToOrder(drinkChoice);
             System.out.println("End of takeDrinkOrder: " + currentOrder);
-//            input.close();
         }
 
 //        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
@@ -231,7 +228,6 @@ public class RestaurantApp {
             MenuItem dessertChoice = null;
             System.out.println("\nPlease make your selection:");
             userChoice = input.nextLine().toLowerCase();
-//            input.close();
             for(MenuItem dessert : dessertMenuitems) {
                 if((userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada")) && dessert.getName().equals("Chakka Ela Ada")) {
                     dessertChoice = dessert;
@@ -241,8 +237,6 @@ public class RestaurantApp {
                     dessertChoice = dessert;
                 } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun")) {
                     dessertChoice = dessert;
-                } else {
-                    break;
                 }
             }
             currentOrder.addItemToOrder(dessertChoice);
