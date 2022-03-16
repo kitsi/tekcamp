@@ -24,4 +24,8 @@ public class Order {
         orderItems.add(itemToAdd);
         return orderItems;
     }
+
+    public void setOrderItems(List<MenuItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

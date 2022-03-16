@@ -53,12 +53,13 @@ public class RestaurantApp {
 
     private static Order createOrder(ReceiptList receipts) {
         Order newOrder;
-//        System.out.println(receipts.getReceipts());
         if(receipts.getReceipts().equals(null)) {
             newOrder = new Order(1000);
         } else {
             newOrder = new Order(receipts.getReceipts().size() + 1000);
         }
+        List<MenuItem> orderItems = new ArrayList<>();
+        newOrder.setOrderItems(orderItems);
         return newOrder;
     }
 
