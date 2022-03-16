@@ -16,10 +16,9 @@ import java.util.Map;
 
 public class Menu {
 
-    public Map<MenuCategory, List<MenuItem>> createMenu() throws IOException {
+    public Map<MenuCategory, List<MenuItem>> createMenu() {
         Map<MenuCategory, List<MenuItem>> allMenus = new HashMap<>();
         for(MenuCategory category : MenuCategory.values()) {
-//            System.out.println(category);
             allMenus.put(category, fileProcessor(category.fileName));
         }
         return allMenus;
@@ -49,7 +48,6 @@ public class Menu {
             System.out.println("Problem processing file!");
             e.printStackTrace();
         }
-
         return menuItems;
     }
 
@@ -125,5 +123,4 @@ public class Menu {
         }
         return thalis;
     }
-
 }
