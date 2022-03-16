@@ -41,24 +41,15 @@ public class RestaurantApp {
                 takeDessertOrder(allMenus.get(MenuCategory.DESSERT), currentOrder);
             } else {
                 isQuit = closeOrder(currentOrder, receipts);
-//                currentOrder = createOrder(receipts);
             }
         } while(!isQuit);
-//        System.out.println("Would you like to place another order?");
-//        userChoice = input.nextLine();
-//        System.out.println(userChoice);
+
         boolean isNextOrder = nextOrder(receipts);
-//        System.out.println(isNextOrder);
         if(isNextOrder) {
             startOrder(receipts);
         } else {
             endVisit(receipts);
         }
-
-//        isNextOrder ? startOrder(receipts) : endVisit(receipts);
-//        System.out.println(currentOrder);
-//        receipts.addOrderToReceiptList(currentOrder);
-//        System.out.println(receipts);
     }
 
     private static void endVisit(ReceiptList receipts) {
@@ -88,14 +79,9 @@ public class RestaurantApp {
         System.out.println(userChoice);
         if(userChoice.equals("y")) {
             return true;
-//            startOrder(receipts);
         } else {
             return false;
-//            System.out.println("Here is the receipt for your current order");
-//            displayReceipt(currentOrder, receipts);
-//            endVisit(currentOrder, receipts);
         }
-//        return false;
     }
 
     private static boolean closeOrder(Order currentOrder, ReceiptList receipts) {
@@ -113,13 +99,11 @@ public class RestaurantApp {
 
     private static void displayReceipt(Order order) {
         System.out.println(order);
-//        System.out.println(receipts);
         System.out.println("Order number: " + order.getOrderNumber());
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
         for(MenuItem item : order.getOrderItems()) {
             System.out.println(item.getName() + " (" + formatter.format(item.getPrice()) + ")");
         }
-//        System.out.println(order);
         System.out.println("Subtotal: " + formatter.format(order.calculateSubtotal()));
         System.out.println("Tax: " + formatter.format(order.calculateTax()));
         System.out.println("Total: " + formatter.format(order.calculateTotal()));
@@ -145,10 +129,6 @@ public class RestaurantApp {
         System.out.println(newOrder);
         return newOrder;
     }
-
-//    private static void displayMenu(List menus) {
-//
-//    }
 
         private static void takeDrinkOrder(List<MenuItem> drinkMenuItems, Order currentOrder) {
             Scanner input = new Scanner(System.in);
@@ -240,6 +220,9 @@ public class RestaurantApp {
                     dessertChoice = dessert;
                 } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun (2 pieces)")) {
                     System.out.println("option4 in takeDessertOrder printing");
+                    dessertChoice = dessert;
+                } else if((userChoice.equals("5") || userChoice.contains("dates") || userChoice.contains("apple")) && dessert.getName().equals("Dates Apple Pradhaman")) {
+                    System.out.println("option5 in takeDessertOrder printing");
                     dessertChoice = dessert;
                 }
             }
