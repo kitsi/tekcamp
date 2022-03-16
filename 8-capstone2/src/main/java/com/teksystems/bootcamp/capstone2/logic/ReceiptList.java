@@ -1,8 +1,7 @@
-package com.teksystems.bootcamp.capstone2;
+package com.teksystems.bootcamp.capstone2.logic;
 
-import com.teksystems.bootcamp.capstone2.menuitems.MenuItem;
+import com.teksystems.bootcamp.capstone2.logic.Order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReceiptList {

@@ -1,7 +1,9 @@
 package com.teksystems.bootcamp.capstone2;
 
-import com.teksystems.bootcamp.capstone2.menuitems.MenuCategory;
-import com.teksystems.bootcamp.capstone2.menuitems.MenuItem;
+import com.teksystems.bootcamp.capstone2.logic.Order;
+import com.teksystems.bootcamp.capstone2.logic.ReceiptList;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuCategory;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuItem;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -35,8 +37,8 @@ public class RestaurantApp {
             userChoice = input.nextLine().toLowerCase();
             if(userChoice.equals("1") || (userChoice.equals("drinks"))) {
                 takeDrinkOrder(allMenus.get(MenuCategory.DRINK), currentOrder);
-//            } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
-//                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
+            } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
+                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
                 takeDessertOrder(allMenus.get(MenuCategory.DESSERT), currentOrder);
             } else {
@@ -164,35 +166,35 @@ public class RestaurantApp {
             System.out.println("End of takeDrinkOrder: " + currentOrder);
         }
 
-//        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
-//            Scanner input = new Scanner(System.in);
-//            String userChoice;
-//
-//            System.out.println("Which main menu items would you like to order?");
-//            System.out.println("ENTREES");
-//            int i = 1;
-//            for(MenuItem entree : entrees) {
-//                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-//                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ")");
-//                i++;
-//            }
-//
-//            System.out.println("SIDES");
-//            for(MenuItem side : sides) {
-//                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-//                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
-//                i++;
-//            }
-//
-//            System.out.println("THALIS");
-//            for(MenuItem thali : thalis) {
-//                System.out.println(i + ") " + thali.getName());
-//                i++;
-//            }
-//
-//            System.out.println("\nPlease make your selection:");
-//            userChoice = input.nextLine().toLowerCase();
-//        }
+        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
+            Scanner input = new Scanner(System.in);
+            String userChoice;
+
+            System.out.println("Which main menu items would you like to order?");
+            System.out.println("ENTREES");
+            int i = 1;
+            for(MenuItem entree : entrees) {
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ")");
+                i++;
+            }
+
+            System.out.println("SIDES");
+            for(MenuItem side : sides) {
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
+                i++;
+            }
+
+            System.out.println("THALIS");
+            for(MenuItem thali : thalis) {
+                System.out.println(i + ") " + thali.getName());
+                i++;
+            }
+
+            System.out.println("\nPlease make your selection:");
+            userChoice = input.nextLine().toLowerCase();
+        }
 
         private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
             Scanner input = new Scanner(System.in);

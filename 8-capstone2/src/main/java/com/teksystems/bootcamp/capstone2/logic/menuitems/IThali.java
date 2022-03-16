@@ -1,4 +1,4 @@
-package com.teksystems.bootcamp.capstone2.menuitems;
+package com.teksystems.bootcamp.capstone2.logic.menuitems;
 
 import java.math.BigDecimal;
 import java.util.List;

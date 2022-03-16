@@ -4,7 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.teksystems.bootcamp.capstone2.menuitems.*;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.*;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.*;
 
 import java.io.*;
 import java.math.BigDecimal;
