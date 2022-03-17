@@ -245,7 +245,7 @@ public class RestaurantApp {
                 if(userChoice2.equals("1")) {
                     newEntree = addTopping(entree);
                 } else if(userChoice2.equals("2")) {
-//                    newEntree = removeTopping(entree);
+                    newEntree = removeTopping(entree);
                 } else if(userChoice2.equals("3")) {
                     // add side
                 } else if(userChoice2.equals("4")) {
@@ -261,7 +261,34 @@ public class RestaurantApp {
         return newEntree;
     }
 
-
+    private static Entree removeTopping(MenuItem entree) {
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        Topping toppingChoice = null;
+        Entree newEntree = (Entree) entree;
+        if(newEntree.getToppings().size() > 0) {
+            System.out.println("What topping would you like to remove?");
+            int i = 1;
+//            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+            for(Topping topping : newEntree.getToppings()) {
+                System.out.println(i + ") " + topping.name);
+                i++;
+            }
+        }
+        System.out.println("Please make your selection: ");
+        userChoice = input.nextLine().toLowerCase();
+        for(Topping topping : Topping.values()) {
+            if(userChoice.equals("1") && topping.equals(Topping.HERBED_POTATO)) {
+                toppingChoice = topping;
+            } else if(userChoice.equals("2") && topping.equals(Topping.JACKFRUIT)) {
+                toppingChoice = topping;
+            } else if(userChoice.equals("3") && topping.equals(Topping.PEPPER_MUSHROOM)) {
+                toppingChoice = topping;
+            }
+        }
+        newEntree.removeEntreeTopping(toppingChoice);
+        return newEntree;
+    }
 
     private static Entree addTopping(MenuItem entree) {
         Scanner input = new Scanner(System.in);
@@ -270,10 +297,10 @@ public class RestaurantApp {
         Entree newEntree = (Entree) entree;
         System.out.println("What topping would you like to add?");
         int i = 1;
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+//        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
         if(newEntree.getToppings().size() <= Entree.MAX_TOPPINGS) {
             for(Topping topping : Topping.values()) {
-                System.out.println(i + ") " + topping.name + " (" + formatter.format(topping.price) + ")");
+                System.out.println(i + ") " + topping.name);
                 i++;
             }
             System.out.println("Please make your selection: ");
