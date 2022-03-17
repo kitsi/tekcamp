@@ -6,32 +6,36 @@
       "id": 101,
       "name": "Plain Dosa",
       "name2": "dosa",
-      "standardToppings": [],
-      "standardSides": ["sambar", "chutney"],
+      "standardTopping": "",
+      "standardSide1": "sambar",
+      "standardSide2": "chutney",
       "price": "10",
       "description": "plain lentil & rice crepe, one sambar, one coconut chutney"
     },
     {
       "id": 102,
       "name": "Masala Dosa",
-      "standardToppings": ["herbed potato"],
-      "standardSides": ["sambar", "chutney"],
+      "standardTopping": "herbed potato",
+      "standardSide1": "sambar",
+      "standardSide2": "chutney",
       "price": "11",
       "description": "lentil & rice crepe, herbed potato topping, one sambar, one coconut chutney"
     },
     {
       "id": 103,
       "name": "Gunpowder Dosa",
-      "standardToppings": [],
-      "standardSides": ["sambar", "chutney"],
+      "standardTopping": "",
+      "standardSide1": "sambar",
+      "standardSide2": "chutney",
       "price": "11",
       "description": "lentil & rice crepe spiced with lentil chili poowder, one sambar, one coconut chutney"
     },
     {
       "id": 104,
       "name": "Idliyappam",
-      "standardToppings": [],
-      "standardSides": ["sambar", "chutney"],
+      "standardTopping": "",
+      "standardSide1": "sambar",
+      "standardSide2": "chutney",
       "price": "8.50",
       "description": "four steamed rice hoppers, one sambar, one coconut chutney"
     }

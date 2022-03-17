@@ -97,8 +97,7 @@ public class Menu {
     private List<MenuItem> processEntrees(JsonObject fileObject) {
         JsonArray jsonArrayOfEntrees = fileObject.get("entrees").getAsJsonArray();
         List<MenuItem> entrees = new ArrayList<>();
-        List<MenuItem> sides = new ArrayList<>();
-        List<MenuItem> toppings = new ArrayList<>();
+        List<Topping> toppings = new ArrayList<>();
         for (JsonElement entreeElement : jsonArrayOfEntrees) {
             JsonObject entreeJsonObject = entreeElement.getAsJsonObject();
             String name = entreeJsonObject.get("name").getAsString();
@@ -106,6 +105,21 @@ public class Menu {
             BigDecimal price = new BigDecimal(priceString);
             String description = entreeJsonObject.get("description").getAsString();
             Entree entree = new Entree(name, price, description);
+
+            String standardTopping = entreeJsonObject.get("standardTopping").getAsString();
+
+            if(standardTopping.equals("herbed potato")) {
+                Topping topping = Topping.HERBED_POTATO;
+                entree.addEntreeTopping(topping);
+            }
+
+            String standardSide1 = entreeJsonObject.get("standardSide1").getAsString();
+            Side side1 = new Side(standardSide1, BigDecimal.ZERO);
+            String standardSide2 = entreeJsonObject.get("standardSide2").getAsString();
+            Side side2 = new Side(standardSide2, BigDecimal.ZERO);
+
+            entree.addEntreeSide(side1);
+            entree.addEntreeSide(side2);
             entrees.add(entree);
         }
         return entrees;

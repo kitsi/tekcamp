@@ -213,15 +213,38 @@ public class RestaurantApp {
 
     private static Entree customizeSidesToppings(MenuItem entree, List<MenuItem> sides) {
         Scanner input = new Scanner(System.in);
-//        String userChoice;
         Entree newEntree = (Entree) entree;
-        System.out.println("Would you like to customize Sides/Toppings? [y/n]");
-        String userChoice1 = input.nextLine().toLowerCase();
-        if(userChoice1.equals("y")) {
-            // do something
-        } else {
-            // do something
-        }
+        String userChoice1;
+        String userChoice2;
+
+        boolean isQuit = false;
+
+        do {
+            System.out.println("Would you like to customize Sides/Toppings? [y/n]");
+            userChoice1 = input.nextLine().toLowerCase();
+
+            if(userChoice1.equals("y")) {
+                System.out.println("These are the current toppings & sides for your meal:");
+                System.out.println("SIDE(S)");
+                for(Side side : ((Entree) entree).getSides()) {
+                    System.out.println(side.getName());
+                }
+                System.out.println("TOPPING(S)");
+                if(((Entree) entree).getToppings().isEmpty()) {
+                    System.out.println("none");
+                } else {
+                    for(Topping topping : ((Entree) entree).getToppings()) {
+                        System.out.println(topping.name);
+                    }
+                }
+                System.out.println("1) Add topping, 2) Remove topping, 3) Add Side, 4) Reemove Side");
+                userChoice2 = input.nextLine();
+                System.out.println(userChoice2);
+            } else {
+                newEntree = (Entree) entree;
+                isQuit = true;
+            }
+        } while(!isQuit);
 
         return newEntree;
     }
