@@ -96,14 +96,19 @@ public class RestaurantApp {
     }
 
     private static void displayReceipt(Order order) {
+        System.out.println("=======================");
         System.out.println("Order number: " + order.getOrderNumber());
+        System.out.println("-----------------------");
+        System.out.println("ITEMS ORDERED");
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
         for(MenuItem item : order.getOrderItems()) {
             System.out.println(item.getName() + " (" + formatter.format(item.getPrice()) + ")");
         }
+        System.out.println("-----------------------");
         System.out.println("Subtotal: " + formatter.format(order.calculateSubtotal()));
         System.out.println("Tax: " + formatter.format(order.calculateTax()));
-        System.out.println("Total: " + formatter.format(order.calculateTotal()) + "\n");
+        System.out.println("Total: " + formatter.format(order.calculateTotal()));
+        System.out.println("=======================\n");
     }
 
     private static ReceiptList createReceiptList() {
