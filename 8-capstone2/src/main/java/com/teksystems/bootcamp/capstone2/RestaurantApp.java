@@ -205,9 +205,7 @@ public class RestaurantApp {
                 mealChoice = meal;
             } else if (userChoice.equals("4") && meal.getName().equals("Idliyappam")) {
                 mealChoice = meal;
-            } else if (userChoice.equals("5") && meal.getName().equals("Double Thali")) {
-                mealChoice = meal;
-            } else if (userChoice.equals("6") && meal.getName().equals("Thali Meal")) {
+            } else if (userChoice.equals("5") && meal.getName().equals("Thali Meal")) {
                 mealChoice = meal;
                 mealChoice = addThaliItems(mealChoice, drinks, entrees, desserts, sides);
             }

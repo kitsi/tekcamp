@@ -3,12 +3,6 @@
   "categoryName": "thalis",
   "thalis": [
     {
-      "id": 501,
-      "name": "Double Thali",
-      "items": ["entree1", "topping1", "side1","entree2", "topping2", "side2"],
-      "description": "pick any two entrees for a 20% discount"
-    },
-    {
       "id": 502,
       "name": "Thali Meal",
       "items": [
