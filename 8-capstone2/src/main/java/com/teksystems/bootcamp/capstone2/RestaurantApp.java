@@ -199,10 +199,13 @@ public class RestaurantApp {
                 mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("2") && meal.getName().equals("Masala Dosa")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("3") && meal.getName().equals("Gunpowder Dosa")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("4") && meal.getName().equals("Idliyappam")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("5") && meal.getName().equals("Thali Meal")) {
                 mealChoice = meal;
                 mealChoice = addThaliItems(mealChoice, drinks, entrees, desserts, sides);
@@ -331,12 +334,16 @@ public class RestaurantApp {
         for (MenuItem meal : allMeals) {
             if (userChoice.equals("1") && meal.getName().equals("Plain Dosa")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("2") && meal.getName().equals("Masala Dosa")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("3") && meal.getName().equals("Gunpowder Dosa")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("4") && meal.getName().equals("Idliyappam")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             }
         }
         return mealChoice;
