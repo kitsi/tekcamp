@@ -6,16 +6,24 @@ import java.util.List;
 
 public class ThaliMeal extends MenuItem implements IThali{
     private List<MenuItem> thaliItems = new ArrayList<>();
+    private BigDecimal price;
 
     public ThaliMeal(String description) {
-        super(MenuCategory.THALI, "Thali Meal", BigDecimal.ZERO, description);
-        this.thaliItems = thaliItems;
-        this.price = calculateThaliPrice();
+        super(MenuCategory.THALI, "Thali Meal", description);
     }
 
     @Override
     public List getThaliItems() {
         return thaliItems;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    @Override
+    public BigDecimal getPrice() {
+        return calculateThaliPrice();
     }
 
     public void addThaliItem(MenuItem thaliItem) {
@@ -28,7 +36,8 @@ public class ThaliMeal extends MenuItem implements IThali{
         for(MenuItem item : thaliItems) {
             sumItemPrices = sumItemPrices.add(item.getPrice());
         }
-        return sumItemPrices.multiply(DISCOUNTED_PERCENT);
+        price =  sumItemPrices.multiply(DISCOUNTED_PERCENT);
+        return price;
     }
 
     @Override

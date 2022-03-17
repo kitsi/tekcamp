@@ -8,10 +8,11 @@ public class MenuItem {
     BigDecimal price;
     String description;
 
-    public MenuItem(MenuCategory menuCategory, String name, BigDecimal price, String description) {
+//    public MenuItem(MenuCategory menuCategory, String name, BigDecimal price, String description) {
+    public MenuItem(MenuCategory menuCategory, String name, String description) {
         this.category = menuCategory;
         this.name = name;
-        this.price = price;
+//        this.price = price;
         this.description = description;
     }
 

@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 
 public class Dessert extends MenuItem{
     public Dessert(String name, BigDecimal price) {
-        super(MenuCategory.DESSERT, name, price, "");
+        super(MenuCategory.DESSERT, name, "");
+        this.price = price;
     }
 
     @Override

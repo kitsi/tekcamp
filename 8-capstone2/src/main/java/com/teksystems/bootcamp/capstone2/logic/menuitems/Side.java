@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Side extends MenuItem{
     public Side(String name, BigDecimal price) {
-        super(MenuCategory.SIDE, name, price, "");
+        super(MenuCategory.SIDE, name, "");
+        this.price = price;
     }
 }

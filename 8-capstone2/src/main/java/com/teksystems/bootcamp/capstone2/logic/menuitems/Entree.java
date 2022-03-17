@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 public class Entree extends MenuItem{
 
     public Entree(String name, BigDecimal price, String description) {
-        super(MenuCategory.ENTREE, name, price, description);
+        super(MenuCategory.ENTREE, name, description);
+        this.price = price;
     }
 
     //    @Override

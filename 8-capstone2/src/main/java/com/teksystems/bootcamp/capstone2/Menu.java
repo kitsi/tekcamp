@@ -119,9 +119,6 @@ public class Menu {
             if(name.equals("Thali Meal")) {
                 ThaliMeal thali = new ThaliMeal(description);
                 thalis.add(thali);
-            } else if(name.equals("Double Thali")) {
-                DoubleThali thali = new DoubleThali(description);
-                thalis.add(thali);
             }
         }
         return thalis;
