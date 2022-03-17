@@ -4,40 +4,34 @@
   "entrees": [
     {
       "id": 101,
-      "displayName": "Plain Dosa",
-      "name": "dosa",
+      "name": "Plain Dosa",
+      "name2": "dosa",
       "standardToppings": [],
       "standardSides": ["sambar", "chutney"],
-      "price": 1.50,
-      "description": "",
+      "price": "10",
+      "description": "plain lentil & rice crepe, one sambar, one coconut chutney",
       "meenuCategory": "entreee"
     },
     {
-      "id": 201,
-      "displayName": "Butter Dosa",
-      "name": "dosa",
+      "id": 102,
+      "name": "Masala Dosa",
+      "name2": "dosa",
       "standardToppings": ["ghee"],
       "standardSides": ["sambar", "chutney"],
-      "price": 1.50,
-      "description": ""
+      "price": "11",
+      "description": "lentil & rice crepe, herbed potato topping, one sambar, one coconut chutney"
     },
     {
-      "id": 201,
+      "id": 103,
       "name": "Gunpowder Dosa",
-      "price": 1.50,
-      "description": ""
+      "price": "11",
+      "description": "lentil & rice crepe spiced with lentil chili poowder, one sambar, one coconut chutney"
     },
     {
-      "id": 201,
-      "name": "Hyderabad Masala Dosa",
-      "price": 1.50,
-      "description": ""
-    },
-    {
-      "id": 201,
-      "name": "Mysore Masala Dosa",
-      "price": 1.50,
-      "description": ""
+      "id": 104,
+      "name": "Idliyappam",
+      "price": "8.50",
+      "description": "steamed rice hoppers, coconut milk, grated coconut"
     }
   ]
 }

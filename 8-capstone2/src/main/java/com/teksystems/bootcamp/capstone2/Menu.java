@@ -102,7 +102,8 @@ public class Menu {
             String name = entreeJsonObject.get("name").getAsString();
             String priceString = entreeJsonObject.get("price").getAsString();
             BigDecimal price = new BigDecimal(priceString);
-            Entree entree = new Entree(name, price);
+            String description = entreeJsonObject.get("description").getAsString();
+            Entree entree = new Entree(name, price, description);
             entrees.add(entree);
         }
         return entrees;
@@ -114,11 +115,12 @@ public class Menu {
         for (JsonElement thaliElement : jsonArrayOfThalis) {
             JsonObject thaliJsonObject = thaliElement.getAsJsonObject();
             String name = thaliJsonObject.get("name").getAsString();
+            String description = thaliJsonObject.get("description").getAsString();
             if(name.equals("Thali Meal")) {
-                ThaliMeal thali = new ThaliMeal(BigDecimal.ZERO);
+                ThaliMeal thali = new ThaliMeal(description);
                 thalis.add(thali);
             } else if(name.equals("Double Thali")) {
-                DoubleThali thali = new DoubleThali(BigDecimal.ZERO);
+                DoubleThali thali = new DoubleThali(description);
                 thalis.add(thali);
             }
         }

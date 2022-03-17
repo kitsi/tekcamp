@@ -13,7 +13,7 @@ public class Dosa extends Entree implements IDosa{
     }
 
     public Dosa(String name, BigDecimal price, DosaType dosaType) {
-        super(name, price);
+        super(name, price, "");
         this.dosaType = dosaType;
 
     }

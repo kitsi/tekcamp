@@ -2,6 +2,7 @@ package com.teksystems.bootcamp.capstone2;
 
 import com.teksystems.bootcamp.capstone2.logic.Order;
 import com.teksystems.bootcamp.capstone2.logic.ReceiptList;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.DosaTopping;
 import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuCategory;
 import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuItem;
 
@@ -169,26 +170,29 @@ public class RestaurantApp {
         private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
             Scanner input = new Scanner(System.in);
             String userChoice;
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
             System.out.println("Which main menu items would you like to order?");
             System.out.println("ENTREES");
             int i = 1;
             for(MenuItem entree : entrees) {
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ")");
+                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ") ~ " + entree.getDescription());
                 i++;
             }
-
+            System.out.println("OPTIONAL TOPPINGS");
+            for(DosaTopping topping : DosaTopping.values()) {
+                System.out.println(i + ") " + topping.name + " (" + formatter.format(topping.price) + ")");
+                i++;
+            }
             System.out.println("SIDES");
             for(MenuItem side : sides) {
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
                 System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
                 i++;
             }
 
             System.out.println("THALIS");
             for(MenuItem thali : thalis) {
-                System.out.println(i + ") " + thali.getName());
+                System.out.println(i + ") " + thali.getName() + " ~ " + thali.getDescription());
                 i++;
             }
 

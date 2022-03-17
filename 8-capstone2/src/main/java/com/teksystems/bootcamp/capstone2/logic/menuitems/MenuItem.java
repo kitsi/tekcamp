@@ -6,11 +6,13 @@ public class MenuItem {
     MenuCategory category;
     String name;
     BigDecimal price;
+    String description;
 
-    public MenuItem(MenuCategory menuCategory, String name, BigDecimal price) {
+    public MenuItem(MenuCategory menuCategory, String name, BigDecimal price, String description) {
         this.category = menuCategory;
         this.name = name;
         this.price = price;
+        this.description = description;
     }
 
     public MenuCategory getCategory() {
@@ -25,5 +27,7 @@ public class MenuItem {
         return price;
     }
 
-
+    public String getDescription() {
+        return description;
+    }
 }

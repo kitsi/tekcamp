@@ -7,8 +7,8 @@ import java.util.List;
 public class ThaliMeal extends MenuItem implements IThali{
     private List<MenuItem> thaliItems = new ArrayList<>();
 
-    public ThaliMeal(BigDecimal price) {
-        super(MenuCategory.THALI, "Thali Meal", price);
+    public ThaliMeal(String description) {
+        super(MenuCategory.THALI, "Thali Meal", BigDecimal.ZERO, description);
         this.thaliItems = thaliItems;
         this.price = calculateThaliPrice();
     }

@@ -4,16 +4,25 @@ import java.math.BigDecimal;
 
 public class Entree extends MenuItem{
 
-//    private List<Side> sides = new ArrayList<>();
-
-    public Entree(String name, BigDecimal price) {
-        super(MenuCategory.ENTREE, name, price);
+    public Entree(String name, BigDecimal price, String description) {
+        super(MenuCategory.ENTREE, name, price, description);
     }
+
+    //    @Override
+//    public String toString() {
+//        return "Entree{" +
+////                "sides=" + sides +
+//                ", category=" + category +
+//                ", name='" + name + '\'' +
+//                ", price=" + price +
+//                '}';
+//    }
+
 
     @Override
     public String toString() {
         return "Entree{" +
-//                "sides=" + sides +
+                "description='" + description + '\'' +
                 ", category=" + category +
                 ", name='" + name + '\'' +
                 ", price=" + price +

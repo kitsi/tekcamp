@@ -8,8 +8,8 @@ public class DoubleThali extends MenuItem implements IThali{
 
     private List<MenuItem> thaliItems = new ArrayList<>();
 
-    public DoubleThali(BigDecimal price) {
-        super(MenuCategory.THALI, "Double Thali", price);
+    public DoubleThali(String description) {
+        super(MenuCategory.THALI, "Double Thali", BigDecimal.ZERO, description);
         this.thaliItems = thaliItems;
         this.price = calculateThaliPrice();
     }
