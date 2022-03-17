@@ -12,7 +12,7 @@ import java.util.List;
 
 public class RestaurantApp {
     public static void main(String[] args) {
-//        welcome();
+        welcome();
         runApp();
     }
 
@@ -166,39 +166,6 @@ public class RestaurantApp {
         currentOrder.addItemToOrder(drinkChoice);
         System.out.println("End of takeDrinkOrder: " + currentOrder);
     }
-
-//        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
-//            Scanner input = new Scanner(System.in);
-//            String userChoice;
-//            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-//
-//            System.out.println("Which main menu items would you like to order?");
-//            System.out.println("ENTREES");
-//            int i = 1;
-//            for(MenuItem entree : entrees) {
-//                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ") ~ " + entree.getDescription());
-//                i++;
-//            }
-//            System.out.println("OPTIONAL TOPPINGS");
-//            for(DosaTopping topping : DosaTopping.values()) {
-//                System.out.println(i + ") " + topping.name + " (" + formatter.format(topping.price) + ")");
-//                i++;
-//            }
-//            System.out.println("SIDES");
-//            for(MenuItem side : sides) {
-//                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
-//                i++;
-//            }
-//
-//            System.out.println("THALIS");
-//            for(MenuItem thali : thalis) {
-//                System.out.println(i + ") " + thali.getName() + " ~ " + thali.getDescription());
-//                i++;
-//            }
-//
-//            System.out.println("\nPlease make your selection:");
-//            userChoice = input.nextLine().toLowerCase();
-//        }
 
     private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
         List<MenuItem> allMeals = new ArrayList<>();
