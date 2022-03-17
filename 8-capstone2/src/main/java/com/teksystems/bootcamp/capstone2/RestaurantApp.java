@@ -167,38 +167,99 @@ public class RestaurantApp {
         System.out.println("End of takeDrinkOrder: " + currentOrder);
     }
 
-        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
-            Scanner input = new Scanner(System.in);
-            String userChoice;
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+//        private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
+//            Scanner input = new Scanner(System.in);
+//            String userChoice;
+//            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+//
+//            System.out.println("Which main menu items would you like to order?");
+//            System.out.println("ENTREES");
+//            int i = 1;
+//            for(MenuItem entree : entrees) {
+//                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ") ~ " + entree.getDescription());
+//                i++;
+//            }
+//            System.out.println("OPTIONAL TOPPINGS");
+//            for(DosaTopping topping : DosaTopping.values()) {
+//                System.out.println(i + ") " + topping.name + " (" + formatter.format(topping.price) + ")");
+//                i++;
+//            }
+//            System.out.println("SIDES");
+//            for(MenuItem side : sides) {
+//                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
+//                i++;
+//            }
+//
+//            System.out.println("THALIS");
+//            for(MenuItem thali : thalis) {
+//                System.out.println(i + ") " + thali.getName() + " ~ " + thali.getDescription());
+//                i++;
+//            }
+//
+//            System.out.println("\nPlease make your selection:");
+//            userChoice = input.nextLine().toLowerCase();
+//        }
 
-            System.out.println("Which main menu items would you like to order?");
-            System.out.println("ENTREES");
-            int i = 1;
-            for(MenuItem entree : entrees) {
-                System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ") ~ " + entree.getDescription());
-                i++;
-            }
-            System.out.println("OPTIONAL TOPPINGS");
-            for(DosaTopping topping : DosaTopping.values()) {
-                System.out.println(i + ") " + topping.name + " (" + formatter.format(topping.price) + ")");
-                i++;
-            }
-            System.out.println("SIDES");
-            for(MenuItem side : sides) {
-                System.out.println(i + ") " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
-                i++;
-            }
+    private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
+        List<MenuItem> allMeals = new ArrayList<>();
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        MenuItem mealChoice = null;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
-            System.out.println("THALIS");
-            for(MenuItem thali : thalis) {
-                System.out.println(i + ") " + thali.getName() + " ~ " + thali.getDescription());
-                i++;
-            }
-
-            System.out.println("\nPlease make your selection:");
-            userChoice = input.nextLine().toLowerCase();
+        System.out.println("Which main menu items would you like to order?");
+        System.out.println("ENTREES");
+        int i = 1;
+        for (MenuItem entree : entrees) {
+            System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ") ~ " + entree.getDescription());
+            i++;
+            allMeals.add(entree);
         }
+        System.out.println("OPTIONAL TOPPINGS");
+        for (DosaTopping topping : DosaTopping.values()) {
+            System.out.println(" ~ " + topping.name + " (" + formatter.format(topping.price) + ")");
+//                i++;
+        }
+        System.out.println("SIDES");
+        for (MenuItem side : sides) {
+            System.out.println(" ** " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
+//                i++;
+        }
+
+        System.out.println("THALIS");
+        for (MenuItem thali : thalis) {
+            System.out.println(i + ") " + thali.getName() + " ~ " + thali.getDescription());
+            i++;
+            allMeals.add(thali);
+        }
+
+        System.out.println("\nPlease make your selection:");
+        userChoice = input.nextLine().toLowerCase();
+        for (MenuItem meal : allMeals) {
+            if (userChoice.equals("1") && meal.getName().equals("Plain Dosa")) {
+                System.out.println("option1 in takeMainOrder printing");
+                mealChoice = meal;
+            } else if (userChoice.equals("2") && meal.getName().equals("Masala Dosa")) {
+                System.out.println("option2 in takeMainOrder printing");
+                mealChoice = meal;
+            } else if (userChoice.equals("3") && meal.getName().equals("Gunpowder Dosa")) {
+                System.out.println("option3 in takeMainOrder printing");
+                mealChoice = meal;
+            } else if (userChoice.equals("4") && meal.getName().equals("Idliyappam")) {
+                System.out.println("option4 in takeMainOrder printing");
+                mealChoice = meal;
+            } else if (userChoice.equals("5") && meal.getName().equals("Double Thali")) {
+                System.out.println("option5 in takeMainOrder printing");
+                mealChoice = meal;
+            } else if (userChoice.equals("6") && meal.getName().equals("Thali Meal")) {
+                System.out.println("option5 in takeMainOrder printing");
+                mealChoice = meal;
+            }
+        }
+        System.out.println("meal choice in takeMainOrder: " + mealChoice);
+        currentOrder.addItemToOrder(mealChoice);
+        System.out.println("End of takeMainOrder: " + currentOrder);
+    }
 
     private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
         Scanner input = new Scanner(System.in);
