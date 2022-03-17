@@ -43,7 +43,8 @@ public class RestaurantApp {
                 MenuItem mealChosen = takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI));
                 currentOrder.addItemToOrder(mealChosen);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
-                takeDessertOrder(allMenus.get(MenuCategory.DESSERT), currentOrder);
+                MenuItem dessertChosen = takeDessertOrder(allMenus.get(MenuCategory.DESSERT));
+                currentOrder.addItemToOrder(dessertChosen);
             } else {
                 isQuit = closeOrder(currentOrder, receipts);
             }
@@ -209,11 +210,10 @@ public class RestaurantApp {
                 mealChoice = meal;
             }
         }
-//        currentOrder.addItemToOrder(mealChoice);
         return mealChoice;
     }
 
-    private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
+    private static MenuItem takeDessertOrder(List<MenuItem> dessertMenuitems) {
         Scanner input = new Scanner(System.in);
         String userChoice;
         MenuItem dessertChoice = null;
@@ -240,7 +240,7 @@ public class RestaurantApp {
                 dessertChoice = dessert;
             }
         }
-        currentOrder.addItemToOrder(dessertChoice);
+        return dessertChoice;
     }
 
     private static void welcome() {
