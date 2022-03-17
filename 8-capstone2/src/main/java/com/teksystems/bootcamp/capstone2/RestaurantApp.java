@@ -223,15 +223,15 @@ public class RestaurantApp {
         boolean isQuit = false;
 
         do {
-            System.out.println("Would you like to customize Sides/Toppings? [y/n]");
+            System.out.println("Would you like to customize Toppings? [y/n]");
             userChoice1 = input.nextLine().toLowerCase();
 
             if(userChoice1.equals("y")) {
-                System.out.println("These are the current toppings & sides for your meal:");
-                System.out.println("SIDE(S)");
-                for(Side side : ((Entree) entree).getSides()) {
-                    System.out.println(side.getName());
-                }
+                System.out.println("These are the current toppings for your meal:");
+//                System.out.println("SIDE(S)");
+//                for(Side side : ((Entree) entree).getSides()) {
+//                    System.out.println(side.getName());
+//                }
                 System.out.println("TOPPING(S)");
                 if(((Entree) entree).getToppings().isEmpty()) {
                     System.out.println("none");
@@ -240,16 +240,17 @@ public class RestaurantApp {
                         System.out.println(topping.name);
                     }
                 }
-                System.out.println("1) Add topping, 2) Remove topping, 3) Add Side, 4) Remove Side, 5) Quit");
+//                System.out.println("1) Add topping, 2) Remove topping, 3) Add Side, 4) Remove Side, 5) Quit");
+                System.out.println("1) Add topping, 2) Remove topping, 3) Quit");
                 userChoice2 = input.nextLine();
                 if(userChoice2.equals("1")) {
                     newEntree = addTopping(entree);
                 } else if(userChoice2.equals("2")) {
                     newEntree = removeTopping(entree);
-                } else if(userChoice2.equals("3")) {
-                    // add side
-                } else if(userChoice2.equals("4")) {
-                    // remove side
+//                } else if(userChoice2.equals("3")) {
+//                    newEntree = addSide(entree);
+//                } else if(userChoice2.equals("4")) {
+////                    newEntree = removeSide(entree);
                 } else {
                     isQuit = true;
                 }
@@ -260,6 +261,36 @@ public class RestaurantApp {
 
         return newEntree;
     }
+
+//    private static Entree addSide(MenuItem entree) {
+//        Scanner input = new Scanner(System.in);
+//        String userChoice;
+//        Topping sideChoice = null;
+//        Entree newEntree = (Entree) entree;
+//        System.out.println("What side would you like to add?");
+//        int i = 1;
+////        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+//        if(newEntree.getSides().size() <= Entree.MAX_SIDES) {
+//            for (MenuItem side : sides) {
+//                System.out.println(" ** " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
+//            }
+//            System.out.println("Please make your selection: ");
+//            userChoice = input.nextLine().toLowerCase();
+//            for(Topping topping : Topping.values()) {
+//                if(userChoice.equals("1") && topping.equals(Topping.HERBED_POTATO)) {
+//                    toppingChoice = topping;
+//                } else if(userChoice.equals("2") && topping.equals(Topping.JACKFRUIT)) {
+//                    toppingChoice = topping;
+//                } else if(userChoice.equals("3") && topping.equals(Topping.PEPPER_MUSHROOM)) {
+//                    toppingChoice = topping;
+//                }
+//            }
+//            newEntree.addEntreeTopping(toppingChoice);
+//        } else {
+//            System.out.println("This entree already has 2 toppings.");
+//        }
+//        return newEntree;
+//    }
 
     private static Entree removeTopping(MenuItem entree) {
         Scanner input = new Scanner(System.in);
