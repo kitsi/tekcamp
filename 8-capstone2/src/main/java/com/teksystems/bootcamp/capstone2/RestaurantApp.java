@@ -37,7 +37,8 @@ public class RestaurantApp {
             System.out.println("1) Drinks\n2) Main\n3) Desserts\n");
             userChoice = input.nextLine().toLowerCase();
             if(userChoice.equals("1") || (userChoice.equals("drinks"))) {
-                takeDrinkOrder(allMenus.get(MenuCategory.DRINK), currentOrder);
+                MenuItem drinkChosen = takeDrinkOrder(allMenus.get(MenuCategory.DRINK));
+                currentOrder.addItemToOrder(drinkChosen);
             } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
                 takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
@@ -131,7 +132,7 @@ public class RestaurantApp {
         return newOrder;
     }
 
-    private static void takeDrinkOrder(List<MenuItem> drinkMenuItems, Order currentOrder) {
+    private static MenuItem takeDrinkOrder(List<MenuItem> drinkMenuItems) {
         Scanner input = new Scanner(System.in);
         String userChoice;
         MenuItem drinkChoice = null;
@@ -156,7 +157,7 @@ public class RestaurantApp {
                 drinkChoice = drink;
             }
         }
-        currentOrder.addItemToOrder(drinkChoice);
+        return drinkChoice;
     }
 
     private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
