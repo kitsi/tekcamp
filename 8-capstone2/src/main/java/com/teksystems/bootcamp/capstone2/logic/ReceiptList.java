@@ -1,7 +1,5 @@
 package com.teksystems.bootcamp.capstone2.logic;
 
-import com.teksystems.bootcamp.capstone2.logic.Order;
-
 import java.util.List;
 
 public class ReceiptList {

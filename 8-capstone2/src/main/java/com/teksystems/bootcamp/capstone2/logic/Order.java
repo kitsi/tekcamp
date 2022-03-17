@@ -34,7 +34,6 @@ public class Order {
         calculateSubtotal();
         calculateTax();
         calculateTotal();
-        System.out.println(orderItems);
         return orderItems;
     }
 

@@ -79,12 +79,7 @@ public class RestaurantApp {
         String userChoice;
         System.out.println("Would you like to place another order?");
         userChoice = input.nextLine().toLowerCase();
-        System.out.println(userChoice);
-        if(userChoice.equals("y")) {
-            return true;
-        } else {
-            return false;
-        }
+        return userChoice.equals("y");
     }
 
     private static boolean closeOrder(Order currentOrder, ReceiptList receipts) {
@@ -101,7 +96,6 @@ public class RestaurantApp {
     }
 
     private static void displayReceipt(Order order) {
-        System.out.println(order);
         System.out.println("Order number: " + order.getOrderNumber());
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
         for(MenuItem item : order.getOrderItems()) {
@@ -109,7 +103,7 @@ public class RestaurantApp {
         }
         System.out.println("Subtotal: " + formatter.format(order.calculateSubtotal()));
         System.out.println("Tax: " + formatter.format(order.calculateTax()));
-        System.out.println("Total: " + formatter.format(order.calculateTotal()));
+        System.out.println("Total: " + formatter.format(order.calculateTotal()) + "\n");
     }
 
     private static ReceiptList createReceiptList() {
@@ -129,7 +123,6 @@ public class RestaurantApp {
         }
         List<MenuItem> orderItems = new ArrayList<>();
         newOrder.setOrderItems(orderItems);
-        System.out.println(newOrder);
         return newOrder;
     }
 
@@ -149,22 +142,16 @@ public class RestaurantApp {
         userChoice = input.nextLine().toLowerCase();
         for(MenuItem drink : drinkMenuItems) {
             if((userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi")) && drink.getName().equals("Mango Lassi")) {
-                System.out.println("option1 in takeDrinkOrder printing");
                 drinkChoice = drink;
             } else if((userChoice.equals("2") || userChoice.contains("chai")) && (drink.getName().equals("Chai"))) {
-                System.out.println("option2 in takeDrinkOrder printing");
                 drinkChoice = drink;
             } else if((userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade")) && (drink.getName().equals("Lavender Coconut Lemonade"))) {
-                System.out.println("option3 in takeDrinkOrder printing");
                 drinkChoice = drink;
             } else if((userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer")) && (drink.getName().equals("Rose Mint Spritzer"))) {
-                System.out.println("option4 in takeDrinkOrder printing");
                 drinkChoice = drink;
             }
         }
-        System.out.println("drink choice in takeDrinkOrder: " + drinkChoice);
         currentOrder.addItemToOrder(drinkChoice);
-        System.out.println("End of takeDrinkOrder: " + currentOrder);
     }
 
     private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
@@ -185,12 +172,10 @@ public class RestaurantApp {
         System.out.println("OPTIONAL TOPPINGS");
         for (DosaTopping topping : DosaTopping.values()) {
             System.out.println(" ~ " + topping.name + " (" + formatter.format(topping.price) + ")");
-//                i++;
         }
         System.out.println("SIDES");
         for (MenuItem side : sides) {
             System.out.println(" ** " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
-//                i++;
         }
 
         System.out.println("THALIS");
@@ -204,28 +189,20 @@ public class RestaurantApp {
         userChoice = input.nextLine().toLowerCase();
         for (MenuItem meal : allMeals) {
             if (userChoice.equals("1") && meal.getName().equals("Plain Dosa")) {
-                System.out.println("option1 in takeMainOrder printing");
                 mealChoice = meal;
             } else if (userChoice.equals("2") && meal.getName().equals("Masala Dosa")) {
-                System.out.println("option2 in takeMainOrder printing");
                 mealChoice = meal;
             } else if (userChoice.equals("3") && meal.getName().equals("Gunpowder Dosa")) {
-                System.out.println("option3 in takeMainOrder printing");
                 mealChoice = meal;
             } else if (userChoice.equals("4") && meal.getName().equals("Idliyappam")) {
-                System.out.println("option4 in takeMainOrder printing");
                 mealChoice = meal;
             } else if (userChoice.equals("5") && meal.getName().equals("Double Thali")) {
-                System.out.println("option5 in takeMainOrder printing");
                 mealChoice = meal;
             } else if (userChoice.equals("6") && meal.getName().equals("Thali Meal")) {
-                System.out.println("option5 in takeMainOrder printing");
                 mealChoice = meal;
             }
         }
-        System.out.println("meal choice in takeMainOrder: " + mealChoice);
         currentOrder.addItemToOrder(mealChoice);
-        System.out.println("End of takeMainOrder: " + currentOrder);
     }
 
     private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
@@ -244,25 +221,18 @@ public class RestaurantApp {
         userChoice = input.nextLine().toLowerCase();
         for(MenuItem dessert : dessertMenuitems) {
             if((userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada")) && dessert.getName().equals("Chakka Ela Ada")) {
-                System.out.println("option1 in takeDessertOrder printing");
                 dessertChoice = dessert;
             } else if((userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream")) && dessert.getName().equals("Jackfruit Ice Cream")) {
-                System.out.println("option2 in takeDessertOrder printing");
                 dessertChoice = dessert;
             } else if((userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva")) && dessert.getName().equals("Beet Halwa")) {
-                System.out.println("option3 in takeDessertOrder printing");
                 dessertChoice = dessert;
             } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun (2 pieces)")) {
-                System.out.println("option4 in takeDessertOrder printing");
                 dessertChoice = dessert;
             } else if((userChoice.equals("5") || userChoice.contains("dates") || userChoice.contains("apple")) && dessert.getName().equals("Dates Apple Pradhaman")) {
-                System.out.println("option5 in takeDessertOrder printing");
                 dessertChoice = dessert;
             }
         }
-        System.out.println("dessert choice in takeDessertOrder: " + dessertChoice);
         currentOrder.addItemToOrder(dessertChoice);
-        System.out.println("End of takeDessertOrder: " + currentOrder);
     }
 
     private static void welcome() {
