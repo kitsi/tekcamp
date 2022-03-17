@@ -133,39 +133,39 @@ public class RestaurantApp {
         return newOrder;
     }
 
-        private static void takeDrinkOrder(List<MenuItem> drinkMenuItems, Order currentOrder) {
-            Scanner input = new Scanner(System.in);
-            String userChoice;
-            MenuItem drinkChoice = null;
-            System.out.println("Which drink would you like to order?");
-            int i = 1;
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-            for(MenuItem drink : drinkMenuItems) {
-                System.out.println(i + ") " + drink.getName() + " (" + formatter.format(drink.getPrice()) + ")");
-                i++;
-            }
-
-            System.out.println("\nPlease make your selection:");
-            userChoice = input.nextLine().toLowerCase();
-            for(MenuItem drink : drinkMenuItems) {
-                if((userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi")) && drink.getName().equals("Mango Lassi")) {
-                    System.out.println("option1 in takeDrinkOrder printing");
-                    drinkChoice = drink;
-                } else if((userChoice.equals("2") || userChoice.contains("chai")) && (drink.getName().equals("Chai"))) {
-                    System.out.println("option2 in takeDrinkOrder printing");
-                    drinkChoice = drink;
-                } else if((userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade")) && (drink.getName().equals("Lavender Coconut Lemonade"))) {
-                    System.out.println("option3 in takeDrinkOrder printing");
-                    drinkChoice = drink;
-                } else if((userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer")) && (drink.getName().equals("Rose Mint Spritzer"))) {
-                    System.out.println("option4 in takeDrinkOrder printing");
-                    drinkChoice = drink;
-                }
-            }
-            System.out.println("drink choice in takeDrinkOrder: " + drinkChoice);
-            currentOrder.addItemToOrder(drinkChoice);
-            System.out.println("End of takeDrinkOrder: " + currentOrder);
+    private static void takeDrinkOrder(List<MenuItem> drinkMenuItems, Order currentOrder) {
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        MenuItem drinkChoice = null;
+        System.out.println("Which drink would you like to order?");
+        int i = 1;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        for(MenuItem drink : drinkMenuItems) {
+            System.out.println(i + ") " + drink.getName() + " (" + formatter.format(drink.getPrice()) + ")");
+            i++;
         }
+
+        System.out.println("\nPlease make your selection:");
+        userChoice = input.nextLine().toLowerCase();
+        for(MenuItem drink : drinkMenuItems) {
+            if((userChoice.equals("1") || userChoice.contains("mango") || userChoice.contains("lassi")) && drink.getName().equals("Mango Lassi")) {
+                System.out.println("option1 in takeDrinkOrder printing");
+                drinkChoice = drink;
+            } else if((userChoice.equals("2") || userChoice.contains("chai")) && (drink.getName().equals("Chai"))) {
+                System.out.println("option2 in takeDrinkOrder printing");
+                drinkChoice = drink;
+            } else if((userChoice.equals("3") || userChoice.contains("lavender") || userChoice.contains("coconut") || userChoice.contains("lemonade")) && (drink.getName().equals("Lavender Coconut Lemonade"))) {
+                System.out.println("option3 in takeDrinkOrder printing");
+                drinkChoice = drink;
+            } else if((userChoice.equals("4") || userChoice.contains("rose") || userChoice.contains("mint") || userChoice.contains("spritzer")) && (drink.getName().equals("Rose Mint Spritzer"))) {
+                System.out.println("option4 in takeDrinkOrder printing");
+                drinkChoice = drink;
+            }
+        }
+        System.out.println("drink choice in takeDrinkOrder: " + drinkChoice);
+        currentOrder.addItemToOrder(drinkChoice);
+        System.out.println("End of takeDrinkOrder: " + currentOrder);
+    }
 
         private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
             Scanner input = new Scanner(System.in);
@@ -200,46 +200,46 @@ public class RestaurantApp {
             userChoice = input.nextLine().toLowerCase();
         }
 
-        private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
-            Scanner input = new Scanner(System.in);
-            String userChoice;
-            MenuItem dessertChoice = null;
-            System.out.println("Which dessert would you like to order?");
-            int i = 1;
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-            for(MenuItem dessert : dessertMenuitems) {
-                System.out.println(i + ") " + dessert.getName() + " (" + formatter.format(dessert.getPrice()) + ")");
-                i++;
-            }
-
-            System.out.println("\nPlease make your selection:");
-            userChoice = input.nextLine().toLowerCase();
-            for(MenuItem dessert : dessertMenuitems) {
-                if((userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada")) && dessert.getName().equals("Chakka Ela Ada")) {
-                    System.out.println("option1 in takeDessertOrder printing");
-                    dessertChoice = dessert;
-                } else if((userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream")) && dessert.getName().equals("Jackfruit Ice Cream")) {
-                    System.out.println("option2 in takeDessertOrder printing");
-                    dessertChoice = dessert;
-                } else if((userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva")) && dessert.getName().equals("Beet Halwa")) {
-                    System.out.println("option3 in takeDessertOrder printing");
-                    dessertChoice = dessert;
-                } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun (2 pieces)")) {
-                    System.out.println("option4 in takeDessertOrder printing");
-                    dessertChoice = dessert;
-                } else if((userChoice.equals("5") || userChoice.contains("dates") || userChoice.contains("apple")) && dessert.getName().equals("Dates Apple Pradhaman")) {
-                    System.out.println("option5 in takeDessertOrder printing");
-                    dessertChoice = dessert;
-                }
-            }
-            System.out.println("dessert choice in takeDessertOrder: " + dessertChoice);
-            currentOrder.addItemToOrder(dessertChoice);
-            System.out.println("End of takeDessertOrder: " + currentOrder);
+    private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        MenuItem dessertChoice = null;
+        System.out.println("Which dessert would you like to order?");
+        int i = 1;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        for(MenuItem dessert : dessertMenuitems) {
+            System.out.println(i + ") " + dessert.getName() + " (" + formatter.format(dessert.getPrice()) + ")");
+            i++;
         }
 
-        private static void welcome() {
-            System.out.println("Welcome to Dosa Fusion, you're in for a treat!");
-            System.out.println("Here's a table with a beautiful view.");
-            System.out.println("And here are the menus for you to peruse.");
+        System.out.println("\nPlease make your selection:");
+        userChoice = input.nextLine().toLowerCase();
+        for(MenuItem dessert : dessertMenuitems) {
+            if((userChoice.equals("1") || userChoice.equals("chakka") || userChoice.equals("ela") || userChoice.equals("ada")) && dessert.getName().equals("Chakka Ela Ada")) {
+                System.out.println("option1 in takeDessertOrder printing");
+                dessertChoice = dessert;
+            } else if((userChoice.equals("2") || userChoice.contains("jackfruit") || userChoice.contains("ice") || userChoice.contains("cream")) && dessert.getName().equals("Jackfruit Ice Cream")) {
+                System.out.println("option2 in takeDessertOrder printing");
+                dessertChoice = dessert;
+            } else if((userChoice.equals("3") || userChoice.contains("beet") || userChoice.contains("halwa") || userChoice.contains("halva")) && dessert.getName().equals("Beet Halwa")) {
+                System.out.println("option3 in takeDessertOrder printing");
+                dessertChoice = dessert;
+            } else if((userChoice.equals("4") || userChoice.contains("gulab") || userChoice.contains("jamun")) && dessert.getName().equals("Gulab Jamun (2 pieces)")) {
+                System.out.println("option4 in takeDessertOrder printing");
+                dessertChoice = dessert;
+            } else if((userChoice.equals("5") || userChoice.contains("dates") || userChoice.contains("apple")) && dessert.getName().equals("Dates Apple Pradhaman")) {
+                System.out.println("option5 in takeDessertOrder printing");
+                dessertChoice = dessert;
+            }
         }
+        System.out.println("dessert choice in takeDessertOrder: " + dessertChoice);
+        currentOrder.addItemToOrder(dessertChoice);
+        System.out.println("End of takeDessertOrder: " + currentOrder);
     }
+
+    private static void welcome() {
+        System.out.println("Welcome to Dosa Fusion, you're in for a treat!");
+        System.out.println("Here's a table with a beautiful view.");
+        System.out.println("And here are the menus for you to peruse.");
+    }
+}
