@@ -40,7 +40,8 @@ public class RestaurantApp {
                 MenuItem drinkChosen = takeDrinkOrder(allMenus.get(MenuCategory.DRINK));
                 currentOrder.addItemToOrder(drinkChosen);
             } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
-                takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), currentOrder);
+                MenuItem mealChosen = takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI));
+                currentOrder.addItemToOrder(mealChosen);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
                 takeDessertOrder(allMenus.get(MenuCategory.DESSERT), currentOrder);
             } else {
@@ -160,7 +161,7 @@ public class RestaurantApp {
         return drinkChoice;
     }
 
-    private static void takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, Order currentOrder) {
+    private static MenuItem takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis) {
         List<MenuItem> allMeals = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         String userChoice;
@@ -208,7 +209,8 @@ public class RestaurantApp {
                 mealChoice = meal;
             }
         }
-        currentOrder.addItemToOrder(mealChoice);
+//        currentOrder.addItemToOrder(mealChoice);
+        return mealChoice;
     }
 
     private static void takeDessertOrder(List<MenuItem> dessertMenuitems, Order currentOrder) {
