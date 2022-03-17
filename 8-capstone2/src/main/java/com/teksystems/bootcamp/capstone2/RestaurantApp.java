@@ -237,15 +237,57 @@ public class RestaurantApp {
                         System.out.println(topping.name);
                     }
                 }
-                System.out.println("1) Add topping, 2) Remove topping, 3) Add Side, 4) Reemove Side");
+                System.out.println("1) Add topping, 2) Remove topping, 3) Add Side, 4) Remove Side, 5) Quit");
                 userChoice2 = input.nextLine();
-                System.out.println(userChoice2);
+                if(userChoice2.equals("1")) {
+                    newEntree = addTopping(entree);
+                } else if(userChoice2.equals("2")) {
+//                    newEntree = removeTopping(entree);
+                } else if(userChoice2.equals("3")) {
+                    // add side
+                } else if(userChoice2.equals("4")) {
+                    // remove side
+                } else {
+                    isQuit = true;
+                }
             } else {
-                newEntree = (Entree) entree;
                 isQuit = true;
             }
         } while(!isQuit);
 
+        return newEntree;
+    }
+
+
+
+    private static Entree addTopping(MenuItem entree) {
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        Topping toppingChoice = null;
+        Entree newEntree = (Entree) entree;
+        System.out.println("What topping would you like to add?");
+        int i = 1;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        if(newEntree.getToppings().size() <= Entree.MAX_TOPPINGS) {
+            for(Topping topping : Topping.values()) {
+                System.out.println(i + ") " + topping.name + " (" + formatter.format(topping.price) + ")");
+                i++;
+            }
+            System.out.println("Please make your selection: ");
+            userChoice = input.nextLine().toLowerCase();
+            for(Topping topping : Topping.values()) {
+                if(userChoice.equals("1") && topping.equals(Topping.HERBED_POTATO)) {
+                    toppingChoice = topping;
+                } else if(userChoice.equals("2") && topping.equals(Topping.JACKFRUIT)) {
+                    toppingChoice = topping;
+                } else if(userChoice.equals("3") && topping.equals(Topping.PEPPER_MUSHROOM)) {
+                    toppingChoice = topping;
+                }
+            }
+            newEntree.addEntreeTopping(toppingChoice);
+        } else {
+            System.out.println("This entree already has 2 toppings.");
+        }
         return newEntree;
     }
 

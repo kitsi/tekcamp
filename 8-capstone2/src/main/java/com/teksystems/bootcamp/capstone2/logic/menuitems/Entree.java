@@ -7,11 +7,15 @@ import java.util.List;
 public class Entree extends MenuItem{
     private List<Side> sides = new ArrayList<>();
     private List<Topping> toppings = new ArrayList<>();
+    public final static int MAX_TOPPINGS = 2;
+    public final static int MAX_SIDES = 2;
 
     public Entree(String name, BigDecimal price, String description) {
         super(MenuCategory.ENTREE, name, description);
         this.price = price;
     }
+
+
 
     public List<Side> getSides() {
         return sides;
