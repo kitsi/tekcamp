@@ -2,12 +2,8 @@ package com.teksystems.bootcamp.capstone2;
 
 import com.teksystems.bootcamp.capstone2.logic.Order;
 import com.teksystems.bootcamp.capstone2.logic.ReceiptList;
-import com.teksystems.bootcamp.capstone2.logic.menuitems.DosaTopping;
-import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuCategory;
-import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuItem;
-import com.teksystems.bootcamp.capstone2.logic.menuitems.ThaliMeal;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.*;
 
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.List;
@@ -180,7 +176,7 @@ public class RestaurantApp {
             allMeals.add(entree);
         }
         System.out.println("OPTIONAL TOPPINGS");
-        for (DosaTopping topping : DosaTopping.values()) {
+        for (Topping topping : Topping.values()) {
             System.out.println(" ~ " + topping.name + " (" + formatter.format(topping.price) + ")");
         }
         System.out.println("SIDES");
@@ -200,6 +196,7 @@ public class RestaurantApp {
         for (MenuItem meal : allMeals) {
             if (userChoice.equals("1") && meal.getName().equals("Plain Dosa")) {
                 mealChoice = meal;
+                mealChoice = customizeSidesToppings(mealChoice, sides);
             } else if (userChoice.equals("2") && meal.getName().equals("Masala Dosa")) {
                 mealChoice = meal;
             } else if (userChoice.equals("3") && meal.getName().equals("Gunpowder Dosa")) {
@@ -212,6 +209,21 @@ public class RestaurantApp {
             }
         }
         return mealChoice;
+    }
+
+    private static Entree customizeSidesToppings(MenuItem entree, List<MenuItem> sides) {
+        Scanner input = new Scanner(System.in);
+//        String userChoice;
+        Entree newEntree = (Entree) entree;
+        System.out.println("Would you like to customize Sides/Toppings? [y/n]");
+        String userChoice1 = input.nextLine().toLowerCase();
+        if(userChoice1.equals("y")) {
+            // do something
+        } else {
+            // do something
+        }
+
+        return newEntree;
     }
 
     private static ThaliMeal addThaliItems(MenuItem thaliMeal, List<MenuItem> drinks, List<MenuItem> entrees, List<MenuItem> desserts, List<MenuItem> sides) {
@@ -241,7 +253,7 @@ public class RestaurantApp {
             allMeals.add(entree);
         }
         System.out.println("OPTIONAL TOPPINGS");
-        for (DosaTopping topping : DosaTopping.values()) {
+        for (Topping topping : Topping.values()) {
             System.out.println(" ~ " + topping.name + " (" + formatter.format(topping.price) + ")");
         }
         System.out.println("SIDES");

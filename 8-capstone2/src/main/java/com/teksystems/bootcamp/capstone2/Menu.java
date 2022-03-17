@@ -97,6 +97,8 @@ public class Menu {
     private List<MenuItem> processEntrees(JsonObject fileObject) {
         JsonArray jsonArrayOfEntrees = fileObject.get("entrees").getAsJsonArray();
         List<MenuItem> entrees = new ArrayList<>();
+        List<MenuItem> sides = new ArrayList<>();
+        List<MenuItem> toppings = new ArrayList<>();
         for (JsonElement entreeElement : jsonArrayOfEntrees) {
             JsonObject entreeJsonObject = entreeElement.getAsJsonObject();
             String name = entreeJsonObject.get("name").getAsString();
