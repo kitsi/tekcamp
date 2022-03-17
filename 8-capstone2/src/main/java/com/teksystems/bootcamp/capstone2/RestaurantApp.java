@@ -5,6 +5,7 @@ import com.teksystems.bootcamp.capstone2.logic.ReceiptList;
 import com.teksystems.bootcamp.capstone2.logic.menuitems.DosaTopping;
 import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuCategory;
 import com.teksystems.bootcamp.capstone2.logic.menuitems.MenuItem;
+import com.teksystems.bootcamp.capstone2.logic.menuitems.ThaliMeal;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -40,7 +41,7 @@ public class RestaurantApp {
                 MenuItem drinkChosen = takeDrinkOrder(allMenus.get(MenuCategory.DRINK));
                 currentOrder.addItemToOrder(drinkChosen);
             } else if(userChoice.equals("2") || (userChoice.equals("main"))) {
-                MenuItem mealChosen = takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI));
+                MenuItem mealChosen = takeMainOrder(allMenus.get(MenuCategory.ENTREE), allMenus.get(MenuCategory.SIDE), allMenus.get(MenuCategory.THALI), allMenus.get(MenuCategory.DRINK), allMenus.get(MenuCategory.DESSERT));
                 currentOrder.addItemToOrder(mealChosen);
             } else if(userChoice.equals("3") || (userChoice.equals("desserts"))) {
                 MenuItem dessertChosen = takeDessertOrder(allMenus.get(MenuCategory.DESSERT));
@@ -162,7 +163,7 @@ public class RestaurantApp {
         return drinkChoice;
     }
 
-    private static MenuItem takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis) {
+    private static MenuItem takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides, List<MenuItem> thalis, List<MenuItem> drinks, List<MenuItem> desserts) {
         List<MenuItem> allMeals = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         String userChoice;
@@ -207,6 +208,58 @@ public class RestaurantApp {
             } else if (userChoice.equals("5") && meal.getName().equals("Double Thali")) {
                 mealChoice = meal;
             } else if (userChoice.equals("6") && meal.getName().equals("Thali Meal")) {
+                mealChoice = meal;
+                mealChoice = addThaliItems(mealChoice, drinks, entrees, desserts, sides);
+            }
+        }
+        return mealChoice;
+    }
+
+    private static ThaliMeal addThaliItems(MenuItem thaliMeal, List<MenuItem> drinks, List<MenuItem> entrees, List<MenuItem> desserts, List<MenuItem> sides) {
+        ThaliMeal newThaliMeal = (ThaliMeal) thaliMeal;
+        MenuItem drinkToAdd = takeDrinkOrder(drinks);
+        newThaliMeal.addThaliItem(drinkToAdd);
+        MenuItem entreeToAdd = takeMainOrder(entrees, sides);
+        newThaliMeal.addThaliItem(entreeToAdd);
+        MenuItem dessertToAdd = takeDessertOrder(desserts);
+        newThaliMeal.addThaliItem(dessertToAdd);
+        return newThaliMeal;
+    }
+
+    private static MenuItem takeMainOrder(List<MenuItem> entrees, List<MenuItem> sides) {
+        List<MenuItem> allMeals = new ArrayList<>();
+        Scanner input = new Scanner(System.in);
+        String userChoice;
+        MenuItem mealChoice = null;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+
+        System.out.println("Which main menu items would you like to order?");
+        System.out.println("ENTREES");
+        int i = 1;
+        for (MenuItem entree : entrees) {
+            System.out.println(i + ") " + entree.getName() + " (" + formatter.format(entree.getPrice()) + ") ~ " + entree.getDescription());
+            i++;
+            allMeals.add(entree);
+        }
+        System.out.println("OPTIONAL TOPPINGS");
+        for (DosaTopping topping : DosaTopping.values()) {
+            System.out.println(" ~ " + topping.name + " (" + formatter.format(topping.price) + ")");
+        }
+        System.out.println("SIDES");
+        for (MenuItem side : sides) {
+            System.out.println(" ** " + side.getName() + " (" + formatter.format(side.getPrice()) + ")");
+        }
+
+        System.out.println("\nPlease make your selection:");
+        userChoice = input.nextLine().toLowerCase();
+        for (MenuItem meal : allMeals) {
+            if (userChoice.equals("1") && meal.getName().equals("Plain Dosa")) {
+                mealChoice = meal;
+            } else if (userChoice.equals("2") && meal.getName().equals("Masala Dosa")) {
+                mealChoice = meal;
+            } else if (userChoice.equals("3") && meal.getName().equals("Gunpowder Dosa")) {
+                mealChoice = meal;
+            } else if (userChoice.equals("4") && meal.getName().equals("Idliyappam")) {
                 mealChoice = meal;
             }
         }
