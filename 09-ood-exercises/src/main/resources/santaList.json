@@ -1,0 +1,25 @@
+{
+  "santaList": [
+    {
+      "categoryName": "naughty",
+      "childName": [
+        "Jafar",
+        "Scar",
+        "Grinch",
+        "Cruella",
+        "Road Runner"
+      ]
+    },
+    {
+      "categoryName": "nice",
+      "childName": [
+        "Aladdin",
+        "Bugs Bunny",
+        "Charlie Brown",
+        "Daffy Duck",
+        "Fred Flintstone"
+      ]
+    }
+  ]
+}
+

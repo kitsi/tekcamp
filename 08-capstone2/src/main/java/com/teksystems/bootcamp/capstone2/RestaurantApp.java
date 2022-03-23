@@ -328,7 +328,6 @@ public class RestaurantApp {
         Entree newEntree = (Entree) entree;
         System.out.println("What topping would you like to add?");
         int i = 1;
-//        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
         if(newEntree.getToppings().size() <= Entree.MAX_TOPPINGS) {
             for(Topping topping : Topping.values()) {
                 System.out.println(i + ") " + topping.name);
