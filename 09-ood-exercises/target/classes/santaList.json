@@ -2,7 +2,7 @@
   "santaList": [
     {
       "categoryName": "naughty",
-      "childName": [
+      "childNames": [
         "Jafar",
         "Scar",
         "Grinch",
@@ -12,7 +12,7 @@
     },
     {
       "categoryName": "nice",
-      "childName": [
+      "childNames": [
         "Aladdin",
         "Bugs Bunny",
         "Charlie Brown",

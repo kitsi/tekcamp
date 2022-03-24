@@ -3,21 +3,39 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class FactoriesTest {
     @BeforeTest
-    public void beforeTest() {
-        Map<String, ChildCategory> santaList = new HashMap<>() {{
-            put("Cruella", ChildCategory.NAUGHTY);
-            put("Tinker Bell", ChildCategory.NICE);
+    private HashMap<ChildCategory, List<String>> createSantaMap() {
+        List<String> naughtyList = new ArrayList<>(Arrays.asList("Cruella"));
+        List<String> niceList = new ArrayList<>(Arrays.asList("Jasmine"));
+        Map<ChildCategory, List<String>> santaMap = new HashMap<>() {{
+            put(ChildCategory.NAUGHTY, naughtyList);
+            put(ChildCategory.NICE, niceList);
         }};
+        return (HashMap<ChildCategory, List<String>>) santaMap;
+    }
+
+    private Type getFactoryType(String childName) {
+        Map<ChildCategory, List<String>> santaMap = createSantaMap();
+        Type type = null;
+        for(Map.Entry entry : santaMap.entrySet()) {
+            if(entry.getKey().equals(ChildCategory.NICE) && ((ArrayList<String>) entry.getValue()).contains(childName)) {
+                type = Type.TOY;
+            } else if(entry.getKey().equals(ChildCategory.NAUGHTY) && ((ArrayList<String>) entry.getValue()).contains(childName)) {
+                type = Type.COAL;
+            }
+        }
+        return type;
     }
 
     @Test
     public void naughtyChildShouldGetCoal() {
-//        String childName = "Cruella";
-        ElfAbstractFactory elfAbstractFactory = ElfProducer.createElf(Type.COAL);
+        String childName = "Cruella";
+        Type elfFactoryType = getFactoryType(childName);
+        ElfAbstractFactory elfAbstractFactory = ElfProducer.createElf(elfFactoryType);
         IElf coalElf = elfAbstractFactory.createElf();
         Type actualGift = coalElf.deliver();
         Type expectedGift = Type.COAL;
@@ -26,7 +44,9 @@ public class FactoriesTest {
 
     @Test
     public void niceChildShouldGetToy() {
-        ElfAbstractFactory elfAbstractFactory = ElfProducer.createElf(Type.TOY);
+        String childName = "Jasmine";
+        Type elfFactoryType = getFactoryType(childName);
+        ElfAbstractFactory elfAbstractFactory = ElfProducer.createElf(elfFactoryType);
         IElf toyElf = elfAbstractFactory.createElf();
         Type actualGift = toyElf.deliver();
         Type expectedGift = Type.TOY;
