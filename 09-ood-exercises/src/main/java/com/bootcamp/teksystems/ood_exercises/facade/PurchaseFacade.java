@@ -43,4 +43,8 @@ public class PurchaseFacade {
     public String processPayment(int paymentChoice) {
         return Payment.processPayment(paymentChoice);
     }
+
+    public List<String> ship(String name, String streetAddress, String city, String state, String zip) {
+        return Shipping.processShipping(name, streetAddress, city, state, zip);
+    }
 }
