@@ -36,7 +36,6 @@ public class shopperApp {
                     System.out.println("Unable to add item to order");
                 }
             } catch (Exception e) {
-//                System.out.println("Invalid selection.");
                 isQuit = quit(facade);
             }
         } while(!isQuit);
