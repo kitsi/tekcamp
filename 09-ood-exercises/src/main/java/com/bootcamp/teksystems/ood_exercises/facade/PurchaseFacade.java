@@ -1,13 +1,12 @@
 package com.bootcamp.teksystems.ood_exercises.facade;
 
+import java.util.List;
 import java.util.Map;
 
 public class PurchaseFacade {
     private final Inventory inventory = new Inventory();
     private final Order order = new Order();
     private final Billing billing = new Billing();
-    private Payment payment = new Payment();
-    private Shipping shipping = new Shipping();
 
     public boolean processOrderItem(int itemId, int quantity) {
         boolean isPurchased = false;
@@ -25,7 +24,7 @@ public class PurchaseFacade {
         return isPurchased;
     }
 
-    public Map<String, String> getInvoice() {
+    public List<String> getInvoice() {
         return billing.createInvoice(order);
     }
 
@@ -42,6 +41,6 @@ public class PurchaseFacade {
     }
 
     public String processPayment(int paymentChoice) {
-        return payment.processPayment(paymentChoice);
+        return Payment.processPayment(paymentChoice);
     }
 }

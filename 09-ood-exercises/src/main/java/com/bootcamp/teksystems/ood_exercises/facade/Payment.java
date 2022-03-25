@@ -9,7 +9,7 @@ public class Payment {
         return String.format("1) %s, 2) %s, 3) %s", sf1, sf2, sf3);
     }
 
-    public String processPayment(int paymentChoice) {
+    public static String processPayment(int paymentChoice) {
         String paymentOption = "";
         for(PaymentOption option : PaymentOption.values()) {
             if(option.id == paymentChoice) {

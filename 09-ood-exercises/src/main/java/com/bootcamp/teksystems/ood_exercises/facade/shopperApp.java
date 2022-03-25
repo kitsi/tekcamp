@@ -1,6 +1,7 @@
 package com.bootcamp.teksystems.ood_exercises.facade;
 
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -76,7 +77,10 @@ public class shopperApp {
     }
 
     private static void printInvoice(PurchaseFacade facade) {
-        System.out.println(facade.getInvoice());
+        List<String> invoice = facade.getInvoice();
+        for(String line : invoice) {
+            System.out.println(line);
+        }
     }
 
     private static void displayItemMenu(PurchaseFacade facade) {

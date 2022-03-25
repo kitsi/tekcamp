@@ -2,33 +2,34 @@ package com.bootcamp.teksystems.ood_exercises.facade;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class Billing {
-    private final Map<String, String> invoice = new HashMap<>();
-//    private final List<String> invoice = new ArrayList<>();
+    private final List<String> invoice = new ArrayList<>();
     private final static BigDecimal TAX_RATE = new BigDecimal("0.08");
 
 
-    public Map<String, String> createInvoice(Order order) {
+    public List<String> createInvoice(Order order) {
         Map<Item, Integer> orderItems = order.getOrder();
         String lineItem;
         String quantity;
         BigDecimal amount;
         BigDecimal subtotal = BigDecimal.ZERO;
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        invoice.add("\n-------------------------------------------------");
+        invoice.add("                    INVOICE");
+        invoice.add("-------------------------------------------------");
         for(Map.Entry entry : orderItems.entrySet()) {
             lineItem = ((Item) entry.getKey()).name;
             quantity = (String.valueOf(entry.getValue()));
             amount = ((Item) entry.getKey()).price.multiply(new BigDecimal(quantity));
-            invoice.put(lineItem, formatter.format(amount));
-            subtotal.add(amount);
+            invoice.add(String.format(" %-34s| %-15s", lineItem, formatter.format(amount)));
+            subtotal = subtotal.add(amount);
         }
-        invoice.put("SUBTOTAL", formatter.format(subtotal));
-        invoice.put("TAX", formatter.format(calculateTax(subtotal)));
-        invoice.put("TOTAL", formatter.format(calculateTotal(subtotal)));
+        invoice.add(String.format("\n %-34s| %-15s", "SUBTOTAL ", formatter.format(subtotal)));
+        invoice.add(String.format(" %-34s| %-15s","TAX ", formatter.format(calculateTax(subtotal))));
+        invoice.add(String.format(" %-34s| %-15s", "TOTAL ", formatter.format(calculateTotal(subtotal))));
+        invoice.add("-------------------------------------------------\n");
         return invoice;
     }
 
@@ -39,5 +40,4 @@ public class Billing {
     public BigDecimal calculateTotal(BigDecimal subtotal) {
         return subtotal.add(calculateTax(subtotal));
     }
-
 }
