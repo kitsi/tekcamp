@@ -40,7 +40,9 @@ public class Inventory {
     public boolean inStock(Item itemToCheck, int quantity) {
         boolean inStock = false;
         for(Item item : Item.values()) {
-            inStock = (itemToCheck.equals(item) && (inventory.get(item) >= quantity));
+             if(itemToCheck.equals(item)) {
+                 inStock = (inventory.get(itemToCheck) >= quantity);
+            }
         }
         return inStock;
     }
