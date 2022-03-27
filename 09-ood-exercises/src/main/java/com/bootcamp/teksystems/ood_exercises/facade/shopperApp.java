@@ -24,16 +24,16 @@ public class shopperApp {
             try {
                 System.out.println("What would you like to purchase? [Enter Item# or 'q' to Quit]");
                 itemId = input.nextInt();
-                if(itemId > 0 || itemId < 7) {
+                if(itemId > 0 && itemId < Item.values().length) {
                     System.out.println("How many? [Enter quantity]");
                     quantity = input.nextInt();
+                    if(facade.processOrderItem(itemId, quantity)) {
+                        System.out.println("Item added to order");
+                    } else {
+                        System.out.println("Unable to add item to order");
+                    }
                 } else {
                     isQuit = quit(facade);
-                }
-                if(facade.processOrderItem(itemId, quantity)) {
-                    System.out.println("Item added to order");
-                } else {
-                    System.out.println("Unable to add item to order");
                 }
             } catch (Exception e) {
 //                System.out.println("Invalid selection.");
@@ -60,6 +60,33 @@ public class shopperApp {
         }
     }
 
+    private static void completePayment(PurchaseFacade facade) {
+        Scanner input = new Scanner(System.in);
+        int userChoice;
+        printInvoice(facade);
+        boolean isValidPayment = false;
+        do{
+            try {
+                System.out.println("How would you like to pay?");
+                System.out.println(facade.getPaymentOptions());
+                userChoice = input.nextInt();
+                if(userChoice > 0 && userChoice <= PaymentOption.values().length) {
+                    System.out.println(facade.processPayment(userChoice));
+                    isValidPayment = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid choice, try again");
+            }
+        } while(!isValidPayment);
+    }
+
+    private static void printInvoice(PurchaseFacade facade) {
+        List<String> invoice = facade.getInvoice();
+        for(String line : invoice) {
+            System.out.println(line);
+        }
+    }
+
     private static void ship(PurchaseFacade facade) {
         Scanner input = new Scanner(System.in);
         System.out.println("Please provide the following info for shipping.");
@@ -75,33 +102,6 @@ public class shopperApp {
         String zip = input.nextLine();
         List<String> shippingInfo = facade.ship(name, streetAddress, city, state, zip);
         for(String line : shippingInfo) {
-            System.out.println(line);
-        }
-    }
-
-    private static void completePayment(PurchaseFacade facade) {
-        Scanner input = new Scanner(System.in);
-        int userChoice;
-        printInvoice(facade);
-        boolean isValidPayment = false;
-        do{
-            try {
-                System.out.println("How would you like to pay?");
-                System.out.println(facade.getPaymentOptions());
-                userChoice = input.nextInt();
-                if(userChoice > 0 && userChoice < 4) {
-                    System.out.println(facade.processPayment(userChoice));
-                    isValidPayment = true;
-                }
-            } catch (Exception e) {
-                System.out.println("Invalid choice, try again");
-            }
-        } while(!isValidPayment);
-    }
-
-    private static void printInvoice(PurchaseFacade facade) {
-        List<String> invoice = facade.getInvoice();
-        for(String line : invoice) {
             System.out.println(line);
         }
     }

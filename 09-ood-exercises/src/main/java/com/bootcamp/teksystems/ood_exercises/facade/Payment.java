@@ -16,6 +16,6 @@ public class Payment {
                 paymentOption = option.name;
             }
         }
-        return paymentOption + " has been charged";
+        return paymentOption + " has been charged\n";
     }
 }
