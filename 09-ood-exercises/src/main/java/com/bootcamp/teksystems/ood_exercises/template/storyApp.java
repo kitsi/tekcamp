@@ -15,19 +15,24 @@ public class storyApp {
         originalStory.tellStory();
         System.out.println("\n--------------------------------------");
 
-        boolean isValidSeed = true;
+        boolean isValidSeed;
+        int seed;
+        System.out.println("\n\nEnter your favorite number to generate a random story: ");
         do {
+
             try {
-                System.out.println("\n\nEnter your favorite number to generate a random story: ");
-                int seed = input.nextInt();
+                isValidSeed = true;
+                seed = input.nextInt();
                 Story randomStory = new RandomStory(seed);
                 System.out.println("\n--------------------------------------");
                 System.out.println("\n~ RANDOM STORY ~");
                 randomStory.tellStory();
                 System.out.println("\n--------------------------------------");
+
             } catch (Exception e) {
-                System.out.println("Invalid entry. Only enter an integer.");
+                input.nextLine();
                 isValidSeed = false;
+                System.out.println("Invalid entry. Only enter an integer:");
             }
         } while (!isValidSeed);
         System.out.println("\nGoodbye! Thank you for joining story time!!");
