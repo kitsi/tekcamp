@@ -18,16 +18,6 @@ public class RandomStory extends Story{
     }
 
     @Override
-    public String getWord(PartOfSpeech partOfSpeech, int num) {
-        random.setSeed(num);
-        String gerundToFind = "***";
-        for(Gerund gerund : Gerund.values()) {
-            if((random.nextInt(Gerund.values().length)+1) == gerund.id) gerundToFind = gerund.name;
-        }
-        return gerundToFind;
-    }
-
-    @Override
     public String getSingularNoun(int num) {
         random.setSeed(num);
         String nounToFind = "***";
