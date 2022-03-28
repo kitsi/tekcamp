@@ -18,6 +18,8 @@ public class FactoriesTest {
         return (HashMap<ChildCategory, List<String>>) santaMap;
     }
 
+    //helper method to call during test, allows checking one child
+    //main class generates table for all children
     private Type getFactoryType(String childName) {
         Map<ChildCategory, List<String>> santaMap = createSantaMap();
         Type type = null;

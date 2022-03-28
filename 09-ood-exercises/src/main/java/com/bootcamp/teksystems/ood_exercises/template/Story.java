@@ -13,8 +13,8 @@ public abstract class Story {
     }
 
 
-    protected abstract String getAdverb();
-    protected abstract String getPastTenseVerb();
-    protected abstract String getGerund();
-    protected abstract String getSingularNoun();
+    public abstract String getAdverb();
+    public abstract String getPastTenseVerb();
+    public abstract String getGerund();
+    public abstract String getSingularNoun();
 }

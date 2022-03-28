@@ -28,7 +28,6 @@ public class storyApp {
                 System.out.println("\n~ RANDOM STORY ~");
                 randomStory.tellStory();
                 System.out.println("\n--------------------------------------");
-
             } catch (Exception e) {
                 input.nextLine();
                 isValidSeed = false;

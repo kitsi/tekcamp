@@ -24,7 +24,7 @@ public class OriginalStory extends Story{
     }
 
     @Override
-    protected String getAdverb() {
+    public String getAdverb() {
         String adverbToFind = "**[Adverb]**";
         for(Adverb adverb : Adverb.values()) {
             if(adverb.id == adverbIds.get((adverbIdsIndex))) adverbToFind = adverb.name;
@@ -34,7 +34,7 @@ public class OriginalStory extends Story{
     }
 
     @Override
-    protected String getPastTenseVerb() {
+    public String getPastTenseVerb() {
         String verbToFind = "**[PastTenseVerb]**";
         for(PastTenseVerb verb : PastTenseVerb.values()) {
             if(verb.id == pastTenseVerbIds.get((pastVerbIdsIndex))) verbToFind = verb.name;
@@ -44,7 +44,7 @@ public class OriginalStory extends Story{
     }
 
     @Override
-    protected String getGerund() {
+    public String getGerund() {
         String gerundToFind = "**[Gerund]**";
         for(Gerund gerund : Gerund.values()) {
             if(gerund.id == gerundIds.get((gerundIdsIndex))) gerundToFind = gerund.name;
@@ -54,7 +54,7 @@ public class OriginalStory extends Story{
     }
 
     @Override
-    protected String getSingularNoun() {
+    public String getSingularNoun() {
         String nounToFind = "**[SingularNoun]**";
         for(SingularNoun noun : SingularNoun.values()) {
             if(noun.id == singularNounIds.get((singularNounIdsIndex))) nounToFind = noun.name;
