@@ -71,7 +71,6 @@ public class shopperApp {
                 userChoice = input.nextInt();
                 input.nextLine();
                 if(userChoice > 0 && userChoice <= PaymentOption.values().length) {
-                    input.nextLine();
                     System.out.println(facade.processPayment(userChoice));
                     isValidPayment = true;
                 }
