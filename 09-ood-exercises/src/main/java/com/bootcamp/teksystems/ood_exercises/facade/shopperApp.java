@@ -69,11 +69,14 @@ public class shopperApp {
                 System.out.println("How would you like to pay?");
                 System.out.println(facade.getPaymentOptions());
                 userChoice = input.nextInt();
+                input.nextLine();
                 if(userChoice > 0 && userChoice <= PaymentOption.values().length) {
+                    input.nextLine();
                     System.out.println(facade.processPayment(userChoice));
                     isValidPayment = true;
                 }
             } catch (Exception e) {
+                input.nextLine();
                 System.out.println("Invalid choice, try again");
             }
         } while(!isValidPayment);
