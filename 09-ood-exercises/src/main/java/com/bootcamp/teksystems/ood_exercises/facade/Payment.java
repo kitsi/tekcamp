@@ -14,6 +14,9 @@ public class Payment {
         for(PaymentOption option : PaymentOption.values()) {
             if(option.id == paymentChoice) {
                 paymentOption = option.name;
+                break;
+            } else {
+                paymentOption = "No payment";
             }
         }
         return paymentOption + " has been charged\n";

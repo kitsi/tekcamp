@@ -7,10 +7,14 @@ public class Shipping {
 
     public static List<String> processShipping(String name, String streetAddress, String city, String state, String zip) {
         List<String> shippingDetails = new ArrayList<>();
-        shippingDetails.add("\nOrder has been shipped to:");
-        shippingDetails.add(name);
-        shippingDetails.add(streetAddress);
-        shippingDetails.add(city + ", " + state + " " + zip + "\n");
+        if(streetAddress.equals("")) {
+            shippingDetails.add("There is no order to ship");
+        } else {
+            shippingDetails.add("\nOrder has been shipped to:");
+            shippingDetails.add(name);
+            shippingDetails.add(streetAddress);
+            shippingDetails.add(city + ", " + state + " " + zip + "\n");
+        }
         return shippingDetails;
     }
 }

@@ -13,4 +13,8 @@ public class Order {
     public void addToOrder(Item item, int quantity) {
         order.put(item, quantity);
     }
+
+    public void emptyOrder() {
+        order.clear();
+    }
 }

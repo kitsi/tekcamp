@@ -27,6 +27,10 @@ public class Inventory {
         return inventory;
     }
 
+    public void replenishInventory() {
+        makeInitialStock();
+    }
+
     public void removeFromInventory(Item itemToRemove, int quantity) {
         if(inStock(itemToRemove, quantity)) {
             for(Item item : Item.values()) {

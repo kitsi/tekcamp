@@ -24,10 +24,6 @@ public class PurchaseFacade {
         return isPurchased;
     }
 
-    public List<String> getInvoice() {
-        return billing.createInvoice(order);
-    }
-
     public int getStock(Item item) {
         return inventory.getStock(item);
     }
@@ -36,15 +32,36 @@ public class PurchaseFacade {
         return order.getOrder().isEmpty();
     }
 
+    public void emptyOrder() {
+        order.emptyOrder();
+        inventory.replenishInventory();
+    }
+
+    public void replenishInventory() {
+        inventory.replenishInventory();
+    }
+
     public String getPaymentOptions() {
         return Payment.getPaymentOptions();
     }
 
+    public List<String> getInvoice() {
+        return billing.createInvoice(order);
+    }
+
     public String processPayment(int paymentChoice) {
-        return Payment.processPayment(paymentChoice);
+        if(!isOrderEmpty()) {
+            return Payment.processPayment(paymentChoice);
+        } else {
+            return Payment.processPayment(-1);
+        }
     }
 
     public List<String> ship(String name, String streetAddress, String city, String state, String zip) {
-        return Shipping.processShipping(name, streetAddress, city, state, zip);
+        if(!isOrderEmpty()) {
+            return Shipping.processShipping(name, streetAddress, city, state, zip);
+        } else {
+            return Shipping.processShipping("", "", "", "", "");
+        }
     }
 }
