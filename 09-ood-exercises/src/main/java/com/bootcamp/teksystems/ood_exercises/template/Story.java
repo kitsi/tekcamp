@@ -1,7 +1,5 @@
 package com.bootcamp.teksystems.ood_exercises.template;
 
-import com.bootcamp.teksystems.ood_exercises.template.enums.PartOfSpeech;
-
 public abstract class Story {
 
 
