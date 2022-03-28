@@ -36,14 +36,14 @@ public class santasApp {
         System.out.println("\n===========================");
         System.out.println("   SANTA GIFT LIST 2022");
         System.out.println("===========================");
-        System.out.printf("%-16s|%-10s\n", " Child", " Gift");
-        System.out.printf("%-16s|%-10s\n", "================", "==========");
+        System.out.printf("%-17s|%-9s\n", " Child", " Gift");
+        System.out.printf("%-17s|%-9s\n", "=================", "=========");
     }
 
     private static void printChildToy(ArrayList<String> childList, Type gift) {
         for(Object childName : childList) {
             String giftString = gift.toString().charAt(0) + gift.toString().substring(1).toLowerCase();
-            System.out.printf(" %-15s| %-10s\n", childName, giftString);
+            System.out.printf(" %-16s| %-9s\n", childName, giftString);
         }
     }
 
