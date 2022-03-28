@@ -6,46 +6,50 @@ import java.util.Random;
 
 public class RandomStory extends Story{
     Random random = new Random();
+    int seed;
 
-    @Override
-    public String getGerund(int num) {
-        random.setSeed(num);
-        String gerundToFind = "***";
-        for(Gerund gerund : Gerund.values()) {
-            if((random.nextInt(Gerund.values().length)+1 == gerund.id)) gerundToFind = gerund.name;
-        }
-        return gerundToFind;
+    public RandomStory(int seed) {
+        this.seed = seed;
+        random.setSeed(seed);
     }
 
     @Override
-    public String getSingularNoun(int num) {
-        random.setSeed(num);
-        String nounToFind = "***";
-        for(SingularNoun noun : SingularNoun.values()) {
-            if((random.nextInt(SingularNoun.values().length)+1) == noun.id) nounToFind = noun.name;
-        }
-        return nounToFind;
-    }
-
-    @Override
-    public String getAdverb(int num) {
-        random.setSeed(num);
-        String adverbToFind = "***";
+    public String getAdverb() {
+        String adverbToFind = "**[Adverb]**";
+        int idx = random.nextInt(Adverb.values().length)+1;
         for(Adverb adverb : Adverb.values()) {
-//            System.out.println("adverb values length: " + Adverb.values().length);
-//            System.out.println("adverb random ids: " + (random.nextInt(Adverb.values().length)+1));
-            if((random.nextInt(Adverb.values().length)+1) == adverb.id) adverbToFind = adverb.name;
+            if(idx == adverb.id) adverbToFind = adverb.name;
         }
         return adverbToFind;
     }
 
     @Override
-    public String getPastTenseVerb(int num) {
-        random.setSeed(num);
-        String verbToFind = "***";
+    public String getPastTenseVerb() {
+        String verbToFind = "**[PastTenseVerb]**";
+        int idx = random.nextInt(PastTenseVerb.values().length)+1;
         for(PastTenseVerb verb : PastTenseVerb.values()) {
-            if((random.nextInt(PastTenseVerb.values().length)+1) == verb.id) verbToFind = verb.name;
+            if(idx == verb.id) verbToFind = verb.name;
         }
         return verbToFind;
+    }
+
+    @Override
+    public String getGerund() {
+        String gerundToFind = "**[Gerund]**";
+        int idx = random.nextInt(Gerund.values().length)+1;
+        for(Gerund gerund : Gerund.values()) {
+            if(idx == gerund.id) gerundToFind = gerund.name;
+        }
+        return gerundToFind;
+    }
+
+    @Override
+    public String getSingularNoun() {
+        String nounToFind = "**[SingularNoun]**";
+        int idx = random.nextInt(SingularNoun.values().length)+1;
+        for(SingularNoun noun : SingularNoun.values()) {
+            if(idx == noun.id) nounToFind = noun.name;
+        }
+        return nounToFind;
     }
 }
