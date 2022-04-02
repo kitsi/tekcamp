@@ -4,33 +4,30 @@
 
 use sakila;
 
-SELECT customer_id, (CONCAT(customer.first_name, ' ', customer.last_name)) customer
-from customer
-where customer.first_name like '%k%' or customer.last_name like ('%k%');
+WITH customer_rentals
+AS (SELECT 
+		ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY customer_id, name) rownum1,
+		customer_id,
+		category.name
+	FROM rental
+	JOIN inventory ON inventory.inventory_id = rental.inventory_id
+	JOIN film ON film.film_id = inventory.film_id
+	JOIN film_category ON film_category.film_id = film.film_id
+	JOIN category ON category.category_id = film_category.category_id
+	GROUP BY customer_id, name, rental_date
+	ORDER BY customer_id, rental_date)
 
-SELECT (CONCAT(customer.first_name, ' ', customer.last_name)) customer,
-(category.name) category,
-(count(*)) times_rented
-from customer
-join rental on customer.customer_id = rental.customer_id
-join inventory on rental.inventory_id = inventory.inventory_id
-join film on inventory.film_id = film.film_id
-join film_category on film_category.film_id = film.film_id
-join category on film_category.category_id = category.category_id
-where customer.first_name like '%k%' or customer.last_name like ('%k%')
-group by CONCAT(customer.first_name, ' ', customer.last_name), category.name;
+SELECT * FROM (
+	SELECT * ,
+			ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY customer_id, rownum2 DESC) rownum3
+			FROM (
+				SELECT
+					ROW_NUMBER() OVER (PARTITION BY customer_id, customer_rentals.name ORDER BY customer_id) rownum2,
+					customer_rentals.rownum1,
+					customer_id,
+					(customer_rentals.name) favorite_category
+				FROM customer_rentals
+				WHERE
+					customer_rentals.rownum1 <= 10) AS x) AS y
+	WHERE rownum3 = 1;
 
--- SELECT (CONCAT(customer.first_name, ' ', customer.last_name)) customer,
--- (film.title) film_title,
--- (category.name) category,
--- (rental.rental_date) rental_date
--- -- (count(*)) times_rented
--- from customer
--- join rental on customer.customer_id = rental.customer_id
--- join inventory on rental.inventory_id = inventory.inventory_id
--- join film on inventory.film_id = film.film_id
--- join film_category on film_category.film_id = film.film_id
--- join category on film_category.category_id = category.category_id
--- where customer.first_name like '%k%' or customer.last_name like ('%k%')
--- -- group by CONCAT(customer.first_name, ' ', customer.last_name), category.name;
--- order by customer.customer_id, rental.rental_date desc;
