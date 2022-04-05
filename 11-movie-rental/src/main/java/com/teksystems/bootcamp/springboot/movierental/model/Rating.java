@@ -6,12 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Customer {
+public class Rating {
 
     @Id
-    private int customerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ratingId;
 
-    private String firstName;
+    private int numStars;
 
-    private String lastName;
+    private String description;
+
 }

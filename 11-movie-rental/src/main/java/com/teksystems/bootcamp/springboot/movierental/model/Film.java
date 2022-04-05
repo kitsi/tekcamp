@@ -1,26 +1,17 @@
 package com.teksystems.bootcamp.springboot.movierental.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "film")
-@NoArgsConstructor
-@Getter
 public class Film {
 
     @Id
-    @Column(name = "film_id")
-    @Getter
-    private int filmId;
+    private Long filmId;
 
-    @Column(name = "title")
-    @Getter
     private String title;
+
+    @OneToMany(mappedBy = "review")
+    private List<Review> reviews;
 
 }
