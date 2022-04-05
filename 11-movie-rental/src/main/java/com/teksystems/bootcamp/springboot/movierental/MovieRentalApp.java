@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class MovieRentalApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-        System.out.println("server side wireed up!");
+        SpringApplication.run(MovieRentalApp.class, args);
+        System.out.println("server side wired up!");
     }
 
 }
