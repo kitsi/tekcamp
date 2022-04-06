@@ -25,15 +25,10 @@ public class ReviewController {
         return reviewService.getReview(reviewId);
     }
 
-//    add getReviewFilm
-
-//    add getReviewCustomer
-
     @DeleteMapping("/{id}")
     public void deleteReview(@PathVariable(value = "id") Long reviewId) {
         reviewService.deleteReview(reviewId);
     }
-//    --------------------------------
 
     @PostMapping("/")
     public Review createReview(@RequestBody Review review) {

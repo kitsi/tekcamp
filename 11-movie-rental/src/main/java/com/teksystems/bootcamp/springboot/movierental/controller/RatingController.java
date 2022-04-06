@@ -29,7 +29,6 @@ public class RatingController {
     public void deleteRating(@PathVariable(value = "id") Long id) {
         ratingService.deleteRating(id);
     }
-//    ------------------------------------
 
     @PostMapping("/")
     public Rating createRating(@RequestBody Rating rating) {

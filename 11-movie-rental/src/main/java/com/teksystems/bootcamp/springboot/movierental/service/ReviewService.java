@@ -22,10 +22,6 @@ public class ReviewService {
         return reviewRepository.findById(id);
     }
 
-//    add getReviewFilm
-
-//    add getReviewCustomer
-
     public void deleteReview(Long reviewId) {
         reviewRepository.deleteById(reviewId);
     }
@@ -38,6 +34,7 @@ public class ReviewService {
         Review review = reviewRepository.findById(reviewId).get();
         review.setCustomer(reviewDetails.getCustomer());
         review.setFilm(reviewDetails.getFilm());
+        review.setRating(reviewDetails.getRating());
         return reviewRepository.save(review);
     }
 }
