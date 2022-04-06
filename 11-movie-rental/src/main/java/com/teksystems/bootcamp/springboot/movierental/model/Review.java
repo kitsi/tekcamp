@@ -13,17 +13,17 @@ public class Review {
     @Getter
     private Long reviewId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     @Getter @Setter
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "film_id")
     @Getter @Setter
     private Film film;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "rating_id")
     @Getter @Setter
     private Rating rating;
