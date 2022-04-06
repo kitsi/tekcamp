@@ -24,8 +24,8 @@ public class FilmController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Film> getFilm(@PathVariable(value = "id") Integer filmId) {
-        return filmService.getFilm(filmId);
+    public Optional<Film> getFilm(@PathVariable(value = "id") Short id) {
+        return filmService.getFilm(id);
     }
 
 }

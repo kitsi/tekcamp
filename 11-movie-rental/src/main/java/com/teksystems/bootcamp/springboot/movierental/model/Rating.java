@@ -1,19 +1,29 @@
 package com.teksystems.bootcamp.springboot.movierental.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "rating")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "rating_id")
+    @Getter @Setter
     private Long ratingId;
 
+    @Column(name = "num_stars")
+    @Getter @Setter
     private int numStars;
 
+    @Column(name = "description")
+    @Getter @Setter
     private String description;
-
 }

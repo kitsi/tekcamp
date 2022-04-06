@@ -1,5 +1,6 @@
 package com.teksystems.bootcamp.springboot.movierental.service;
 
+import com.teksystems.bootcamp.springboot.movierental.model.Customer;
 import com.teksystems.bootcamp.springboot.movierental.model.Film;
 import com.teksystems.bootcamp.springboot.movierental.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class FilmService {
         return filmRepository.findAll();
     }
 
-    public Optional<Film> getFilm(Integer id) {
+    public Optional<Film> getFilm(Short id) {
         return filmRepository.findById(id);
     }
 }

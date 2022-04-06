@@ -25,18 +25,23 @@ public class ReviewController {
         return reviewService.getReview(reviewId);
     }
 
+//    add getReviewFilm
+
+//    add getReviewCustomer
+
+    @DeleteMapping("/{id}")
+    public void deleteReview(@PathVariable(value = "id") Long reviewId) {
+        reviewService.deleteReview(reviewId);
+    }
+//    --------------------------------
+
     @PostMapping("/")
     public Review createReview(@RequestBody Review review) {
         return reviewService.createReview(review);
     }
 
-//    @PutMapping("/{id}")
-//    public Review updateReview(@PathVariable(value = "id") Long reviewId, @RequestBody Review reviewDetails) {
-//        return reviewService.updateReview(reviewId, reviewDetails);
-//    }
-
-    @DeleteMapping("/{id}")
-    public void deleteReview(@PathVariable(value = "id") Long reviewId) {
-        reviewService.deleteReview(reviewId);
+    @PutMapping("/{id}")
+    public Review updateReview(@PathVariable(value = "id") Long reviewId, @RequestBody Review reviewDetails) {
+        return reviewService.updateReview(reviewId, reviewDetails);
     }
 }

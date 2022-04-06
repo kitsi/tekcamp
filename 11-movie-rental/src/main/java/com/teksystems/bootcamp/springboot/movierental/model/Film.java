@@ -1,17 +1,24 @@
 package com.teksystems.bootcamp.springboot.movierental.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
+@Table(name = "film")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Film {
 
     @Id
-    private Long filmId;
+    @Column(name = "film_id ", columnDefinition = "SMALLINT UNSIGNED")
+    @Getter @Setter
+    private Short filmId;
 
+    @Column(name = "title")
+    @Getter @Setter
     private String title;
-
-    @OneToMany(mappedBy = "review")
-    private List<Review> reviews;
-
 }
