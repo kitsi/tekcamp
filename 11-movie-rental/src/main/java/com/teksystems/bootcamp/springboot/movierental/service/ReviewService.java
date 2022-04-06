@@ -30,11 +30,12 @@ public class ReviewService {
         return reviewRepository.save(review);
     }
 
-    public Review updateReview(Long reviewId, Review reviewDetails) {
-        Review review = reviewRepository.findById(reviewId).get();
+    public Review updateReview(Long id, Review reviewDetails) {
+        Review review = reviewRepository.findById(id).get();
         review.setCustomer(reviewDetails.getCustomer());
         review.setFilm(reviewDetails.getFilm());
         review.setRating(reviewDetails.getRating());
+        review = reviewRepository.findById(id).get();
         return reviewRepository.save(review);
     }
 }

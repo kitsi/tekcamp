@@ -28,4 +28,13 @@ public class Customer {
     @Column(name = "last_name")
     @Getter @Setter
     private String lastName;
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }
