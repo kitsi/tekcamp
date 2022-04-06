@@ -21,12 +21,4 @@ public class Film {
     @Column(name = "title")
     @Getter @Setter
     private String title;
-
-    @Override
-    public String toString() {
-        return "Film{" +
-                "filmId=" + filmId +
-                ", title='" + title + '\'' +
-                '}';
-    }
 }

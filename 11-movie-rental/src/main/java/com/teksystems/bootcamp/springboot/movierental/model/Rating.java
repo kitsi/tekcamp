@@ -26,13 +26,4 @@ public class Rating {
     @Column(name = "description")
     @Getter @Setter
     private String description;
-
-    @Override
-    public String toString() {
-        return "Rating{" +
-                "ratingId=" + ratingId +
-                ", numStars=" + numStars +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

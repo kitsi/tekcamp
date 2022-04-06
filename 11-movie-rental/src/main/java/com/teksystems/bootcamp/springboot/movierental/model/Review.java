@@ -27,14 +27,4 @@ public class Review {
     @JoinColumn(referencedColumnName = "rating_id")
     @Getter @Setter
     private Rating rating;
-
-    @Override
-    public String toString() {
-        return "Review{" +
-                "reviewId=" + reviewId +
-                ", customer=" + customer +
-                ", film=" + film +
-                ", rating=" + rating +
-                '}';
-    }
 }
