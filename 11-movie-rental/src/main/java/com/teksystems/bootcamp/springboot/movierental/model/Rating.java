@@ -16,7 +16,7 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rating_id")
-    @Getter @Setter
+    @Getter
     private Long ratingId;
 
     @Column(name = "num_stars")

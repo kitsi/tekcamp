@@ -10,7 +10,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
+    @Getter
     private Long reviewId;
 
     @ManyToOne(fetch = FetchType.LAZY)

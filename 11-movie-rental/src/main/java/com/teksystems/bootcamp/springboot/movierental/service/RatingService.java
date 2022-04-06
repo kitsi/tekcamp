@@ -35,7 +35,6 @@ public class RatingService {
         Rating rating = ratingRepository.findById(id).get();
         rating.setNumStars(ratingDetails.getNumStars());
         rating.setDescription(ratingDetails.getDescription());
-
         return ratingRepository.save(rating);
     }
 }

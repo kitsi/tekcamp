@@ -38,7 +38,6 @@ public class ReviewService {
         Review review = reviewRepository.findById(reviewId).get();
         review.setCustomer(reviewDetails.getCustomer());
         review.setFilm(reviewDetails.getFilm());
-
         return reviewRepository.save(review);
     }
 }
