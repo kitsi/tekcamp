@@ -3,6 +3,9 @@ package com.teksystems.bootcamp.springboot.movierental.service;
 import com.teksystems.bootcamp.springboot.movierental.model.Review;
 import com.teksystems.bootcamp.springboot.movierental.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +17,10 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    public List<Review> getReviews() {
-        return reviewRepository.findAll();
+    public Page<Review> getReviews(int pageNum, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+        Page<Review> reviews = reviewRepository.findAll(pageable);
+        return reviews;
     }
 
     public Optional<Review> getReview(Long id) {

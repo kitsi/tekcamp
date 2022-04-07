@@ -3,6 +3,7 @@ package com.teksystems.bootcamp.springboot.movierental.controller;
 import com.teksystems.bootcamp.springboot.movierental.model.Customer;
 import com.teksystems.bootcamp.springboot.movierental.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,11 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/")
-    public List<Customer> getCustomers() {
-        return customerService.getCustomers();
+    public Page<Customer> getCustomers(
+            @RequestParam(value = "pageNum", defaultValue = "0", required = false) int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ) {
+        return customerService.getCustomers(pageNum, pageSize);
     }
 
     @GetMapping("/{id}")

@@ -3,10 +3,8 @@ package com.teksystems.bootcamp.springboot.movierental.controller;
 import com.teksystems.bootcamp.springboot.movierental.model.Film;
 import com.teksystems.bootcamp.springboot.movierental.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +17,11 @@ public class FilmController {
     private FilmService filmService;
 
     @GetMapping("/")
-    public List<Film> getFilms() {
-        return filmService.getFilms();
+    public Page<Film> getFilms(
+            @RequestParam(value = "pageNum", defaultValue = "0", required = false) int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ) {
+        return filmService.getFilms(pageNum, pageSize);
     }
 
     @GetMapping("/{id}")

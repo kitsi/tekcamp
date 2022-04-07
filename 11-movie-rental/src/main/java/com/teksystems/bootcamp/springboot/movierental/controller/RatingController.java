@@ -3,6 +3,7 @@ package com.teksystems.bootcamp.springboot.movierental.controller;
 import com.teksystems.bootcamp.springboot.movierental.model.Rating;
 import com.teksystems.bootcamp.springboot.movierental.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,11 @@ public class RatingController {
     private RatingService ratingService;
 
     @GetMapping("/")
-    public List<Rating> getRatings() {
-        return ratingService.getRatings();
+    public Page<Rating> getRatings(
+            @RequestParam(value = "pageNum", defaultValue = "0", required = false) int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ) {
+        return ratingService.getRatings(pageNum, pageSize);
     }
 
     @GetMapping("/{id}")

@@ -14,17 +14,17 @@ public class Review {
     private Long reviewId;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "customer_id")
+    @JoinColumn(name = "customer_id")
     @Getter @Setter
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "film_id")
+    @JoinColumn(name = "film_id")
     @Getter @Setter
     private Film film;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "rating_id")
+    @JoinColumn(name = "rating_id")
     @Getter @Setter
     private Rating rating;
 }
