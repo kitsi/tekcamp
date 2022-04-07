@@ -26,7 +26,7 @@ use sakila;
 
 INSERT INTO rating(num_stars, description)
 	VALUES
-		(0, 'worst movie ever'),
+	    (0, 'worst movie ever'),
 	    (1, 'dissapointing'),
 	    (2, 'bearable'),
 	    (3, 'just fine'),
@@ -39,11 +39,44 @@ INSERT INTO review(customer_id, film_id, rating_id) VALUES
 (1,7,2), (2,7,4), (3,7,3), (4,8,2), (5,8,5), (6,9,6), (7,9,4), (8,10,3), (9,10,5), (10,10,4);
 ```
 
-### C. Interact with the API
+### D. Interact with the API
 
-Navigate to ``http://localhost:8080/swagger-ui/index.html#/`` in your web browser (change the port in this url to whatever Tomcat is using as noted in step B.
+Navigate to ``http://localhost:8080/swagger-ui/index.html#/`` in your web browser (change the port in this url to whatever Tomcat is using as noted in step B. Interaction below is demonstrated using ``review-controller``. Other controller methods are set up similarly.
+1) **Review controller methods**<br />
+   Expand the review controller accordian to view the methods available
+   ![review controller methods](https://i.imgur.com/NGJ2ZiL.png)
+   1) **GET /api/reviews**<br />
+      Next, expand the fourth option under review-controller to see the reviews & click on the ``Try it out`` button
+      ![get reviews method](https://i.imgur.com/jMuzUVL.png)
+      This method provides the option for paging. Default values are provided for the first page and the first 10 rows of data. Unless a different page number or page size is desired, no data needs to be entered here.<br />
+      To see reviews, click on the blue ``Execute`` button
+      ![execute](https://i.imgur.com/4o08Fvt.png)
+      Here is a sample of the response
+      ![get reivews responst](https://i.imgur.com/90SDGLC.png)
+   2) **GET /api/reviews/{id}**<br />
+     To receive only one review by id, expand the first method under review-controller, <br/>
+     click on ``Try it out``,
+     enter an id in the required id field, and
+     press the big blue ``Execute`` button<br />
+     ![get review with id](https://i.imgur.com/nOA0t7B.png)
+     The response will provide details of one review
+     ![get review with id response](https://i.imgur.com/O5d94MA.png)
+   3) **POST /api/reviews/**<br />
+   To add a review, expand the last method of the review-controller & press ``Try it out``<br />
+   Enter a **customerId**, **filmId**, and **ratingId** & press ``Execute``<br />
+   (reviewID is auto incremented & data entered in other fields is ignored since only the ids for customers, films, and rating are used as foreign keys & included in the Review model)
+   ![post review enter data](https://i.imgur.com/GzM4b09.png)
+   The server response will update & provide the object corresponding to the newly created review
+   ![post method server response](https://i.imgur.com/6wmnFRR.png)
+   4) **DELETE /api/reviews/{id}**<br />
+   Provide the id as done similarly to the get review by id method
+   5) **PUT /api/reviews/{id}**<br />
+   To update a review provide the id of the review in the required field.<br />
+   In the request body, enter the **customerId**, **filmId**, and **ratingId** as done in the post method
+   
 
 
-### D. Resources
+
+### E. Resources
 
 [Java Guides Paging in Spring Boot](https://www.javaguides.net/2021/10/spring-boot-pagination-and-sorting-rest-api.html)
